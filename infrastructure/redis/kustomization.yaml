@@ -8,3 +8,5 @@ configMapGenerator:
   - name: redis-values
     files:
       - values.yaml=values.yaml
+configurations:
+   - kustomizeconfig.yaml
