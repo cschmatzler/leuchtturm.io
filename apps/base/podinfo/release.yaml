@@ -2,6 +2,7 @@ piVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: podinfo
+  namespace: apps
 spec:
   releaseName: podinfo
   chart:
