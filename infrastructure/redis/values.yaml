@@ -1,6 +1,6 @@
 usePassword: false
 cluster:
-  enabled: false
+  enabled: true
 master:
   persistence:
     enabled: false
