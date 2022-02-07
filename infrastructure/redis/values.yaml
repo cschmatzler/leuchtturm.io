@@ -1,2 +1,5 @@
+global:
+  storageClass: vultr-block-storage
+
 sentinel:
   enabled: true
