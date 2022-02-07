@@ -6,7 +6,7 @@ spec:
   releaseName: redis
   chart:
     spec:
-      chart: redis-cluster
+      chart: redis
       sourceRef:
         kind: HelmRepository
         name: bitnami
