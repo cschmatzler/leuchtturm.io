@@ -3,3 +3,6 @@ global:
 
 sentinel:
   enabled: true
+
+metrics:
+  enabled: true
