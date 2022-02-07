@@ -1,6 +1,14 @@
 global:
   storageClass: vultr-block-storage
 
+master:
+  persistence:
+    storageClass: vultr-block-storage
+
+replica:
+  persistence:
+    storageClass: vultr-block-storage
+
 sentinel:
   enabled: true
 
