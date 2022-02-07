@@ -26,5 +26,5 @@ spec:
       hosts:
         - host: podinfo.medium.place
           paths:
-            - path: /*
+            - path: /
               pathType: ImplementationSpecific
