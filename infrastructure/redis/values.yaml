@@ -1,5 +1,5 @@
 master:
   persistence:
     enabled: false
-replica:
-  replicaCount: 5
+sentinel:
+  enabled: true
