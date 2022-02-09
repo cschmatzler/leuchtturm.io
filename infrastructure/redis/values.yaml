@@ -9,8 +9,5 @@ replica:
   persistence:
     enabled: false
 
-sentinel:
-  enabled: true
-
 metrics:
   enabled: true
