@@ -17,5 +17,5 @@ spec:
           - path: /
             pathType: ImplementationSpecific
             backend:
-            service:
-              name: podinfo
+              service:
+                name: podinfo
