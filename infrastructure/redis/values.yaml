@@ -1,6 +1,14 @@
 global:
   storageClass: vultr-block-storage
 
+master:
+  persistence:
+    size: 10Gi
+
+replica:
+  persistence:
+    enabled: false
+
 sentinel:
   enabled: true
 
