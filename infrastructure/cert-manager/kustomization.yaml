@@ -5,3 +5,7 @@ resources:
   - namespace.yaml
   - release.yaml
   - letsencrypt.yaml
+configMapGenerator:
+  - name: cert-manager-values
+    files:
+      - values.yaml=values.yaml
