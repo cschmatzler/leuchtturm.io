@@ -28,3 +28,7 @@ spec:
           paths:
             - path: /
               pathType: ImplementationSpecific
+    tls:
+      - hosts:
+          - podinfo.medium.place
+        secretName: podinfo-medium-place-tls
