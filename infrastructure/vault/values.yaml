@@ -1,0 +1,9 @@
+auditStorage:
+  enabled: true
+
+standalone:
+  enabled: false
+
+ha:
+  enabled: true
+  replicas: 3
