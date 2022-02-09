@@ -1,9 +1,10 @@
-auditStorage:
-  enabled: true
+server:
+  auditStorage:
+    enabled: true
 
-standalone:
-  enabled: false
+  standalone:
+    enabled: false
 
-ha:
-  enabled: true
-  replicas: 3
+  ha:
+    enabled: true
+    replicas: 3
