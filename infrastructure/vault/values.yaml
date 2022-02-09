@@ -1,3 +1,6 @@
+injector:
+  enabled: true
+
 server:
   auditStorage:
     enabled: true
