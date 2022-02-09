@@ -12,9 +12,10 @@ spec:
       secretName: podinfo-medium-place-tls
   rules:
     - host: podinfo.medium.place
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-          backend:
-          service:
-            name: podinfo
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+            service:
+              name: podinfo
