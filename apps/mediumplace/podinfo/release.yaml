@@ -3,6 +3,8 @@ kind: HelmRelease
 metadata:
   name: podinfo
   namespace: mediumplace
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
   releaseName: podinfo
   chart:
@@ -16,9 +18,11 @@ spec:
   install:
     remediation:
       retries: 3
-  # Default values
-  # https://github.com/stefanprodan/podinfo/blob/master/charts/podinfo/values.yaml
   values:
+    tls:
+      - hosts:
+          - podinfo.medium.place
+        secretName: podinfo-medium-place-tls
     ingress:
       enabled: true
       annotations:
@@ -28,7 +32,3 @@ spec:
           paths:
             - path: /
               pathType: ImplementationSpecific
-    tls:
-      - hosts:
-          - podinfo.medium.place
-        secretName: podinfo-medium-place-tls
