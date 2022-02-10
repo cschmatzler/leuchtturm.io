@@ -5,7 +5,7 @@ metadata:
   name: cert-manager
 resources:
   - namespace.yaml
-  - release.yaml
+  #- release.yaml
 configMapGenerator:
   - name: cert-manager-values
     files:
