@@ -19,3 +19,4 @@ spec:
             backend:
               service:
                 name: podinfo
+                port: 80
