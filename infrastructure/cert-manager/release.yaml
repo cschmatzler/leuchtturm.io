@@ -16,6 +16,6 @@ spec:
   install:
     remediation:
       retries: 3
-  valuesFrom:
-    - kind: ConfigMap
-      name: release-values
+  values:
+    replicaCount: 2
+    installCRDs: true
