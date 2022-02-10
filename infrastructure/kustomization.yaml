@@ -6,4 +6,4 @@ resources:
   # - vault
   # - postgres
   # - redis
-  # - nginx
+  - nginx
