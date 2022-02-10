@@ -20,4 +20,4 @@ spec:
               service:
                 name: podinfo
                 port:
-                  number: 80
+                  name: http
