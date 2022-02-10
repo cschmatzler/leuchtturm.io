@@ -9,7 +9,7 @@ spec:
       chart: cert-manager
       sourceRef:
         kind: HelmRepository
-        name: hashicorp
+        name: bitnami
         namespace: flux-system
       version: "0.4.5"
   interval: 1h0m0s
