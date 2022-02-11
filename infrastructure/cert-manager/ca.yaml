@@ -23,7 +23,7 @@ spec:
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: leuchtturm-io-ca
   namespace: cert-manager
