@@ -18,5 +18,8 @@ spec:
     remediation:
       retries: 3
   valuesFrom:
-    - kind: ConfigMap
-      name: vault-values
+    - configMapKeyRef:
+        name: vault
+        namespace: vault
+        key: values.yaml
+        optional: false
