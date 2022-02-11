@@ -7,5 +7,4 @@ resources:
   - namespace.yaml
   - crd.yaml
   - release.yaml
-  - ca.yaml
   - letsencrypt.yaml
