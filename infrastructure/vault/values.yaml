@@ -19,3 +19,7 @@ server:
     enabled: true
     size: 10Gi
     accessMode: ReadWriteOnce
+
+ui:
+  enabled: true
+  serviceType: NodePort
