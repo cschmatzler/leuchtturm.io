@@ -1,6 +1,6 @@
 server:
   ha:
-    enabled: false
+    enabled: true
     replicas: 3
 
     apiAddr: null
