@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - sources
   - cert-manager
-  #- vault
+  - vault
   #- postgres
   # - redis
   - nginx
