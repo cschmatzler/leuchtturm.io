@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: vault
 resources:
   - namespace.yaml
+  - crd.yaml
   - serviceaccount.yaml
   - role.yaml
   - rolebinding.yaml
