@@ -20,9 +20,6 @@ server:
         }
         service_registration "kubernetes" {}
 
-  service:
-    enabled: true
-
   dataStorage:
     enabled: true
     size: 10Gi
