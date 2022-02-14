@@ -1,16 +1,32 @@
 server:
   standalone:
-    enabled: true
-    config: |
-      listener "tcp" {
-        tls_disable = true
-        address = "[::]:8200"
-        cluster_address = "[::]:8201"
-      }
+    enabled: false
 
-      storage "file" {
-        path = "/vault/data"
-      }
+  ha:
+    enabled: true
+    replicas: 5
+    raft:
+      enabled: true
+      setNodeId: true
+
+      config: |
+        ui = true
+        listener "tcp" {
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+        }
+
+        storage "raft" {
+          path = "/vault/data"
+            retry_join {
+              leader_api_addr = "https://vault-0.vault:8200"
+          }
+          retry_join {
+            leader_api_addr = "https://vault-1.vault:8200"
+          }
+        }
+
+        service_registration "kubernetes" {}
 
   service:
     enabled: true
@@ -19,6 +35,3 @@ server:
     enabled: true
     size: 10Gi
     accessMode: ReadWriteOnce
-
-ui:
-  enabled: true
