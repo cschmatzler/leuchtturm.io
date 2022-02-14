@@ -3,16 +3,13 @@ kind: Kustomization
 namespace: vault
 resources:
   - namespace.yaml
-  - crd.yaml
+  - customresourcedefinition.yaml
   - serviceaccount.yaml
   - role.yaml
   - rolebinding.yaml
+  - clusterrole.yaml
   - clusterrolebinding.yaml
   - persistentvolumeclaim.yaml
-  - release.yaml
-configMapGenerator:
-  - name: vault-values
-    files:
-      - values.yaml=values.yaml
-configurations:
-  - kustomizeconfig.yaml
+  - service.yaml
+  - vault.yaml
+  - deployment.yaml
