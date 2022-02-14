@@ -4,7 +4,10 @@ namespace: vault
 resources:
   - namespace.yaml
   - serviceaccount.yaml
+  - role.yaml
+  - rolebinding.yaml
   - clusterrolebinding.yaml
+  - persistentvolumeclaim.yaml
   - release.yaml
 configMapGenerator:
   - name: vault-values
