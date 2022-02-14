@@ -4,6 +4,6 @@ resources:
   - sources
   - cert-manager
   - vault
-  # - postgres
+  - postgres
   # - redis
   - nginx
