@@ -1,18 +1,24 @@
 server:
-  standalone:
-    enabled: true
-    config: |
-      ui = true
+  ha:
+    enabled: false
+    replicas: 3
 
-      listener "tcp" {
-        tls_disable = true
-        address = "[::]:8200"
-        cluster_address = "[::]:8201"
-      }
+    apiAddr: null
 
-      storage "file" {
-        path = "/vault/data"
-      }
+    raft:
+      enabled: false
+      setNodeId: false
+      config: |
+        ui = true
+        listener "tcp" {
+          tls_disable = 1
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+        }
+        storage "raft" {
+          path = "/vault/data"
+        }
+        service_registration "kubernetes" {}
 
   service:
     enabled: true
