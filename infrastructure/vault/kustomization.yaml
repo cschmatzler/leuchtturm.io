@@ -3,6 +3,8 @@ kind: Kustomization
 namespace: vault
 resources:
   - namespace.yaml
+  - sa.yaml
+  - crb.yaml
   - release.yaml
 configMapGenerator:
   - name: vault-values
