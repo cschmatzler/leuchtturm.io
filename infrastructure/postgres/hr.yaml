@@ -18,3 +18,5 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: postgres-values
+    - kind: ConfigMap
+      name: postgres-values-secret
