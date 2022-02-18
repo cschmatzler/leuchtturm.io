@@ -4,7 +4,9 @@ metadata:
   name: postgres-values-secret
 data:
   values.yaml: |
-    postgresql:
-      password: vault:secret/data/infrastructure/postgres#password
-      repmgrPassword: vault:secret/data/infrastructure/postgres#repmgrpassword
-      adminPassword: vault:secret/data/infrastructure/postgres#adminpassword
+    global:
+      postgresql:
+        password: vault:secret/data/infrastructure/postgres#password
+        repmgrPassword: vault:secret/data/infrastructure/postgres#repmgrpassword
+      pgpool:
+        adminPassword: vault:secret/data/infrastructure/postgres#adminpassword
