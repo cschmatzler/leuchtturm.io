@@ -1,5 +1,8 @@
 nameReference:
   - kind: Secret
+    version: v1
     fieldSpecs:
       - path: spec/vault/auth/kubernetes/secretRef/name
+        group: cert-manager.io
+        version: v1
         kind: Issuer
