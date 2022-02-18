@@ -74,7 +74,7 @@ spec:
         roles:
           - name: default
             bound_service_account_names: ["default", "vault-secrets-webhook"]
-            bound_service_account_namespaces: ["default", "vswh"]
+            bound_service_account_namespaces: ["*"]
             policies: allow_secrets
             ttl: 1h
 
