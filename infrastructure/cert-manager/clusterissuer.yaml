@@ -9,9 +9,9 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-account-key
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+      - http01:
+          ingress:
+            class: nginx
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -21,14 +21,21 @@ spec:
   vault:
     path: pki_int/sign/leuchtturm-io
     server: https://vault.infrastructure
-    caBundle:
-      secretKeyRef:
-        name: vault-tls
-        key: "ca.crt"
+    caBundle: /etc/vault-tls/ca.crt
     auth:
       kubernetes:
         role: pki
         mountPath: /v1/auth/kubernetes
-        secretRef:
+        secretKeyRef:
           name: vault-issuer-token
           key: token
+    volumeMounts:
+      - name: vault-tls
+        mountPath: "/etc/vault-tls"
+        readOnly: true
+  volumes:
+    - name: vault-tls
+      secret:
+        secretName: vault-tls
+        items:
+          - ca.crt
