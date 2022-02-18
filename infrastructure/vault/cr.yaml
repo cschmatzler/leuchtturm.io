@@ -50,8 +50,6 @@ spec:
     cluster_addr: "https://${.Env.POD_NAME}:8201"
     ui: true
 
-  statsdDisabled: true
-
   serviceRegistrationEnabled: true
 
   resources:
