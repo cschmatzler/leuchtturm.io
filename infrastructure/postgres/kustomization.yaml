@@ -3,5 +3,9 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - hr.yaml
+configMapGenerator:
+  - name: postgres-values
+    files:
+      - values.yaml=values.yaml
 configurations:
   - kustomizeconfig.yaml
