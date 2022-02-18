@@ -4,5 +4,6 @@ namespace: infrastructure
 resources:
   - banzaicloud.yaml
   - bitnami.yaml
+  - jetstack.yaml
   - metrics-server.yaml
   - podinfo.yaml

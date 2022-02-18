@@ -9,9 +9,10 @@ spec:
       chart: cert-manager
       sourceRef:
         kind: HelmRepository
-        name: bitnami
-      version: "0.4.5"
+        name: jetstack
+      version: "v1.7.1"
   interval: 1h0m0s
   install:
     remediation:
       retries: 3
+  installCRDs: true
