@@ -4,3 +4,9 @@ namespace: metrics-server
 resources:
   - ns.yaml
   - hr.yaml
+configMapGenerator:
+  - name: metrics-server-values
+    files:
+      - values.yaml=values.yaml
+configurations:
+  - kustomizeconfig.yaml
