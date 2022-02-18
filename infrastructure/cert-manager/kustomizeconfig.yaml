@@ -1,0 +1,6 @@
+nameReference:
+- kind: Secret
+  version: v1
+  fieldSpecs:
+  - path: spec/vault/auth/kubernetes/secretRef/name
+    kind: ClusterIssuer
