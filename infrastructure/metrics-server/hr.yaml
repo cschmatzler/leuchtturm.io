@@ -9,8 +9,8 @@ spec:
       chart: metrics-server
       sourceRef:
         kind: HelmRepository
-        name: bitnami
-      version: "5.11.0"
+        name: metrics-server
+      version: "3.8.1"
   interval: 1h0m0s
   install:
     remediation:
