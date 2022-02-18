@@ -5,7 +5,7 @@ resources:
   - ns.yaml
   - sources
   - metrics-server
-  #- cert-manager
+  - cert-manager
   - vault
   #- postgres
   - nginx
