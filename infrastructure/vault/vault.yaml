@@ -11,6 +11,19 @@ spec:
     type/instance: "vault"
   serviceAccount: vault
   serviceType: ClusterIP
+  resources:
+    vault:
+      requests:
+        memory: "256Mi"
+        cpu: "100m"
+    bankVaults:
+      requests:
+        memory: "64Mi"
+        cpu: "100m"
+    prometheusExporter:
+      requests:
+        memory: "64Mi"
+        cpu: "50m"
   volumeClaimTemplates:
     - metadata:
         name: vault-raft
