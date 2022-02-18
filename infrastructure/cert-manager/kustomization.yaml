@@ -7,3 +7,5 @@ resources:
   - rbac.yaml
   - hr.yaml
   - clusterissuer.yaml
+configurations:
+  - kustomizeconfig.yaml

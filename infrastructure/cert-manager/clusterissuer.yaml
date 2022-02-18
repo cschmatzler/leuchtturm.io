@@ -12,3 +12,23 @@ spec:
     - http01:
         ingress:
           class: nginx
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: vault
+spec:
+  vault:
+    path: pki_int/sign/leuchtturm-io
+    server: https://vault.infrastructure
+    caBundle:
+      secretRef:
+        name: vault-tls
+        key: "ca.crt"
+    auth:
+      kubernetes:
+        role: pki
+        mountPath: /v1/auth/kubernetes
+        secretRef:
+          name: my-service-account-token-hvwsb
+          key: token
