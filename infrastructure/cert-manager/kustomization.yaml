@@ -4,5 +4,6 @@ metadata:
   name: cert-manager
 resources:
   - crd.yaml
+  - rbac.yaml
   - hr.yaml
   - clusterissuer.yaml
