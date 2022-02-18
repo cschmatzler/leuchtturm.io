@@ -12,7 +12,6 @@ spec:
   serviceAccount: vault
 
   serviceType: ClusterIP
-  ingress:
 
   volumeClaimTemplates:
     - metadata:
