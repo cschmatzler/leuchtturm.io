@@ -1,18 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: vault
 resources:
-  - namespace.yaml
-  - secret.yaml
-  - customresourcedefinition.yaml
-  - serviceaccount.yaml
-  - role.yaml
-  - rolebinding.yaml
-  - clusterrole.yaml
-  - clusterrolebinding.yaml
-  - poddisruptionbudget.yaml
-  - persistentvolumeclaim.yaml
-  - service.yaml
-  - mutatingwebhookconfiguration.yaml
-  - vault.yaml
-  - deployment.yaml
+  - rbac.yaml
+  - cr.yaml
+  - hr.yaml
+configMapGenerator:
+  - name: vault-operator-values
+    files:
+      - vault-operator-values.yaml=values.yaml
+configurations:
+  - kustomizeconfig.yaml
