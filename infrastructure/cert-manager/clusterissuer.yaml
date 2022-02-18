@@ -22,7 +22,7 @@ spec:
     path: pki_int/sign/leuchtturm-io
     server: https://vault.infrastructure
     caBundle:
-      secretRef:
+      secretKeyRef:
         name: vault-tls
         key: "ca.crt"
     auth:
