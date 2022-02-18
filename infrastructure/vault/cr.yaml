@@ -1,7 +1,7 @@
-apiVersion: "vault.banzaicloud.com/v1alpha1"
-kind: "Vault"
+apiVersion: vault.banzaicloud.com/v1alpha1
+kind: Vault
 metadata:
-  name: "vault"
+  name: vault
   labels:
     app.kubernetes.io/name: vault
     vault_cr: vault
@@ -40,14 +40,14 @@ spec:
   config:
     storage:
       raft:
-        path: "/vault/file"
+        path: /vault/file
     listener:
       tcp:
-        address: "0.0.0.0:8200"
+        address: 0.0.0.0:8200
         tls_cert_file: /vault/tls/server.crt
         tls_key_file: /vault/tls/server.key
     api_addr: https://vault.infrastructure:8200
-    cluster_addr: "https://${.Env.POD_NAME}:8201"
+    cluster_addr: https://${.Env.POD_NAME}:8201
     ui: true
 
   serviceRegistrationEnabled: true
@@ -55,11 +55,11 @@ spec:
   resources:
     vault:
       limits:
-        memory: "512Mi"
-        cpu: "100m"
+        memory: 512Mi
+        cpu: 100m
       requests:
-        memory: "128Mi"
-        cpu: "75m"
+        memory: 128Mi
+        cpu: 75m
 
   externalConfig:
     policies:
@@ -67,10 +67,15 @@ spec:
         rules: path "secret/*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
+      - name: allow_pki
+        rules: path "pki/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+          }
       - name: allow_all
         rules: path "*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
+
     auth:
       - type: kubernetes
         roles:
@@ -79,6 +84,11 @@ spec:
             bound_service_account_namespaces: ["*"]
             policies: allow_secrets
             ttl: 1h
+          - name: pki
+            bound_service_account_names: ["vault-issuer"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: allow_pki
+            ttl: 1h
 
     secrets:
       - path: secret
@@ -86,3 +96,22 @@ spec:
         description: General secrets.
         options:
           version: 2
+      - type: pki
+        description: Vault PKI Backend
+        config:
+          default_lease_ttl: 168h
+          max_lease_ttl: 720h
+        configuration:
+          config:
+          - name: urls
+            issuing_certificates: https://vault.infrastructure:8200/v1/pki/ca
+            crl_distribution_points: https://vault.infrastructure:8200/v1/pki/crl
+          root/generate:
+          - name: internal
+            common_name: vault.infrastructure
+          roles:
+          - name: default
+            allowed_domains: localhost,pod,svc,default
+            allow_subdomains: true
+            generate_lease: true
+            ttl: 1m
