@@ -3,4 +3,4 @@ nameReference:
   version: v1
   fieldSpecs:
   - path: spec/valuesFrom/name
-    kind: ServiceAccount
+    kind: ClusterIssuer
