@@ -7,5 +7,5 @@ resources:
   - metrics-server
   - cert-manager
   - vault
-  - postgres
+  #- postgres
   - nginx
