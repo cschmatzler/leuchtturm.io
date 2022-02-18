@@ -15,4 +15,5 @@ spec:
   install:
     remediation:
       retries: 3
-  installCRDs: true
+  values:
+    installCRDs: true
