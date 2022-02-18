@@ -5,7 +5,7 @@ metadata:
 spec:
   vault:
     path: pki_int/sign/leuchtturm-io
-    server: https://vault.infrastructure.svc
+    server: https://vault.infrastructure.svc:8200
     auth:
       kubernetes:
         role: pki
