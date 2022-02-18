@@ -1,19 +1,17 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: vault
+  name: letsencrypt-staging
 spec:
-  vault:
-    path: pki_int/sign/leuchtturm-io
-    server: https://vault.infrastructure:8200
-    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURiRENDQWxTZ0F3SUJBZ0lSQU8venoxcEtoTW5LS3VZRG1aaHF3VTh3RFFZSktvWklodmNOQVFFTEJRQXcKUURFVk1CTUdBMVVFQ2hNTVFtRnVlbUZwSUVOc2IzVmtNU2N3SlFZRFZRUURFeDVDWVc1NllXa2dRMnh2ZFdRZwpSMlZ1WlhKaGRHVmtJRkp2YjNRZ1EwRXdIaGNOTWpJd01qRTRNVE14TVRFd1doY05Nak13TWpFNE1UTXhNVEV3CldqQkFNUlV3RXdZRFZRUUtFd3hDWVc1NllXa2dRMnh2ZFdReEp6QWxCZ05WQkFNVEhrSmhibnBoYVNCRGJHOTEKWkNCSFpXNWxjbUYwWldRZ1VtOXZkQ0JEUVRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQwpnZ0VCQU0vMnlad2hNM0YzYVNDZ0NMSFp4aldVWGRkenBTQTNqbUlZeWw3cUtGekkwMWxVdld3RWkxTGdpb1lDCmtEbWpXeFlhbUpkMXEySnlOcDA0ZFlZUkE5eXFJUFRUZmdKZUE5eUttQjFXOVNCY1U5MnV0blNVKzJMK1ltZWsKb0xBbXlXZEo0Zk1iYjBjNCtSMlV3d1F3QzN4amE1TUhhMmdrRWNvZW42bm9QbVpMRE1iVVRaSlFNM0hpd0p3UgoyYTlJS016aXJmYjRaWW9xa0d0RmhFTStXODN1UmpSZUI3WllDaGMyYUZqSWUrU2pZSk9IZWVMOVdzSmJQa2pCCjEybVgwWURMTjZaRno2L2lKQVYxdFQ2emZPVVIrdlBGdEtuMDBaZVM4NzBLY2dZeEQ4cXFhZmRmZDRZRXRtNFUKWWdQQTZTUzJMWDMzb0Zkcm1FUFg0UHU5cXBrQ0F3RUFBYU5oTUY4d0RnWURWUjBQQVFIL0JBUURBZ0lFTUIwRwpBMVVkSlFRV01CUUdDQ3NHQVFVRkJ3TUJCZ2dyQmdFRkJRY0RBakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQjBHCkExVWREZ1FXQkJSM3BZSGRWaEdkSThDZUhoQmliOFhqQVNINWFUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUEKSzBIZVpZQngwWnJUQzdWM3UyL21UdHBtRGdBNW94ZS80akwrM0hCQ3dSa0VCS3RueENsZ2hHTVh0eU9jMEkwUgpUdjBNcU82WmNoazR1bnllbktwQWNHdkNIS0FzQjRNY0UxSlhnTVdTRlh4SysvQ1pVZ3BBcUxWNGtZYmV6YXJJCk1aRUMyTHRsZkUxay90VW1PeXFwMXpZQzErUEV6K2lNQW9EbkJkYUxmRjQ2eTA1N3lnTkN3elBXKzVYa3VqOHkKREUyY0hvaS83WitxT2VjQUtDaXE5OWtxQ1FoV2lwNllaOGNrZVczdiszZ0dFOUVQVzVYdGUvei9qUXY0WFA4MAoxZGZVMVRaZy8wcXNFRTk0Ym5RUGN3RWVmZ0tZWnJMTzRoNk5Wb1I0SkxjckluT2p5emlZYWNmc2k0TjFtbGhDCjA0TFBsaGlXdW9mRjVYRXVwUHBnZ0E9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-    auth:
-      kubernetes:
-        role: pki
-        mountPath: /v1/auth/kubernetes
-        secretRef:
-          name: vault-issuer-token
-          key: token
+  acme:
+    email: admin@leuchtturm.io
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-staging-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -22,7 +20,7 @@ metadata:
 spec:
   acme:
     email: admin@leuchtturm.io
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-account-key
     solvers:
