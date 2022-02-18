@@ -1,9 +1,10 @@
 global:
   postgresql:
-    username: postgres
+    existingSecret: postgres-postgresql-ha-postgresql
     password: vault:secret/data/infrastructure/postgres#password
     repmgrPassword: vault:secret/data/infrastructure/postgres#repmgrpassword
   pgpool:
+    existingSecret: postgres-postgresql-ha-pgpool
     adminPassword: vault:secret/data/infrastructure/postgres#adminpassword
 
 postgresql:
