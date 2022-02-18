@@ -40,6 +40,7 @@ spec:
       kubernetes:
         role: pki
         mountPath: /v1/auth/kubernetes
+        caBundle: "vault:pki/cert/19-31-74-63-58-04-02-e1-a8-f0-55-3b-18-ba-58-db-18-47-db-b4#ca"
         secretRef:
           name: vault-issuer-token
           key: token
