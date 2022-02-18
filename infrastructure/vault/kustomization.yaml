@@ -9,3 +9,5 @@ configMapGenerator:
   - name: vault-operator-values
     files:
       - values.yaml=vault-operator-values.yaml
+configurations:
+  - kustomizeconfig.yaml
