@@ -6,6 +6,6 @@ resources:
   - crd.yaml
   - rbac.yaml
   - hr.yaml
-  - clusterissuer.yaml
+  - issuer.yaml
 configurations:
   - kustomizeconfig.yaml

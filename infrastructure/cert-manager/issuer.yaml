@@ -1,0 +1,30 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: vault
+spec:
+  vault:
+    path: pki_int/sign/leuchtturm-io
+    server: https://vault.infrastructure
+    auth:
+      kubernetes:
+        role: pki
+        mountPath: /v1/auth/kubernetes
+        secretRef:
+          name: vault-issuer-token
+          key: token
+---
+apiVersion: cert-manager.io/v1
+kind: rIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    email: admin@leuchtturm.io
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
