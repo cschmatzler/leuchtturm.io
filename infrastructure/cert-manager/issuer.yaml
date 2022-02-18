@@ -15,7 +15,7 @@ spec:
           key: token
 ---
 apiVersion: cert-manager.io/v1
-kind: rIssuer
+kind: Issuer
 metadata:
   name: letsencrypt
 spec:
