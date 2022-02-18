@@ -7,8 +7,3 @@ resources:
   - rbac.yaml
   - hr.yaml
   - clusterissuer.yaml
-patches:
-  - path: ca-injector-patch.yaml
-    target:
-      kind: Deployment
-      name: cert-manager-ca-injector
