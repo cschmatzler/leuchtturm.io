@@ -1,10 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: infrastructure
 resources:
+  - ns.yaml
   - sources
   #- metrics-server
-  - cert-manager
+  #- cert-manager
   #- vault
   #- postgres
   # - redis
-  - nginx
+  #- nginx
