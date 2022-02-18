@@ -5,4 +5,4 @@ metadata:
 resources:
   - crd.yaml
   - hr.yaml
-  - ci.yaml
+  - clusterissuer.yaml

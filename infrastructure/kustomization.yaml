@@ -8,5 +8,4 @@ resources:
   - cert-manager
   - vault
   #- postgres
-  # - redis
   - nginx
