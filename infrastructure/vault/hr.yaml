@@ -18,3 +18,21 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: vault-operator-values
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vault-secrets-webhook
+spec:
+  releaseName: vault-secrets-webhook
+  chart:
+    spec:
+      chart: vault-secrets-webhook
+      sourceRef:
+        kind: HelmRepository
+        name: banzaicloud
+      version: "1.15.2"
+  interval: 1h0m0s
+  install:
+    remediation:
+      retries: 3
