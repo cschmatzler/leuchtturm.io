@@ -11,6 +11,7 @@ metadata:
     vault.security.banzaicloud.io/vault-path: "kubernetes" # optional, the Kubernetes Auth mount path in Vault the default value is "kubernetes"
 data:
   values.yaml: |
-    global:
-      persistence:
-        password: vault:secret/data/infrastructure/postgres#password
+    postgresql:
+      password: vault:secret/data/infrastructure/postgres#password
+      repmgrPassword: vault:secret/data/infrastructure/postgres#repmgrpassword
+      adminPassword: vault:secret/data/infrastructure/postgres#adminpassword
