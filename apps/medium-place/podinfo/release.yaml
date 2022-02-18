@@ -26,4 +26,4 @@ spec:
         command: ["sh", "-c", "echo $AWS_SECRET_ACCESS_KEY && echo going to sleep... && sleep 10000"]
         env:
         - name: AWS_SECRET_ACCESS_KEY
-          value: vault:secret/demosecret/aws#AWS_SECRET_ACCESS_KEY
+          value: vault:secret/data/demosecret/aws#AWS_SECRET_ACCESS_KEY
