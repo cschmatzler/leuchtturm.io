@@ -5,19 +5,15 @@ global:
   pgpool:
     adminPassword: vault:secret/data/infrastructure/postgres#adminpassword
 
+commonAnnotations:
+  vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
+  vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+
 postgresql:
-  podAnnotations:
-    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
   livenessProbe:
     enabled: false
   readinessProbe:
     enabled: false
-
-pgpool:
-  podAnnotations:
-    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
 
 persistence:
   size: 10Gi
