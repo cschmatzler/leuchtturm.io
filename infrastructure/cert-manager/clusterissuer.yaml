@@ -30,5 +30,5 @@ spec:
         role: pki
         mountPath: /v1/auth/kubernetes
         secretRef:
-          name: my-service-account-token-hvwsb
+          name: vault-issuer-token
           key: token
