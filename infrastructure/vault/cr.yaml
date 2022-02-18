@@ -65,8 +65,8 @@ spec:
 
   externalConfig:
     policies:
-      - name: allow_secrets
-        rules: path "secret/*" {
+      - name: allow_all
+        rules: path "*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
     auth:
