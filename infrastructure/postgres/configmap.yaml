@@ -1,0 +1,14 @@
+configMapGenerator:
+  - name: postgres-values
+    files:
+      - values.yaml=values.yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-values-secret
+data:
+  values.yaml: |
+    global:
+      persistence:
+        password: vault:secret/data/infrastructure/postgres#password

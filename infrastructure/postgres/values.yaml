@@ -1,5 +1,2 @@
-global:
-  persistence:
-    password: vault:secret/data/infrastructure/postgres#password
 persistence:
   size: 10Gi
