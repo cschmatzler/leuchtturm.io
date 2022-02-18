@@ -6,4 +6,3 @@ resources:
   - bitnami.yaml
   - jetstack.yaml
   - metrics-server.yaml
-  - podinfo.yaml
