@@ -5,4 +5,5 @@ resources:
   - banzaicloud.yaml
   - bitnami.yaml
   - hashicorp.yaml
+  - metrics-server.yaml
   - podinfo.yaml
