@@ -26,5 +26,5 @@ spec:
         role: pki
         mountPath: /v1/auth/kubernetes
         secretRef:
-          name: vault-issuer-token
-          key: token
+          - name: vault-issuer-token
+            key: token
