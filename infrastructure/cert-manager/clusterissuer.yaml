@@ -37,5 +37,3 @@ spec:
     - name: vault-tls
       secret:
         secretName: vault-tls
-        items:
-          - ca.crt
