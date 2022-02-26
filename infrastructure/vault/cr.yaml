@@ -70,7 +70,7 @@ spec:
       - name: postgres
         rules: path "secret/infrastructure/postgres/*" {
           capabilities = ["read", "list"]
-        }
+          }
 
     auth:
       - type: kubernetes
