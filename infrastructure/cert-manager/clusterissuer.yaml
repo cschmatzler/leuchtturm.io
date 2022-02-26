@@ -27,23 +27,3 @@ spec:
       - http01:
           ingress:
             class: nginx
----
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: vault
-  annotations:
-    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
-spec:
-  vault:
-    path: pki_int/sign/leuchtturm-io
-    server: https://vault.infrastructure:8200
-    caBundle: "vault:pki/cert/19-31-74-63-58-04-02-e1-a8-f0-55-3b-18-ba-58-db-18-47-db-b4#ca"
-    auth:
-      kubernetes:
-        role: pki
-        mountPath: /v1/auth/kubernetes
-        secretRef:
-          name: vault-issuer-token
-          key: token
