@@ -6,6 +6,6 @@ resources:
   - sources
   - metrics-server
   - cert-manager
-  #- vault
+  - vault
   - postgres
   #- nginx
