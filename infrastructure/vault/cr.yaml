@@ -72,7 +72,6 @@ spec:
           capabilities = ["read", "list"]
         }
 
-
     auth:
       - type: kubernetes
         roles:
@@ -86,6 +85,14 @@ spec:
             bound_service_account_namespaces: ["infrastructure"]
             policies: postgres
             ttl: 1h
+      - type: github
+        options:
+          listing_visibility: "unauth"
+          config:
+            organization: leuchtturm-io
+          map:
+            users:
+              cschmatzler: allow_all
 
     secrets:
       - path: secret
