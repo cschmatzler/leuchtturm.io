@@ -88,11 +88,11 @@ spec:
       - type: github
         options:
           listing_visibility: "unauth"
-          config:
-            organization: leuchtturm-io
-          map:
-            users:
-              cschmatzler: allow_all
+        config:
+          organization: leuchtturm-io
+        map:
+          users:
+            cschmatzler: allow_all
 
     secrets:
       - path: secret
