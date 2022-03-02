@@ -4,7 +4,7 @@ namespace: infrastructure
 resources:
   - ns.yaml
   - sources
-  - metrics-server
+  #- metrics-server
   - kube-prometheus
   - cert-manager
   - vault
