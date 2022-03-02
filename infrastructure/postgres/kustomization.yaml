@@ -5,11 +5,12 @@ resources:
   - hr.yaml
 configMapGenerator:
   - name: postgres-values
-    annotations:
-      vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-      vault.security.banzaicloud.io/vault-tls-secret: vault-tls
-      vault.security.banzaicloud.io/vault-role: postgres
     files:
       - values.yaml=values.yaml
+generatorOptions:
+  annotations:
+    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+    vault.security.banzaicloud.io/vault-role: postgres
 configurations:
   - kustomizeconfig.yaml
