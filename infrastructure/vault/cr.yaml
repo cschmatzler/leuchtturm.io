@@ -68,7 +68,7 @@ spec:
           capabilities = ["create", "read", "update", "delete", "list"]
           }
       - name: postgres
-        rules: path "secret/infrastructure/postgres" {
+        rules: path "secret/infrastructure/postgres/*" {
           capabilities = ["read", "list"]
           }
 
