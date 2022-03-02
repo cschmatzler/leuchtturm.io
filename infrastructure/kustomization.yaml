@@ -5,6 +5,7 @@ resources:
   - ns.yaml
   - sources
   - metrics-server
+  - kube-prometheus
   - cert-manager
   - vault
   - postgres
