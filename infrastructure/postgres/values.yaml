@@ -7,15 +7,15 @@ postgresql:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
     vault.security.banzaicloud.io/vault-role: postgres
-  password: vault:secret/data/infrastructure/postgres#password
-  repmgrPassword: vault:secret/data/infrastructure/postgres#repmgrpassword
+  password: vault:secret/infrastructure/postgres#password
+  repmgrPassword: vault:secret/infrastructure/postgres#repmgrpassword
 
 pgpool:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
     vault.security.banzaicloud.io/vault-role: postgres
-  adminPassword: vault:secret/data/infrastructure/postgres#adminpassword
+  adminPassword: vault:secret/infrastructure/postgres#adminpassword
 
 persistence:
   size: 10Gi
