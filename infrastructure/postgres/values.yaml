@@ -2,6 +2,10 @@ serviceAccount:
   enabled: true
   name: postgres
 
+global:
+  postgresql:
+    password: vault:secret/data/infrastructure/postgres/credentials#password
+
 postgresql:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
