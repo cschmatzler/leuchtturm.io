@@ -6,4 +6,4 @@ resources:
   - crd.yaml
   - rbac.yaml
   - hr.yaml
-  - clusterissuer.yaml
+ # - clusterissuer.yaml
