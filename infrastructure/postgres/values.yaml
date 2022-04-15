@@ -12,6 +12,9 @@ primary:
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
     vault.security.banzaicloud.io/vault-role: postgres
   resources:
+    requests:
+      cpu: 125m
+      memory: 256m
     limits:
       cpu: 125m
       memory: 256Mi
@@ -25,6 +28,9 @@ readReplicas:
     vault.security.banzaicloud.io/vault-role: postgres
   replicaCount: 1
   resources:
+    requests:
+      cpu: 125m
+      memory: 256m
     limits:
       cpu: 125m
       memory: 256Mi
