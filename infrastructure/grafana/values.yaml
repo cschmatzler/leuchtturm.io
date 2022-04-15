@@ -9,3 +9,9 @@ commonAnnotations:
 
 admin:
   password: vault:secret/data/infrastructure/grafana/credentials#password
+
+grafana:
+  podAnnotations:
+    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+    vault.security.banzaicloud.io/vault-role: grafana
