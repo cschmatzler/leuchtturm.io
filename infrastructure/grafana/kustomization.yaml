@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - rbac.yaml
+  - hr.yaml
+configMapGenerator:
+  - name: grafana-values
+    files:
+      - values.yaml=values.yaml
+generatorOptions:
+  annotations:
+    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+    vault.security.banzaicloud.io/vault-role: grafana
+configurations:
+  - kustomizeconfig.yaml
