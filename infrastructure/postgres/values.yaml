@@ -1,5 +1,4 @@
 serviceAccount:
-  create: true
   name: postgres
 
 commonAnnotations:
