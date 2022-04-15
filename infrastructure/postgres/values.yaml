@@ -1,25 +1,16 @@
 serviceAccount:
-  enabled: true
+  create: true
   name: postgres
 
-global:
-  postgresql:
-    password: vault:secret/data/infrastructure/postgres/credentials#password
+commonAnnotations:
+  vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
+  vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+  vault.security.banzaicloud.io/vault-role: postgres
 
-postgresql:
-  podAnnotations:
-    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
-    vault.security.banzaicloud.io/vault-role: postgres
+auth:
+  username: vault:secret/data/infrastructure/postgres/credentials#username
   password: vault:secret/data/infrastructure/postgres/credentials#password
-  repmgrPassword: vault:secret/data/infrastructure/postgres/credentials#repmgrpassword
 
-pgpool:
-  podAnnotations:
-    vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-tls-secret: vault-tls
-    vault.security.banzaicloud.io/vault-role: postgres
-  adminPassword: vault:secret/data/infrastructure/postgres/credentials#adminpassword
-
-persistence:
-  size: 10Gi
+primary:
+  persistence:
+    size: 10Gi
