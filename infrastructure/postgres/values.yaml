@@ -1,4 +1,5 @@
 serviceAccount:
+  enabled: true
   name: postgres
 
 commonAnnotations:
@@ -6,12 +7,16 @@ commonAnnotations:
   vault.security.banzaicloud.io/vault-tls-secret: vault-tls
   vault.security.banzaicloud.io/vault-role: postgres
 
-auth:
-  postgresPassword: vault:secret/data/infrastructure/postgres/credentials#password
+global:
+  postgresql:
+    password: vault:secret/data/infrastructure/postgres/credentials#password
+    repmgrPassword: vault:secret/data/infrastructure/postgres/credentials#password
+    adminPassword: vault:secret/data/infrastructure/postgres/credentials#password
 
-architecture: replication
+persistence:
+  size: 10Gi
 
-primary:
+postgresql:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
@@ -23,15 +28,12 @@ primary:
     limits:
       cpu: 125m
       memory: 256Mi
-  persistence:
-    size: 10Gi
 
-readReplicas:
+pgpool:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
     vault.security.banzaicloud.io/vault-role: postgres
-  replicaCount: 1
   resources:
     requests:
       cpu: 125m
@@ -39,5 +41,3 @@ readReplicas:
     limits:
       cpu: 125m
       memory: 256Mi
-  persistence:
-    size: 10Gi
