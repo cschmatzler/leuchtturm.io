@@ -7,5 +7,5 @@ resources:
   - kube-prometheus
   - vault
   - postgres
-  - cert-manager
+  #- cert-manager
   - nginx-ingress-controller
