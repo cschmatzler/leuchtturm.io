@@ -10,6 +10,8 @@ commonAnnotations:
 auth:
   postgresPassword: vault:secret/data/infrastructure/postgres/credentials#password
 
+architecture: replication
+
 primary:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
