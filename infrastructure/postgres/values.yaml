@@ -18,4 +18,4 @@ primary:
 readReplicas:
   replicaCount: 1
   persistence:
-    size: 1
+    size: 10Gi
