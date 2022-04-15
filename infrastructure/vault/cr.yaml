@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: vault
     vault_cr: vault
 spec:
-  size: 1
+  size: 2
   image: vault:1.6.2
 
   serviceAccount: vault
