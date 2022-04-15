@@ -8,6 +8,7 @@ commonAnnotations:
 
 auth:
   postgresPassword: vault:secret/data/infrastructure/postgres/credentials#password
+  replicationPassword: vault:secret/data/infrastructure/postgres/credentials#replication_password
 
 architecture: replication
 
