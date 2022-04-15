@@ -71,6 +71,10 @@ spec:
         rules: path "secret/data/infrastructure/postgres/*" {
           capabilities = ["read", "list"]
           }
+      - name: grafana
+        rules: path "secret/data/infrastructure/grafana/*" {
+          capabilities = ["read", "list"]
+          }
 
     auth:
       - type: kubernetes
