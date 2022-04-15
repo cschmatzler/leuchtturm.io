@@ -6,11 +6,11 @@ spec:
   releaseName: postgres
   chart:
     spec:
-      chart: postgresql-ha
+      chart: postgresql
       sourceRef:
         kind: HelmRepository
         name: bitnami
-      version: "8.5.1"
+      version: "11.1.2"
   interval: 1h0m0s
   install:
     remediation:
