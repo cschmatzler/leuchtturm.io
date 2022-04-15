@@ -12,10 +12,18 @@ auth:
   password: vault:secret/data/infrastructure/postgres/credentials#password
 
 primary:
+  resources:
+    limits:
+      cpu: 125m
+      memory: 256Mi
   persistence:
     size: 10Gi
 
 readReplicas:
   replicaCount: 1
+  resources:
+    limits:
+      cpu: 125m
+      memory: 256Mi
   persistence:
     size: 10Gi
