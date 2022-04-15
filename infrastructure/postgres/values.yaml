@@ -2,9 +2,13 @@ serviceAccount:
   create: true
   name: postgres
 
+commonAnnotations:
+  vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
+  vault.security.banzaicloud.io/vault-tls-secret: vault-tls
+  vault.security.banzaicloud.io/vault-role: postgres
+
 auth:
-  username: vault:secret/data/infrastructure/postgres/credentials#username
-  password: vault:secret/data/infrastructure/postgres/credentials#password
+  postgresPassword: vault:secret/data/infrastructure/postgres/credentials#password
 
 primary:
   podAnnotations:
