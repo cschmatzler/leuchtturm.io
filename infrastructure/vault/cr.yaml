@@ -89,6 +89,11 @@ spec:
             bound_service_account_namespaces: ["infrastructure"]
             policies: postgres
             ttl: 1h
+          - name: grafana
+            bound_service_account_names: ["grafana"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: grafana
+            ttl: 1h
       - type: github
         options:
           listing_visibility: "unauth"
