@@ -14,3 +14,8 @@ auth:
 primary:
   persistence:
     size: 10Gi
+
+readReplicas:
+  replicaCount: 1
+  persistence:
+    size: 1
