@@ -8,5 +8,5 @@ resources:
   - cert-manager
   - vault
   - postgres
-  #- grafana
+  - grafana
   - nginx-ingress-controller
