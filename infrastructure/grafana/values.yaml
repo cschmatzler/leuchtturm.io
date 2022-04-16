@@ -2,13 +2,8 @@ serviceAccount:
   create: false
   name: grafana
 
-commonAnnotations:
-  vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
-  vault.security.banzaicloud.io/vault-tls-secret: vault-tls
-  vault.security.banzaicloud.io/vault-role: grafana
-
 admin:
-  password: vault:secret/data/infrastructure/grafana/credentials#password
+  password: vault:secret/data/infrastructure/grafana/credentials#admin_password
 
 grafana:
   podAnnotations:
