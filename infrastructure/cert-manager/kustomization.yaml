@@ -6,9 +6,3 @@ resources:
   - crd.yaml
   - hr.yaml
   - clusterissuer.yaml
-configMapGenerator:
-  - name: cert-manager-values
-    files:
-      - values.yaml=values.yaml
-configurations:
-  - kustomizeconfig.yaml
