@@ -3,6 +3,7 @@ kind: Kustomization
 metadata:
   name: cert-manager
 resources:
+  - crd.yaml
   - hr.yaml
   - clusterissuer.yaml
 configMapGenerator:
