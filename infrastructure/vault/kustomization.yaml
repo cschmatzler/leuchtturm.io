@@ -5,3 +5,12 @@ resources:
   - vault.yaml
   - rbac.yaml
   - hr.yaml
+configMapGenerator:
+  - name: vault-operator-values
+    files:
+      - vault-operator-values.yaml=values.yaml
+  - name: vault-secrets-webhook-values
+    files:
+      - vault-secrets-webhook-values.yaml=values.yaml
+configurations:
+  - kustomizeconfig.yaml
