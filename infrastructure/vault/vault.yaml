@@ -1,0 +1,102 @@
+apiVersion: vault.banzaicloud.com/v1alpha1
+kind: Vault
+metadata:
+  name: vault
+  labels:
+    app.kubernetes.io/name: vault
+    vault_cr: vault
+spec:
+  size: 2
+  image: vault:1.6.2
+
+  serviceAccount: vault
+
+  serviceType: ClusterIP
+
+  volumeClaimTemplates:
+    - metadata:
+        name: vault-raft
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        volumeMode: Filesystem
+        resources:
+          requests:
+            storage: 10Gi
+
+  volumeMounts:
+    - name: vault-raft
+      mountPath: /vault/file
+
+  caNamespaces:
+    - "*"
+
+  unsealConfig:
+    options:
+      storeRootToken: true
+    kubernetes:
+      secretNamespace: infrastructure
+
+  config:
+    storage:
+      raft:
+        path: /vault/file
+    listener:
+      tcp:
+        address: 0.0.0.0:8200
+        tls_cert_file: /vault/tls/server.crt
+        tls_key_file: /vault/tls/server.key
+    api_addr: https://vault.infrastructure:8200
+    cluster_addr: https://${.Env.POD_NAME}:8201
+    ui: true
+
+  serviceRegistrationEnabled: true
+
+  externalConfig:
+    policies:
+      - name: allow_all
+        rules: path "*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+          }
+      - name: postgres
+        rules: path "secret/data/infrastructure/postgres/*" {
+          capabilities = ["read", "list"]
+          }
+      - name: grafana
+        rules: path "secret/data/infrastructure/grafana/*" {
+          capabilities = ["read", "list"]
+          }
+
+    auth:
+      - type: kubernetes
+        roles:
+          - name: default
+            bound_service_account_names: ["default", "vault-secrets-webhook"]
+            bound_service_account_namespaces: ["*"]
+            policies: allow_secrets
+            ttl: 1h
+          - name: postgres
+            bound_service_account_names: ["postgres"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: postgres
+            ttl: 1h
+          - name: grafana
+            bound_service_account_names: ["grafana"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: grafana
+            ttl: 1h
+      - type: github
+        options:
+          listing_visibility: "unauth"
+        config:
+          organization: leuchtturm-io
+        map:
+          users:
+            cschmatzler: allow_all
+
+    secrets:
+      - path: secret
+        type: kv
+        description: General secrets.
+        options:
+          version: 2
