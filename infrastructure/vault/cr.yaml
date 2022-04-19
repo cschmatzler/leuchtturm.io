@@ -52,15 +52,6 @@ spec:
 
   serviceRegistrationEnabled: true
 
-  resources:
-    vault:
-      limits:
-        memory: 512Mi
-        cpu: 100m
-      requests:
-        memory: 128Mi
-        cpu: 75m
-
   externalConfig:
     policies:
       - name: allow_all

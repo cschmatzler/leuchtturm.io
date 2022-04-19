@@ -6,7 +6,7 @@ resources:
   - sources
   - kube-prometheus
   - cert-manager
-  #- vault
+  - vault
   #- postgres
   #- grafana
   #- nginx-ingress-controller
