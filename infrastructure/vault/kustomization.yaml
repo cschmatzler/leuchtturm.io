@@ -8,9 +8,9 @@ resources:
 configMapGenerator:
   - name: vault-operator-values
     files:
-      - vault-operator-values.yaml=values.yaml
+      - values.yaml=vault-operator-values.yaml
   - name: vault-secrets-webhook-values
     files:
-      - vault-secrets-webhook-values.yaml=values.yaml
+      - values.yaml=vault-secrets-webhook-values.yaml
 configurations:
   - kustomizeconfig.yaml
