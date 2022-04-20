@@ -13,7 +13,7 @@ primary:
     vault.security.banzaicloud.io/vault-addr: https://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
     vault.security.banzaicloud.io/vault-role: postgres
-  resources:
+  requests:
     cpu: 100m
     memory: 512Mi
   limits:
@@ -28,7 +28,7 @@ readReplicas:
     vault.security.banzaicloud.io/vault-tls-secret: vault-tls
     vault.security.banzaicloud.io/vault-role: postgres
   replicaCount: 1
-  resources:
+  requests:
     cpu: 50m
     memory: 256Mi
   limits:
