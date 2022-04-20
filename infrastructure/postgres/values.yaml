@@ -15,10 +15,10 @@ primary:
     vault.security.banzaicloud.io/vault-role: postgres
   requests:
     cpu: 100m
-    memory: 512Mi
+    memory: 256Mi
   limits:
     cpu: 200m
-    memory: 1Gi
+    memory: 512Mi
   persistence:
     size: 10Gi
 
@@ -30,9 +30,9 @@ readReplicas:
   replicaCount: 1
   requests:
     cpu: 50m
-    memory: 256Mi
+    memory: 128Mi
   limits:
     cpu: 100m
-    memory: 512Mi
+    memory: 256Mi
   persistence:
     size: 10Gi
