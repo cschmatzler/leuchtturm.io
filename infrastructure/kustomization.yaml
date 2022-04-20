@@ -5,8 +5,8 @@ resources:
   - ns.yaml
   - sources
   - kube-prometheus
-  - cert-manager
+  #- cert-manager
   - vault
-  - postgres
+  #- postgres
   #- grafana
   #- nginx-ingress-controller
