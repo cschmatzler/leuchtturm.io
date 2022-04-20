@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: medium-place
 resources:
   - ns.yaml
+  - teslamate
