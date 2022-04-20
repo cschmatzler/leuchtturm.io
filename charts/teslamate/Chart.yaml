@@ -9,7 +9,7 @@ dependencies:
   - name: common
     repository: https://charts.bitnami.com/bitnami
     version: 1.x.x
-  - name: postgres
+  - name: postgresql
     repository: https://charts.bitnami.com/bitnami
     version: 11.x.x
   - name: grafana
