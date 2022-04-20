@@ -9,4 +9,4 @@ resources:
   - vault
   - postgres
   #- grafana
-  #- nginx-ingress-controller
+  - nginx-ingress-controller
