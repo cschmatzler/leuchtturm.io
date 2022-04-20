@@ -7,10 +7,13 @@ version: 0.1.0
 
 dependencies:
   - name: common
-    repository: https://cschmatzler.github.io/leuchtturm.io
-    version: 1.0.0
+    repository: https://charts.bitnami.com/bitnami
+    version: 1.x.x
   - name: postgres
     repository: https://charts.bitnami.com/bitnami
-    version: "11.x.x"
+    version: 11.x.x
+  - name: grafana
+    repository: https://charts.bitnami.com/bitnami
+    version: 7.x.x
 
-appVersion: "1.26.1"
+appVersion: 1.26.1
