@@ -79,6 +79,9 @@ image:
   ##
   debug: false
 
+metrics:
+  enabled: false
+
 ## @param replicaCount Number of replicas of the Apache deployment
 ##
 replicaCount: 1
