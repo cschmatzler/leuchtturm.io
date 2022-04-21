@@ -3,6 +3,26 @@ entries:
   teslamate:
   - apiVersion: v2
     appVersion: 1.26.1
+    created: "2022-04-21T19:45:34.181105578Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 1.x.x
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.x.x
+    - name: grafana
+      repository: https://charts.bitnami.com/bitnami
+      version: 7.x.x
+    description: A powerful, self-hosted data logger for your Tesla.
+    digest: b2241a6cd8680d3ec618ca2caf142a8b4e42669b489c17531e462a0b54913be5
+    name: teslamate
+    type: application
+    urls:
+    - https://github.com/cschmatzler/leuchtturm.io/releases/download/teslamate-0.1.5/teslamate-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.26.1
     created: "2022-04-21T19:42:38.075256131Z"
     dependencies:
     - name: common
