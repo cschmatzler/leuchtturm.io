@@ -43,6 +43,10 @@ commonAnnotations: {}
 ##
 extraDeploy: []
 
+service:
+  ports:
+    http: 4000
+
 ## @section Apache parameters
 
 ## Bitnami Apache image
