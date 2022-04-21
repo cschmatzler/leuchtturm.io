@@ -19,6 +19,9 @@ global:
 serviceAccount:
   create: false
 
+service:
+  annotations: []
+
 ## @section Common parameters
 
 ## @param kubeVersion Override Kubernetes version
