@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - new-vault.medium.place
+        - vault.leuchtturm.io
       secretName: vaultwarden-tls
   rules:
-    - host: new-vault.medium.place
+    - host: vault.leuchtturm.io
       http:
         paths:
           - pathType: Prefix
