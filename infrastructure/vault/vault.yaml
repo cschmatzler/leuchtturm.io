@@ -82,7 +82,7 @@ spec:
           capabilities = ["read", "list"]
           }
       - name: vaultwarden
-        rules: path "secret/data/medium-place/vaultwarden/*" {
+        rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
           capabilities = ["read", "list"]
           }
       - name: teslamate
@@ -110,7 +110,7 @@ spec:
             ttl: 1h
           - name: vaultwarden
             bound_service_account_names: ["vaultwarden"]
-            bound_service_account_namespaces: ["medium-place"]
+            bound_service_account_namespaces: ["leuchtturm-io"]
             policies: 
               - vaultwarden
               - mail
