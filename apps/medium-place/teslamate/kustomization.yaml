@@ -4,7 +4,7 @@ metadata:
   name: teslamate
 resources:
   - serviceaccount.yaml
-  - persistentvolumeclaim.yaml
+  #- persistentvolumeclaim.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml

@@ -45,16 +45,9 @@ spec:
         runAsUser: 472
         runAsGroup: 0
         fsGroup: 0
-      volumes:
-      - name: teslamate-grafana
-        persistentVolumeClaim:
-          claimName: teslamate-grafana
       containers:
       - name: teslamate-grafana
         image: teslamate/grafana:1.26.1
         envFrom:
         - configMapRef:
             name: teslamate-values
-        volumeMounts:
-          - mountPath: "/var/lib/grafana"
-            name: teslamate-grafana
