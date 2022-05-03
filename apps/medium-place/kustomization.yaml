@@ -4,4 +4,4 @@ namespace: medium-place
 resources:
   - namespace.yaml
   - teslamate
-
+  - trilium
