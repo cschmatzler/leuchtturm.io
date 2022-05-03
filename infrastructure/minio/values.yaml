@@ -16,8 +16,6 @@ ingress:
   tls: true
   ingressClassName: nginx
   hostname: s3.infrastructure.leuchtturm.io
-  secrets:
-    - minio-tls
 
 auth:
   rootUser: vault:secret/data/infrastructure/minio/authentication#user
