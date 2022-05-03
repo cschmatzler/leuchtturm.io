@@ -8,10 +8,6 @@ podAnnotations:
 
 mode: distributed
 
-auth:
-  rootUser: vault:secret/data/infrastructure/minio/authentication#user
-  rootPassword: vault:secret/data/infrastructure/minio/authentication#password
-
 persistence:
   size: 1Gi
 
@@ -22,3 +18,7 @@ ingress:
   hostname: s3.infrastructure.leuchtturm.io
   secrets:
     - minio-tls
+
+auth:
+  rootUser: vault:secret/data/infrastructure/minio/authentication#user
+  rootPassword: vault:secret/data/infrastructure/minio/authentication#password
