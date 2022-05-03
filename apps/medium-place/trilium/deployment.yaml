@@ -12,6 +12,8 @@ spec:
       labels:
         app: trilium
     spec:
+      securityContext:
+        fsGroup: 1000
       volumes:
       - name: data-trilium
         persistentVolumeClaim:
