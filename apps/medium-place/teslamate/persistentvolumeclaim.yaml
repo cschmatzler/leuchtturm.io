@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: teslamate-grafana
+  name: data-teslamate-grafana
 spec:
   accessModes:
     - ReadWriteOnce

@@ -46,9 +46,9 @@ spec:
         runAsGroup: 0
         fsGroup: 0
       volumes:
-      - name: teslamate-grafana
+      - name: data-teslamate-grafana
         persistentVolumeClaim:
-          claimName: teslamate-grafana
+          claimName: data-teslamate-grafana
       containers:
       - name: teslamate-grafana
         image: teslamate/grafana:1.26.1
@@ -57,4 +57,4 @@ spec:
             name: teslamate-values
         volumeMounts:
           - mountPath: "/var/lib/grafana"
-            name: teslamate-grafana
+            name: data-teslamate-grafana
