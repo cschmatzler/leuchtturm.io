@@ -4,7 +4,7 @@ serviceAccount:
   name: postgresql
 
 persistence:
-  size: 10Gi
+  size: 8Gi
 
 postgresql:
   podAnnotations:
