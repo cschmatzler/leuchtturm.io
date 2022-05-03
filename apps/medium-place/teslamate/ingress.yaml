@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - garage.medium.place
-      secretName: teslamate-grafana-tls
+      secretName: garage.medium.place-tls
   rules:
     - host: garage.medium.place
       http:

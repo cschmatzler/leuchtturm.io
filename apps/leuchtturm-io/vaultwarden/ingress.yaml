@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - vault.leuchtturm.io
-      secretName: vaultwarden-tls
+      secretName: vault.leuchtturm.io-tls
   rules:
     - host: vault.leuchtturm.io
       http:
