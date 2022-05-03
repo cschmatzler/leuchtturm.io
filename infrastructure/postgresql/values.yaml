@@ -3,6 +3,9 @@ serviceAccount:
   enabled: true
   name: postgresql
 
+persistence:
+  size: 10Gi
+
 postgresql:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
