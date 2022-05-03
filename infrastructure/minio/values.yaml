@@ -14,3 +14,11 @@ auth:
 
 persistence:
   size: 1Gi
+
+ingress:
+  enabled: true
+  tls: true
+  ingressClassName: nginx
+  hostname: s3.infrastructure.leuchtturm.io
+  secrets:
+    - minio-tls
