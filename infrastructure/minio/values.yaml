@@ -1,0 +1,16 @@
+serviceAccount:
+  create: true
+  name: minio
+
+podAnnotations:
+  vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+  vault.security.banzaicloud.io/vault-role: minio
+
+mode: distributed
+
+auth:
+  rootUser: vault:secret/data/infrastructure/minio/authentication#user
+  rootPassword: vault:secret/data/infrastructure/minio/authentication#password
+
+persistence:
+  size: 1Gi

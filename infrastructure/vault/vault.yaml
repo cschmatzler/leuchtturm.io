@@ -74,6 +74,10 @@ spec:
         rules: path "secret/data/external/mail" {
           capabilities = ["read", "list"]
           }
+      - name: minio
+        rules: path "secret/data/infrastructure/minio/*" {
+          capabilities = ["read", "list"]
+          }
       - name: postgresql
         rules: path "secret/data/infrastructure/postgresql/*" {
           capabilities = ["read", "list"]
@@ -103,6 +107,11 @@ spec:
             bound_service_account_namespaces: ["infrastructure"]
             policies: cloudflare
             ttl: 1h         
+          - name: minio
+            bound_service_account_names: ["minio"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: minio
+            ttl: 1h
           - name: postgresql
             bound_service_account_names: ["postgresql"]
             bound_service_account_namespaces: ["infrastructure"]
