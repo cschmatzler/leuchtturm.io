@@ -4,4 +4,3 @@ namespace: leuchtturm-io
 resources:
   - namespace.yaml
   - vaultwarden
-
