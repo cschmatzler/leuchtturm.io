@@ -12,10 +12,10 @@ persistence:
   size: 1Gi
 
 ingress:
+  enabled: true
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     acme.cert-manager.io/http01-edit-in-place: "true"
-  enabled: true
   tls: true
   ingressClassName: nginx
   hostname: s3.infrastructure.leuchtturm.io
