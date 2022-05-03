@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: vaultwarden
+      labels:
+        app: vaultwarden
+    spec:
+      serviceAccountName: vaultwarden
+      containers:
+      - name: vaultwarden
+        image: vaultwarden/server:1.24.0
+        envFrom:
+        - configMapRef:
+            name: vaultwarden-values

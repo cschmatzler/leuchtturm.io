@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teslamate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teslamate
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: teslamate
+      labels:
+        app: teslamate
+    spec:
+      serviceAccountName: teslamate
+      containers:
+      - name: teslamate
+        image: teslamate/teslamate:1.26.1
+        envFrom:
+        - configMapRef:
+            name: teslamate-values
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teslamate-grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teslamate-grafana
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: teslamate
+      labels:
+        app: teslamate-grafana
+    spec:
+      serviceAccountName: teslamate
+      securityContext:
+        runAsUser: 472
+        runAsGroup: 0
+        fsGroup: 0
+      volumes:
+      - name: teslamate-grafana
+        persistentVolumeClaim:
+          claimName: teslamate-grafana
+      containers:
+      - name: teslamate-grafana
+        image: teslamate/grafana:1.26.1
+        envFrom:
+        - configMapRef:
+            name: teslamate-values
+        volumeMounts:
+          - mountPath: "/var/lib/grafana"
+            name: teslamate-grafana

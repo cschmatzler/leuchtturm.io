@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: teslamate-grafana-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: true
+spec:
+  tls:
+    - hosts:
+        - garage.medium.place
+      secretName: teslamate-grafana-tls
+  rules:
+    - host: garage.medium.place
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: teslamate-grafana
+                port:
+                  number: 3000

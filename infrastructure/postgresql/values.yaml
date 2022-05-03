@@ -1,0 +1,24 @@
+serviceAccount:
+  create: true
+  enabled: true
+  name: postgresql
+
+postgresql:
+  podAnnotations:
+    vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-role: postgresql
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+  password: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
+  repmgrPassword: vault:secret/data/infrastructure/postgresql/authentication#repmgr_password
+
+pgpool:
+  podAnnotations:
+    vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-role: postgresql
+  adminPassword: vault:secret/data/infrastructure/postgresql/authentication#pgpool_password
+  customUsers:
+    usernames: medium_place_teslamate;medium_place_vaultwarden
+    passwords: ${vault:secret/data/medium-place/teslamate/database#password};${vault:secret/data/medium-place/vaultwarden/database#password}
