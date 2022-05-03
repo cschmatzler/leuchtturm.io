@@ -44,9 +44,8 @@ spec:
     listener:
       tcp:
         address: 0.0.0.0:8200
-        tls_disable: true
-    api_addr: http://vault.infrastructure:8200
-    cluster_addr: http://${.Env.POD_NAME}:8201
+    api_addr: https://vault.infrastructure:8200
+    cluster_addr: https://${.Env.POD_NAME}:8201
     ui: true
 
   serviceRegistrationEnabled: true
