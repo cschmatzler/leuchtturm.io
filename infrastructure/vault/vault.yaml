@@ -85,6 +85,10 @@ spec:
           path "secret/data/+/+/database" {
           capabilities = ["read", "list"]
           }
+      - name: redis
+        rules: path "secret/data/infrastructure/redis/*" {
+          capabilities = ["read", "list"]
+          }
       - name: vaultwarden
         rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
           capabilities = ["read", "list"]
@@ -116,6 +120,11 @@ spec:
             bound_service_account_names: ["postgresql"]
             bound_service_account_namespaces: ["infrastructure"]
             policies: postgresql
+            ttl: 1h
+          - name: redis
+            bound_service_account_names: ["redis"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: redis
             ttl: 1h
           - name: vaultwarden
             bound_service_account_names: ["vaultwarden"]
