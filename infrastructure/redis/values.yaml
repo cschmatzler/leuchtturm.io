@@ -2,6 +2,8 @@ serviceAccount:
   create: true
   name: redis
 
+architecture: standalone
+
 auth:
   password: vault:secret/data/infrastructure/redis/authentication#password
 
@@ -15,18 +17,3 @@ master:
     enabled: false
   persistence:
     size: 1Gi
-
-replica:
-  podAnnotations:
-    vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-role: redis
-  replicaCount: 2
-  livenessProbe:
-    enabled: false
-  readinessProbe:
-    enabled: false
-  persistence:
-    size: 1Gi
-
-sentinel:
-  enabled: true
