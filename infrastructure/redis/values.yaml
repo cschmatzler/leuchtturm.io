@@ -9,6 +9,10 @@ master:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-role: redis
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
   persistence:
     size: 1Gi
 
@@ -17,5 +21,9 @@ replica:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-role: redis
   replicaCount: 2
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
   persistence:
     size: 1Gi
