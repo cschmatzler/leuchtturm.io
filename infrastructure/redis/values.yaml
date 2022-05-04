@@ -27,3 +27,6 @@ replica:
     enabled: false
   persistence:
     size: 1Gi
+
+sentinel:
+  enabled: true
