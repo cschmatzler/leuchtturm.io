@@ -16,6 +16,13 @@ spec:
         app: outline
     spec:
       serviceAccountName: outline
+      initContainers:
+      - name: outline-migrations
+        image: outlinewiki/outline:0.63.0
+        command: ["yarn", "sequelize db:migrate --env=production-ssl-disabled"]
+        envFrom:
+        - configMapRef:
+            name: outline-values
       containers:
       - name: outline
         image: outlinewiki/outline:0.63.0
