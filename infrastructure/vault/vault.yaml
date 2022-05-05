@@ -143,7 +143,9 @@ spec:
           - name: outline
             bound_service_account_names: ["outline"]
             bound_service_account_namespaces: ["medium-place"]
-            policies: outline
+            policies:
+              - outline
+              - mail
             ttl: 1h
           - name: teslamate
             bound_service_account_names: ["teslamate"]
