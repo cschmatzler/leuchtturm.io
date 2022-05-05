@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: outline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: outline
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: outline
+      labels:
+        app: outline
+    spec:
+      serviceAccountName: outline
+      containers:
+      - name: outline
+        image: outlinewiki/outline:0.63.0
+        envFrom:
+        - configMapRef:
+            name: outline-values

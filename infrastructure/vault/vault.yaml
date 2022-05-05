@@ -93,6 +93,13 @@ spec:
         rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
           capabilities = ["read", "list"]
           }
+      - name: outline
+        rules: path "secret/data/medium-place/outline/*" {
+          capabilities = ["read", "list"]
+          }
+          path "secret/data/infrastructure/redis/authentication" {
+          capabilities = ["read", "list"]
+          }
       - name: teslamate
         rules: path "secret/data/medium-place/teslamate/*" {
           capabilities = ["read", "list"]
@@ -132,6 +139,11 @@ spec:
             policies: 
               - vaultwarden
               - mail
+            ttl: 1h
+          - name: outline
+            bound_service_account_names: ["outline"]
+            bound_service_account_namespaces: ["medium-place"]
+            policies: outline
             ttl: 1h
           - name: teslamate
             bound_service_account_names: ["teslamate"]
