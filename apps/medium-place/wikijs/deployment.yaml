@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikijs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wikijs
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: wikijs
+      labels:
+        app: wikijs
+    spec:
+      serviceAccountName: wikijs
+      containers:
+      - name: wikijs
+        image: requarks/wiki:2.5.280
+        envFrom:
+        - configMapRef:
+            name: wikijs-values
