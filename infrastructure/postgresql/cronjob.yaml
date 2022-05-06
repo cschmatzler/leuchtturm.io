@@ -19,10 +19,10 @@ spec:
             command: ["/bin/sh"]
             args: ["-c", 'pg_dumpall -U postgres -h $PGHOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql']
             env:
-            - name: PGPASSWORD
-              value: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
             - name: PGHOST
               value: postgresql-postgresql-ha-pgpool.infrastructure.svc
+            - name: PGPASSWORD
+              value: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
             volumeMounts:
             - mountPath: /data
               name: data-postgresql-backup

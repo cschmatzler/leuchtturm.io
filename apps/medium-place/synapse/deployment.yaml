@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synapse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: synapse
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: synapse
+      labels:
+        app: synapse
+    spec:
+      serviceAccountName: synapse
+      containers:
+      - name: synapse
+        image: matrixdotorg/synapse:v1.58.1
+        envFrom:
+        - configMapRef:
+            name: synapse-env
+        volumeMounts:
+          - name: synapse-config
+            mountPath: /data/homeserver.yaml
+            subPath: homeserver.yaml
+      volumes:
+      - name: synapse-config
+        configMap:
+          name: synapse-config
