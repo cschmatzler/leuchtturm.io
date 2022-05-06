@@ -7,8 +7,8 @@ resources:
   - kube-prometheus
   - vault
   - postgresql
-  #- redis
-  #- minio
+  - redis
+  - minio
   - external-dns
   - cert-manager
   - nginx-ingress-controller
