@@ -23,4 +23,16 @@ database:
     cp_min: 5
     cp_max: 10
 
+media_storage_providers:
+  - module: s3_storage_provider.S3StorageProviderBackend
+    store_local: True
+    store_remote: True
+    store_synchronous: True
+    config:
+      bucket: vault:secret/data/medium-place/synapse/s3#bucket
+      region_name: vault:secret/data/medium-place/synapse/s3#region
+      endpoint_url: vault:secret/data/medium-place/synapse/s3#endpoint
+      access_key_id: vault:secret/data/medium-place/synapse/s3#access_key
+      secret_access_key: vault:secret/data/medium-place/synapse/s3#secret_key
+
 report_stats: true
