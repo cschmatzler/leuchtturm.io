@@ -5,6 +5,7 @@ serviceAccount:
 
 persistence:
   size: 8Gi
+  storageClass: scw-bssd-retain
 
 postgresql:
   podAnnotations:
@@ -23,5 +24,5 @@ pgpool:
     vault.security.banzaicloud.io/vault-role: postgresql
   adminPassword: vault:secret/data/infrastructure/postgresql/authentication#pgpool_password
   customUsers:
-    usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/database#user};${vault:secret/data/medium-place/wikijs/database#user};${vault:secret/data/medium-place/teslamate/database#user}
-    passwords: ${vault:secret/data/leuchtturm-io/vaultwarden/database#password};${vault:secret/data/medium-place/wikijs/database#password};${vault:secret/data/medium-place/teslamate/database#password}
+    usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/database#user};${vault:secret/data/medium-place/teslamate/database#user};${vault:secret/data/medium-place/wikijs/database#user}
+    passwords: ${vault:secret/data/leuchtturm-io/vaultwarden/database#password};${vault:secret/data/medium-place/teslamate/database#password};${vault:secret/data/medium-place/wikijs/database#password}
