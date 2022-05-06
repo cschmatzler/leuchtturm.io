@@ -12,7 +12,6 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: synapse
-        vault.security.banzaicloud.io/vault-path: kubernetes
       labels:
         app: synapse
     spec:
