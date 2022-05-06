@@ -10,7 +10,8 @@ configMapGenerator:
     env: synapse.env
   - name: synapse-config
     files:
-      - homeserver.yaml=homeserver.yaml
+      - files/homeserver.yaml=homeserver.yaml
+      - files/s3_storage_provider.py=s3_storage_provider.py
 generatorOptions:
   annotations:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
