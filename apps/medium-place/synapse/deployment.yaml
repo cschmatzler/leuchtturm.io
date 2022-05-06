@@ -18,7 +18,7 @@ spec:
       serviceAccountName: synapse
       containers:
       - name: synapse
-        image: cschmatzler/synapse:1.58.1
+        image: cschmatzler/synapse:v1.58.1
         envFrom:
         - configMapRef:
             name: synapse-env
