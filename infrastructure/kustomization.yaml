@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - sources
   - kube-prometheus
-  - vault
+  #- vault
   #- minio
   #- redis
   #- postgresql
