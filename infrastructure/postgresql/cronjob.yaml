@@ -17,7 +17,7 @@ spec:
           - name: postgresql-backup
             image: postgres:14.2
             command: ["/bin/sh"]
-            args: ["-c", 'pg_dumpall -U postgres -h $PG_HOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql']
+            args: ["-c", 'pg_dumpall -U postgres -h $PGHOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql']
             env:
             - name: PGPASSWORD
               value: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
