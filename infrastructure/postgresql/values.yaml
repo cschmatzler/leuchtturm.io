@@ -13,12 +13,6 @@ postgresql:
     vault.security.banzaicloud.io/vault-role: postgresql
   livenessProbe:
     enabled: false
-  customLivenessProbe:
-    exec:
-      command:
-        - bash
-        - -ec
-        - 'PGPASSWORD=${vault:secret/data/infrastructure/postgresql/authentication#postgres_password} psql -w -U postgres -h 127.0.0.1 -c "SELECT 1"'
   readinessProbe:
     enabled: false
   password: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
