@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: data-teslamate-grafana
 spec:
+  storageClass: scw-bssd-retain
   accessModes:
     - ReadWriteOnce
   resources:
