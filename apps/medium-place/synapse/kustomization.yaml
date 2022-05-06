@@ -11,3 +11,7 @@ configMapGenerator:
   - name: synapse-config
     files:
       - homeserver.yaml=homeserver.yaml
+generatorOptions:
+  annotations:
+    vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-role: synapse
