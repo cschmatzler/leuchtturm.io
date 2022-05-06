@@ -94,6 +94,10 @@ spec:
         rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
           capabilities = ["read", "list"]
           }
+      - name: synapse
+        rules: path "secret/data/medium-place/synapse/*" {
+          capabilities = ["read", "list"]
+          }
       - name: teslamate
         rules: path "secret/data/medium-place/teslamate/*" {
           capabilities = ["read", "list"]
@@ -137,6 +141,11 @@ spec:
             policies: 
               - vaultwarden
               - mail
+            ttl: 1h
+          - name: synapse
+            bound_service_account_names: ["synapse"]
+            bound_service_account_namespaces: ["medium-place"]
+            policies: synapse
             ttl: 1h
           - name: teslamate
             bound_service_account_names: ["teslamate"]

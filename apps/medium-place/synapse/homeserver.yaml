@@ -1,1 +1,26 @@
 server_name: medium.place
+
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    bind_addresses: ['::1', '127.0.0.1']
+
+    resources:
+      - names: [client, federation]
+        compress: false
+
+database:
+  name: psycopg2
+  txn_limit: 10000
+  args:
+    host: vault:secret/data/medium-place/synapse/database#host
+    port: 5432
+    user: vault:secret/data/medium-place/synapse/database#user
+    password: vault:secret/data/medium-place/synapse/database#password
+    database: vault:secret/data/medium-place/synapse/database#name
+    cp_min: 5
+    cp_max: 10
+
+report_stats: true
