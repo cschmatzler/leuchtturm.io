@@ -1,0 +1,32 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: postgresql-backup
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+            vault.security.banzaicloud.io/vault-role: postgresql
+        spec:
+          containers:
+          - name: postgresql-backup
+            image: postgres:14.2.0
+            command: ["/bin/sh"]
+            args: ["-c", 'pg_dumpall -U postgres -h $PG_HOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql']
+            env:
+            - name: PGPASSWORD
+              value: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
+            - name: PGHOST
+              value: postgresql-postgresql-ha-pgpool.infrastructure.svc
+            volumeMounts:
+            - mountPath: /data
+              name: data-postgresql-backup
+          restartPolicy: Never
+          volumes:
+          - name: data-postgresql-backup
+            persistentVolumeClaim:
+              claimName: data-postgresql-backup
