@@ -24,8 +24,7 @@ spec:
             name: synapse-env
         volumeMounts:
         - name: synapse-config
-          mountPath: /data/homeserver.yaml
-          subPath: homeserver.yaml
+          mountPath: /data
       volumes:
       - name: synapse-config
         configMap:
