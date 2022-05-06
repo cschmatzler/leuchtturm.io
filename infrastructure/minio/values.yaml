@@ -18,6 +18,15 @@ ingress:
     acme.cert-manager.io/http01-edit-in-place: "true"
   tls: true
   ingressClassName: nginx
+  hostname: s3-console.infrastructure.leuchtturm.io
+
+apiIngress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: "true"
+  tls: true
+  ingressClassName: nginx
   hostname: s3.infrastructure.leuchtturm.io
 
 auth:
