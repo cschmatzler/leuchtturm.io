@@ -22,6 +22,10 @@ pgpool:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-role: postgresql
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
   adminPassword: vault:secret/data/infrastructure/postgresql/authentication#pgpool_password
   customUsers:
     usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/database#user};${vault:secret/data/medium-place/teslamate/database#user};${vault:secret/data/medium-place/wikijs/database#user}
