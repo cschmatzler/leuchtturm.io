@@ -13,8 +13,20 @@ postgresql:
     vault.security.banzaicloud.io/vault-role: postgresql
   livenessProbe:
     enabled: false
+  customLivenessProbe:
+    exec:
+      command:
+        - bash
+        - -ec
+        - 'pg_isready -h localhost -U postgres'
   readinessProbe:
     enabled: false
+  customReadinessProbe:
+    exec:
+      command:
+        - bash
+        - -ec
+        - 'pg_isready -h localhost -U postgres'
   password: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
   repmgrPassword: vault:secret/data/infrastructure/postgresql/authentication#repmgr_password
 
@@ -22,10 +34,6 @@ pgpool:
   podAnnotations:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-role: postgresql
-  livenessProbe:
-    enabled: false
-  readinessProbe:
-    enabled: false
   adminPassword: vault:secret/data/infrastructure/postgresql/authentication#pgpool_password
   customUsers:
     usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/database#user};${vault:secret/data/medium-place/teslamate/database#user};${vault:secret/data/medium-place/wikijs/database#user}
