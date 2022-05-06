@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
           - name: postgresql-backup
-            image: postgres:14.2.0
+            image: postgres:14.2
             command: ["/bin/sh"]
             args: ["-c", 'pg_dumpall -U postgres -h $PG_HOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql']
             env:
