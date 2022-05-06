@@ -5,8 +5,8 @@ resources:
   - namespace.yaml
   - sources
   - kube-prometheus
-  #- vault
-  #- minio
+  - vault
+  - minio
   - redis
   - postgresql
   - external-dns
