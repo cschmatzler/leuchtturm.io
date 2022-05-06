@@ -12,6 +12,7 @@ spec:
             vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
             vault.security.banzaicloud.io/vault-role: postgresql
         spec:
+          serviceAccountName: postgresql
           containers:
           - name: postgresql-backup
             image: postgres:14.2
