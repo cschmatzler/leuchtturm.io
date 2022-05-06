@@ -17,5 +17,4 @@ generatorOptions:
   annotations:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-role: synapse
-    vault.security.banzaicloud.io/vault-path: kubernetes
-    vault.security.banzaicloud.io/mutate-configmap: true
+    vault.security.banzaicloud.io/mutate-configmap: "true"
