@@ -6,7 +6,7 @@ resources:
   - sources
   - kube-prometheus
   - vault
-  #- postgresql
+  - postgresql
   #- redis
   #- minio
   - external-dns
