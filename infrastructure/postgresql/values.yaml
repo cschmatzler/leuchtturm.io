@@ -4,8 +4,8 @@ serviceAccount:
   name: postgresql
 
 persistence:
-  size: 5Gi
   storageClass: scw-bssd-retain
+  size: 5Gi
 
 postgresql:
   podAnnotations:

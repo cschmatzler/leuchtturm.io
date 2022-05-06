@@ -9,6 +9,7 @@ podAnnotations:
 mode: distributed
 
 persistence:
+  storageClass: scw-bssd-retain
   size: 1Gi
 
 ingress:

@@ -17,6 +17,7 @@ spec:
     - metadata:
         name: data-vault
       spec:
+        storageClassName: scw-bssd-retain
         accessModes:
           - ReadWriteOnce
         volumeMode: Filesystem
