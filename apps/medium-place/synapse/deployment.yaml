@@ -18,7 +18,7 @@ spec:
       serviceAccountName: synapse
       containers:
       - name: synapse
-        image: matrixdotorg/synapse:v1.58.1
+        image: cschmatzler/synapse:1.58.1
         envFrom:
         - configMapRef:
             name: synapse-env
@@ -26,10 +26,6 @@ spec:
         - name: synapse-config
           mountPath: /data/homeserver.yaml
           subPath: homeserver.yaml
-        lifecycle:
-          postStart:
-            exec:
-              command: ["pip", "install", "synapse-s3-storage-provider"]
       volumes:
       - name: synapse-config
         configMap:
