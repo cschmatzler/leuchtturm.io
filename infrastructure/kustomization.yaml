@@ -8,7 +8,7 @@ resources:
   - vault
   - minio
   - redis
-  - postgresql
+  #- postgresql
   - external-dns
   - cert-manager
   - nginx-ingress-controller
