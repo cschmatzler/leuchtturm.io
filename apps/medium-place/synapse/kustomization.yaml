@@ -9,6 +9,8 @@ configMapGenerator:
   - name: synapse-env
     env: synapse.env
   - name: synapse-config
+    literals:
+      - medium.place.signing.key=vault:secret/data/medium-place/synapse/secret#signing_key
     files:
       - homeserver.yaml=homeserver.yaml
 generatorOptions:
