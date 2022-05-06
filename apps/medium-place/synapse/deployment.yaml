@@ -29,7 +29,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["pip", "install", "git+https://github.com/matrix-org/synapse-s3-storage-provider.git"]
+              command: ["pip", "install", "synapse-s3-storage-provider"]
       volumes:
       - name: synapse-config
         configMap:
