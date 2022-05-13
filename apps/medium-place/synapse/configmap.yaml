@@ -69,7 +69,10 @@ data:
               secret_access_key: {{ .Data.data.secret_key }}
               {{ end }}
 
+        {{- with secret "secret/medium-place/synapse/secret" }}
         enable_registration: true
+        macaroon_secret_key: {{ .Data.data.macaroon_key }}
+        {{ end }}
 
         report_stats: true
       EOH
