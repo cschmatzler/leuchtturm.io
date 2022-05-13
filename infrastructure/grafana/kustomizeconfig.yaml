@@ -7,5 +7,5 @@ nameReference:
 - kind: Secret
   version: v1
   fieldSpecs:
-    - path: dataSources/secretName
+    - path: data/values\.yaml/dataSources/secretName
       kind: ConfigMap
