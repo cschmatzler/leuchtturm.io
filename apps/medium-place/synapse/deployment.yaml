@@ -17,15 +17,20 @@ spec:
     spec:
       serviceAccountName: synapse
       containers:
-      - name: synapse
-        image: cschmatzler/synapse:v1.58.1
-        envFrom:
-        - configMapRef:
-            name: synapse-env
-        volumeMounts:
-        - name: synapse-config
-          mountPath: /data
-      volumes:
-      - name: synapse-config
-        configMap:
-          name: synapse-config
+        - name: synapse
+          image: cschmatzler/synapse:v1.58.1
+          envFrom:
+            - configMapRef:
+                name: synapse-env
+          volumeMounts:
+            - name: synapse-config
+              mountPath: /data/config
+            - name: synapse-signing-key
+              mountPath: /data/config/medium.place.signing.key
+        volumes:
+          - name: synapse-config
+            configMap:
+              name: synapse-config
+          - name: synapse-signing-key
+            secret:
+              secretName: synapse-signing-key

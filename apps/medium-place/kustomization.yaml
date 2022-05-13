@@ -4,5 +4,5 @@ namespace: medium-place
 resources:
   - namespace.yaml
   #- wikijs
-  #- synapse
+  - synapse
   - teslamate

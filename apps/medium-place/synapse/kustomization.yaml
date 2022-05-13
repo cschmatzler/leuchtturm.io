@@ -5,17 +5,16 @@ metadata:
 resources:
   - serviceaccount.yaml
   - deployment.yaml
+generatorOptions:
+  disableNameSuffixHash: true
 configMapGenerator:
   - name: synapse-env
     env: synapse.env
   - name: synapse-config
-    literals:
-      - medium.place.signing.key=vault:secret/data/medium-place/synapse/secret#signing_key
     files:
       - homeserver.yaml=homeserver.yaml
-generatorOptions:
-  annotations:
-    vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-    vault.security.banzaicloud.io/vault-role: synapse
-    vault.security.banzaicloud.io/vault-serviceaccount: synapse
-    vault.security.banzaicloud.io/mutate-configmap: "true"
+secretGenerator:
+  - name: synapse-signing-key
+    literals:
+      - medium.place.signing.key=vault:secret/data/medium-place/synapse/secret#signing_key
+
