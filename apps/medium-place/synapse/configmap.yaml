@@ -21,6 +21,9 @@ data:
         }
       }
     }
+    template_config {
+      error_on_missing_key = true
+    }
     template {
       contents = <<EOH
         {{- with secret "secret/data/medium-place/synapse/secret" }}
