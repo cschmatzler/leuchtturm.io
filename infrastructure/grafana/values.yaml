@@ -12,6 +12,16 @@ grafana:
     vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
     vault.security.banzaicloud.io/vault-role: grafana
 
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: "true"
+  tls: true
+  ingressClassName: nginx
+  hostname: metrics.cluster.leuchtturm.io
+
 admin:
   user: vault:secret/data/infrastructure/grafana/authentication#user
   password: vault:secret/data/infrastructure/grafana/authentication#password
+
