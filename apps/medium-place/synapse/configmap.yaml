@@ -24,7 +24,7 @@ data:
     }
     template {
       contents = <<EOH
-        {{- with secret "medium-place/synapse/secret" }}
+        {{- with secret "data/medium-place/synapse/secret" }}
         {{ .Data.signing_key }}
         {{ end }}
       EOH
