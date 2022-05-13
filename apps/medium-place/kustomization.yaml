@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: medium-place
 resources:
   - namespace.yaml
+  - caddy
   #- wikijs
   - synapse
   - teslamate
