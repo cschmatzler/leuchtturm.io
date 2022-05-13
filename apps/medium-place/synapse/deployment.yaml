@@ -23,11 +23,3 @@ spec:
           envFrom:
             - configMapRef:
                 name: synapse-env
-          volumeMounts:
-            - name: synapse-config
-              mountPath: /vault/secrets/homeserver.yaml
-              subPath: homeserver.yaml
-      volumes:
-        - name: synapse-config
-          configMap:
-            name: synapse-config

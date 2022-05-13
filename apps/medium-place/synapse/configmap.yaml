@@ -29,3 +29,47 @@ data:
       contents = "{{- with secret \"secret/medium-place/synapse/secret\" }}{{ .Data.data.signing_key }}{{ end }}"
       destination = "/vault/secrets/medium.place.signing.key"
     }
+    template {
+      contents = <<EOH
+server_name: medium.place
+
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    bind_addresses: ['::1', '127.0.0.1']
+
+    resources:
+      - names: [client, federation]
+        compress: false
+
+database:
+  name: psycopg2
+  txn_limit: 10000
+  args:
+    host: vault:secret/data/medium-place/synapse/database#host
+    port: 5432
+    user: vault:secret/data/medium-place/synapse/database#user
+    password: vault:secret/data/medium-place/synapse/database#password
+    database: vault:secret/data/medium-place/synapse/database#name
+    cp_min: 5
+    cp_max: 10
+
+media_store_path: /tmp
+media_storage_providers:
+  - module: s3_storage_provider.S3StorageProviderBackend
+    store_local: True
+    store_remote: True
+    store_synchronous: True
+    config:
+      bucket: vault:secret/data/medium-place/synapse/s3#bucket
+      region_name: vault:secret/data/medium-place/synapse/s3#region
+      endpoint_url: vault:secret/data/medium-place/synapse/s3#endpoint
+      access_key_id: vault:secret/data/medium-place/synapse/s3#access_key
+      secret_access_key: vault:secret/data/medium-place/synapse/s3#secret_key
+
+report_stats: true
+      EOH
+      destination = "/vault/secrets/homeserver.yaml"
+    }

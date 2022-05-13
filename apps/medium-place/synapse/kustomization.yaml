@@ -11,13 +11,6 @@ generatorOptions:
 configMapGenerator:
   - name: synapse-env
     env: synapse.env
-  - name: synapse-config
-    options:
-      annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-        vault.security.banzaicloud.io/vault-role: synapse
-    files:
-      - homeserver.yaml=homeserver.yaml
 secretGenerator:
   - name: synapse-signing-key
     options:
