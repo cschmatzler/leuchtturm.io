@@ -20,4 +20,5 @@ spec:
           mountPath: /etc/caddy
       volumes:
         - name: caddy-config
-          configMap: caddy-config
+          configMap: 
+            name: caddy-config
