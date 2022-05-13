@@ -21,6 +21,29 @@ data:
         }
       }
     }
+    exit_after_auth = true
+    template_config {
+      error_on_missing_key = true
+    }
+    template {
+      contents = "{{- with secret \"secret/medium-place/synapse/secret\" }}{{ .Data.data.signing_key }}{{ end }}"
+      destination = "/vault/secrets/medium.place.signing.key"
+    }
+  config.hcl: |
+    auto_auth {
+      method "kubernetes" {
+        mount_path = "auth/kubernetes"
+        config = {
+          role = "synapse"
+        }
+      }
+      sink "file" {
+        config = {
+          path = "/vault/.vault-token"
+        }
+      }
+    }
+    exit_after_auth = false
     template_config {
       error_on_missing_key = true
     }
