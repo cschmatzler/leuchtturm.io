@@ -69,22 +69,10 @@ data:
               secret_access_key: {{ .Data.data.secret_key }}
               {{ end }}
 
-        email:
-          {{- with secret "secret/data/external/mail" }}
-          smtp_host: {{ .Data.data.host }}
-          smtp_port: 587
-          smtp_user: {{ .Data.data.user }}
-          smtp_pass: {{ .Data.data.password }}
-          notif_from: "Medium Place <services@leuchtturm.io>"
-          {{ end }}
-
         {{- with secret "secret/medium-place/synapse/secret" }}
         enable_registration: true
-        registrations_require_3pid:
-          - email
-        allowed_local_3pids:
-          - medium: email
-            pattern: '^[^@]+@medium\.place$'
+        registration_requires_token: true
+        registration_shared_secret: {{ .Data.data.registration_key }}
         macaroon_secret_key: {{ .Data.data.macaroon_key }}
         {{ end }}
 
