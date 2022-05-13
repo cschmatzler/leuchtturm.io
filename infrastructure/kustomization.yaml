@@ -6,7 +6,6 @@ resources:
   - sources
   - vault
   - kube-prometheus-stack
-  - grafana
   - postgresql
   - redis
   - minio
