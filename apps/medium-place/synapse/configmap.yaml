@@ -72,8 +72,6 @@ data:
         email:
           {{- with secret "secret/data/external/mail" }}
           smtp_host: {{ .Data.data.host }}
-          smtp_port: 465
-          enable_tls: true
           smtp_user: {{ .Data.data.user }}
           smtp_pass: {{ .Data.data.password }}
           notif_from: "Medium Place <services@leuchtturm.io>"
