@@ -8,6 +8,8 @@ configMapGenerator:
       - values.yaml=values.yaml
 secretGenerator:
   - name: grafana-datasource
+    options:
+      disableNameSuffixHash: true
     files: 
       - datasource.yaml
 configurations:
