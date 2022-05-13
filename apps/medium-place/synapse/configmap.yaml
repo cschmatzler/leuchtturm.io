@@ -69,7 +69,7 @@ data:
               secret_access_key: {{ .Data.data.secret_key }}
               {{ end }}
 
-        enable_registration: talse
+        enable_registration: true
 
         report_stats: true
       EOH
