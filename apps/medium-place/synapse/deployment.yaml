@@ -24,10 +24,10 @@ spec:
                 name: synapse-env
           volumeMounts:
             - name: synapse-config
-              mountPath: /data/config
+              mountPath: /data/config/homeserver.yaml
               subPath: homeserver.yaml
             - name: synapse-signing-key
-              mountPath: /data/config
+              mountPath: /data/config/medium.place.signing.key
               subPath: medium.place.signing.key
       volumes:
         - name: synapse-config
