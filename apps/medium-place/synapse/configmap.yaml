@@ -40,7 +40,9 @@ data:
               - names: [client, federation]
                 compress: false
 
-        trusted_key_servers: []
+        trusted_key_servers:
+          - server_name: matrix.org
+          - server_name: privacytools.io
 
         database:
           name: psycopg2
