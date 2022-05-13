@@ -5,7 +5,7 @@ resources:
   - namespace.yaml
   - sources
   - vault
-  - kube-prometheus
+  - kube-prometheus-stack
   - grafana
   - postgresql
   - redis
