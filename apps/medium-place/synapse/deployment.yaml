@@ -27,10 +27,10 @@ spec:
               mountPath: /data/config
             - name: synapse-signing-key
               mountPath: /data/config/medium.place.signing.key
-          volumes:
-            - name: synapse-config
-              configMap:
-                name: synapse-config
-            - name: synapse-signing-key
-              secret:
-                secretName: synapse-signing-key
+      volumes:
+        - name: synapse-config
+          configMap:
+            name: synapse-config
+        - name: synapse-signing-key
+          secret:
+            secretName: synapse-signing-key
