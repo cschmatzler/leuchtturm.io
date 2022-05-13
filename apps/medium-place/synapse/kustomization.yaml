@@ -13,12 +13,3 @@ generatorOptions:
 configMapGenerator:
   - name: synapse-env
     env: synapse.env
-secretGenerator:
-  - name: synapse-signing-key
-    options:
-      annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-        vault.security.banzaicloud.io/vault-role: synapse
-    literals:
-      - medium.place.signing.key=vault:secret/data/medium-place/synapse/secret#signing_key
-
