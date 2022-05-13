@@ -13,7 +13,6 @@ data:
         mount_path = "auth/kubernetes"
         config = {
           role = "synapse"
-          namespace = "medium-place"
         }
       }
       sink "file" {
@@ -24,7 +23,7 @@ data:
     }
     template {
       contents = <<EOH
-        {{- with secret "data/medium-place/synapse/secret" }}
+        {{- with secret "secret/data/medium-place/synapse/secret" }}
         {{ .Data.signing_key }}
         {{ end }}
       EOH
