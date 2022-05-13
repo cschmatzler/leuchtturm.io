@@ -7,7 +7,7 @@ metadata:
     synapse.kubernetes.io/name: synapse-vault-agent
     branches: "true"
 data:
-  config.hcl: |
+  config-init.hcl: |
     auto_auth {
       method "kubernetes" {
         mount_path = "auth/kubernetes"
@@ -26,5 +26,5 @@ data:
     }
     template {
       contents = "{{- with secret \"secret/medium-place/synapse/secret\" }}{{ .Data.data.signing_key }}{{ end }}"
-      destination = "/tmp/config/medium.place.signing.key"
+      destination = "/vault/secrets/medium.place.signing.key"
     }
