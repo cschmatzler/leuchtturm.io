@@ -1,0 +1,16 @@
+serviceAccount:
+  create: true
+  name: grafana
+
+persistence:
+  storageClass: scw-bssd-retain
+  size: 1Gi
+
+grafana:
+  podAnnotations:
+    vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+    vault.security.banzaicloud.io/vault-role: grafana
+
+admin:
+  user: vault:secret/data/infrastructure/grafana/authentication#user
+  password: vault:secret/data/infrastructure/grafana/authentication#password

@@ -4,8 +4,9 @@ namespace: infrastructure
 resources:
   - namespace.yaml
   - sources
-  - kube-prometheus
   - vault
+  - kube-prometheus
+  - grafana
   - postgresql
   - redis
   - minio

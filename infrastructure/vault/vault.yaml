@@ -75,6 +75,10 @@ spec:
         rules: path "secret/data/external/mail" {
           capabilities = ["read", "list"]
           }
+      - name: grafana
+        rules: path "secret/data/infrastructure/grafana/*" {
+          capabilities = ["read", "list"]
+          }
       - name: minio
         rules: path "secret/data/infrastructure/minio/*" {
           capabilities = ["read", "list"]
@@ -119,7 +123,12 @@ spec:
             bound_service_account_names: ["external-dns"]
             bound_service_account_namespaces: ["infrastructure"]
             policies: cloudflare
-            ttl: 1h         
+            ttl: 1h
+          - name: grafana
+            bound_service_account_names: ["grafana"]
+            bound_service_account_namespaces: ["infrastructure"]
+            policies: grafana
+            ttl: 1h
           - name: minio
             bound_service_account_names: ["minio"]
             bound_service_account_namespaces: ["infrastructure"]
