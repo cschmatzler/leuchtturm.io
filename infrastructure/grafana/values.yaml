@@ -1,6 +1,7 @@
 serviceAccount:
   create: true
   name: grafana
+  automountServiceAccountToken: true
 
 persistence:
   storageClass: scw-bssd-retain
