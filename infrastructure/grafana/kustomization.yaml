@@ -8,6 +8,7 @@ configMapGenerator:
       - values.yaml=values.yaml
 secretGenerator:
   - name: grafana-datasource
-    files: datasource.yaml
+    files: 
+      - datasource.yaml
 configurations:
   - kustomizeconfig.yaml
