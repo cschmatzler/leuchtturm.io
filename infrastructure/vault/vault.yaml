@@ -154,7 +154,9 @@ spec:
           - name: synapse
             bound_service_account_names: ["synapse"]
             bound_service_account_namespaces: ["medium-place"]
-            policies: synapse
+            policies: 
+              - synapse
+              - mail
             ttl: 1h
           - name: teslamate
             bound_service_account_names: ["teslamate"]
