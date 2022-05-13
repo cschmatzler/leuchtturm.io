@@ -4,5 +4,3 @@ namespace: infrastructure
 resources:
   - banzaicloud.yaml
   - bitnami.yaml
-  - prometheus-community.yaml
-  - leuchtturm-io.yaml
