@@ -25,6 +25,6 @@ data:
       error_on_missing_key = true
     }
     template {
-      contents = "{{- with secret "secret/data/medium-place/synapse/secret" }}{{ .Data.data.signing_key }}{{ end }}"
+      contents = "{{- with secret "secret\/data\/medium-place\/synapse\/secret" }}{{ .Data.data.signing_key }}{{ end }}"
       destination = "/config/medium.place.signing.key"
     }
