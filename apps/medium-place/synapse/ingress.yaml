@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: synapse-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: true
+spec:
+  tls:
+    - hosts:
+        - synapse.medium.place
+      secretName: synapse.medium.place-tls
+  rules:
+    - host: synapse.medium.place
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: synapse
+                port:
+                  name: synapse
