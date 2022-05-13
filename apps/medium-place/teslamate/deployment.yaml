@@ -21,7 +21,7 @@ spec:
         image: teslamate/teslamate:1.26.1
         envFrom:
         - configMapRef:
-            name: teslamate-values
+            name: teslamate-env
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -54,7 +54,7 @@ spec:
         image: teslamate/grafana:1.26.1
         envFrom:
         - configMapRef:
-            name: teslamate-values
+            name: teslamate-env
         volumeMounts:
           - mountPath: "/var/lib/grafana"
             name: data-teslamate-grafana
