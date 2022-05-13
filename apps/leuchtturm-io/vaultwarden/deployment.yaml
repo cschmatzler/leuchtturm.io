@@ -21,4 +21,4 @@ spec:
         image: vaultwarden/server:1.24.0
         envFrom:
         - configMapRef:
-            name: vaultwarden-values
+            name: vaultwarden-env

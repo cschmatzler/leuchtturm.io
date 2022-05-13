@@ -7,6 +7,8 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+generatorOptions:
+  disableNameSuffixHash: true
 configMapGenerator:
-  - name: vaultwarden-values
+  - name: vaultwarden-env
     env: vaultwarden.env
