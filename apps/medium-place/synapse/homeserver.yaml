@@ -1,5 +1,4 @@
 server_name: medium.place
-signing_key: /tmp/medium.place.signing.key
 
 listeners:
   - port: 8008
