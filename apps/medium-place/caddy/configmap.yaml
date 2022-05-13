@@ -11,7 +11,7 @@ data:
       header Content-Type "application/json"
     }
 
-    * {
+    http://medium.place {
       handle /.well-known/matrix/server {
         import matrix-well-known-header
         respond `{"m.server":"synapse.medium.place:443"}`
