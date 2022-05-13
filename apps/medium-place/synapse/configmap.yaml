@@ -40,6 +40,8 @@ data:
               - names: [client, federation]
                 compress: false
 
+        trusted_key_servers: []
+
         database:
           name: psycopg2
           txn_limit: 10000
