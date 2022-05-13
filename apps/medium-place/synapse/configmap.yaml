@@ -13,6 +13,7 @@ data:
         mount_path = "auth/kubernetes"
         config = {
           role = "synapse"
+          namespace = "medium-place"
         }
       }
       sink "file" {
