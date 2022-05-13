@@ -1,0 +1,6 @@
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: direct
+    url: http://kube-prometheus-prometheus.infrastructure.svc:9090
