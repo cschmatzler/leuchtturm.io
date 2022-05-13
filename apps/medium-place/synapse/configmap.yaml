@@ -27,5 +27,5 @@ data:
         {{ .Data.signing_key }}
         {{ end }}
       EOH
-      destination = "/etc/secrets/config"
+      destination = "/data/config/medium.place.signing.key"
     }

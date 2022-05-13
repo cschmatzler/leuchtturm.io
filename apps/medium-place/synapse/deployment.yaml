@@ -27,13 +27,7 @@ spec:
             - name: synapse-config
               mountPath: /data/config/homeserver.yaml
               subPath: homeserver.yaml
-            - name: synapse-signing-key
-              mountPath: /data/config/medium.place.signing.key
-              subPath: medium.place.signing.key
       volumes:
         - name: synapse-config
           configMap:
             name: synapse-config
-        - name: synapse-signing-key
-          secret:
-            secretName: synapse-signing-key
