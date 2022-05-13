@@ -26,5 +26,5 @@ data:
     }
     template {
       contents = "{{- with secret \"secret/medium-place/synapse/secret\" }}{{ .Data.data.signing_key }}{{ end }}"
-      destination = "/tmp/medium.place.signing.key"
+      destination = "/tmp/config/medium.place.signing.key"
     }
