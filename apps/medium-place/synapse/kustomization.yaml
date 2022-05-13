@@ -4,6 +4,7 @@ metadata:
   name: synapse
 resources:
   - serviceaccount.yaml
+  - configmap.yaml
   - deployment.yaml
 generatorOptions:
   disableNameSuffixHash: true

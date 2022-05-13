@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: synapse-vault-agent
+  labels:
+    app.kubernetes.io/name: synapse
+    synapse.kubernetes.io/name: synapse-vault-agent
+    branches: "true"
+data:
+  config.hcl: |
+    auto_auth {
+      method "kubernetes" {
+        mount_path = "auth/kubernetes"
+        config = {
+          role = "synapse"
+        }
+      }
+      sink "file" {
+        config = {
+          path = "/vault/.vault-token"
+        }
+      }
+    }
+    template {
+      contents = <<EOH
+        {{- with secret "medium-place/synapse/secret" }}
+        {{ .Data.signing_key }}
+        {{ end }}
+      EOH
+      destination = "/etc/secrets/config"
+    }
