@@ -26,7 +26,7 @@ spec:
             - name: synapse-config
               mountPath: /data/config
             - name: synapse-signing-key
-              mountPath: /data/config/medium.place.signing.key
+              mountPath: /data/config
       volumes:
         - name: synapse-config
           configMap:
