@@ -69,6 +69,15 @@ data:
               secret_access_key: {{ .Data.data.secret_key }}
               {{ end }}
 
+        email:
+          {{- with secret "secret/data/external/mail" }}
+          smtp_host: {{ .Data.data.host }}
+          smtp_port: 465
+          smtp_user: {{ .Data.data.user }}
+          smtp_pass: {{ .Data.data.password }}
+          enable_tls: true
+          {{ end }}
+
         {{- with secret "secret/medium-place/synapse/secret" }}
         enable_registration: true
         macaroon_secret_key: {{ .Data.data.macaroon_key }}
