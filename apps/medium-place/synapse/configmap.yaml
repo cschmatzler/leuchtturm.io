@@ -55,6 +55,7 @@ data:
             {{ end }}
 
         media_store_path: /tmp
+        max_upload_size: 50M
         media_storage_providers:
           - module: s3_storage_provider.S3StorageProviderBackend
             store_local: True
