@@ -11,6 +11,9 @@ spec:
         kind: HelmRepository
         name: prometheus-community
       version: "35.2.0"
+  valuesFrom:
+    - kind: ConfigMap
+      name: kube-prometheus-stack-values
   interval: 1h0m0s
   install:
     remediation:

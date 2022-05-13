@@ -1,0 +1,15 @@
+grafana:
+  adminPassword: vault:secret/data/infrastructure/kube-prometheus-stack/authentication#password
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      acme.cert-manager.io/http01-edit-in-place: true
+    ingressClassName: nginx
+    hosts:
+      - metrics.cluster.leuchtturm.io
+    tls:
+      - hosts:
+          - metrics.cluster.leuchtturm.io
+        secretName: metrics.cluster.leuchtturm.io-tls
+
