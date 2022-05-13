@@ -25,3 +25,7 @@ admin:
   user: vault:secret/data/infrastructure/grafana/authentication#user
   password: vault:secret/data/infrastructure/grafana/authentication#password
 
+dashboardsProvider:
+  enabled: true
+datasources:
+  secretName: grafana-datasource
