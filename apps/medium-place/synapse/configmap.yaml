@@ -81,6 +81,11 @@ data:
 
         {{- with secret "secret/medium-place/synapse/secret" }}
         enable_registration: true
+        registrations_require_3pid:
+          - email
+        allowed_local_3pids:
+          - medium: email
+            pattern: '^[^@]+@medium\.place$'
         macaroon_secret_key: {{ .Data.data.macaroon_key }}
         {{ end }}
 
