@@ -43,3 +43,6 @@ spec:
       containers:
         - name: synapse-coturn
           image: coturn/coturn:4.5.2
+          args:
+            - "--min-port=49160"
+            - "--max-port=49170"
