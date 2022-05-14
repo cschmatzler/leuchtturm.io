@@ -5,9 +5,3 @@ defaultBackend:
 
 publishService:
   enabled: true
-
-tcp:
-  3478: "medium-place/synapse-coturn:3478"
-
-udp:
-  3478: "medium-place/synapse-coturn:3478"
