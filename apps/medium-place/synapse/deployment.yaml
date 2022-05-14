@@ -23,3 +23,23 @@ spec:
           envFrom:
             - configMapRef:
                 name: synapse-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synapse-coturn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: synapse-coturn
+  template:
+    metadata:
+      labels:
+        app: synapse-coturn
+    spec:
+      hostNetwork: true
+      serviceAccountName: synapse
+      containers:
+        - name: synapse-coturn
+          image: coturn/coturn:4.5.2
