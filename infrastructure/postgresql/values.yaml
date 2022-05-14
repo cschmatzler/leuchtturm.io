@@ -29,6 +29,7 @@ postgresql:
         - 'pg_isready -h localhost -U postgres'
   password: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
   repmgrPassword: vault:secret/data/infrastructure/postgresql/authentication#repmgr_password
+  maxConnections: 250
 
 pgpool:
   podAnnotations:
