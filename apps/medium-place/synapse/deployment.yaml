@@ -43,3 +43,8 @@ spec:
       containers:
         - name: synapse-coturn
           image: coturn/coturn:4.5.2
+          args:
+            - "-n"
+            - "--min-port=49160"
+            - "--max-port=49170"
+            - "--external-ip='$(detect-external-ip)'"
