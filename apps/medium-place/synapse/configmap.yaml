@@ -76,7 +76,7 @@ data:
 
         {{- with secret "secret/medium-place/synapse/secret" }}
         turn_uris:
-          - turns:turn.medium.place:5349?transport=udp
+          - turn:turn.medium.place:3478?transport=udp
         turn_shared_secret: {{ .Data.data.turn_key }}
         turn_allow_guests: false
         {{ end }}
