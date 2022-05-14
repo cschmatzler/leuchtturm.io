@@ -18,9 +18,11 @@ spec:
   selector:
     app: synapse-coturn
   ports:
-    - protocol: TCP
+    - name: turn-tcp
+      protocol: TCP
       port: 3478
       targetPort: 3478
     - protocol: UDP
+      name: turn-udp
       port: 3478
       targetPort: 3478
