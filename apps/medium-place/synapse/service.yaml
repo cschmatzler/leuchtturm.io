@@ -9,3 +9,18 @@ spec:
     - protocol: TCP
       port: 8008
       targetPort: 8008
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: synapse-coturn
+spec:
+  selector:
+    app: synapse-coturn
+  ports:
+    - protocol: TCP
+      port: 3478
+      targetPort: 3478
+    - protocol: UDP
+      port: 3478
+      targetPort: 3478
