@@ -62,9 +62,9 @@ data:
         max_upload_size: 50M
         media_storage_providers:
           - module: s3_storage_provider.S3StorageProviderBackend
-            store_local: True
-            store_remote: True
-            store_synchronous: True
+            store_local: true
+            store_remote: true
+            store_synchronous: true
             config:
               {{- with secret "secret/medium-place/synapse/s3" }}
               bucket: {{ .Data.data.bucket }}
@@ -73,6 +73,14 @@ data:
               access_key_id: {{ .Data.data.access_key }}
               secret_access_key: {{ .Data.data.secret_key }}
               {{ end }}
+
+        {{- with secret "secret/medium-place/synapse/secret" }}
+        turn_uris:
+          - turn:turn.medium.place:3478?transport=udp
+          - turn:turn.medium.place:3478?transport=tcp
+        turn_shared_secret: {{ .Data.data.turn_key }}
+        turn_allow_guests: false
+        {{ end }}
 
         {{- with secret "secret/medium-place/synapse/secret" }}
         enable_registration: true
