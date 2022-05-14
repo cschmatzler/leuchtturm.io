@@ -5,3 +5,6 @@ defaultBackend:
 
 publishService:
   enabled: true
+
+tcp:
+  3478: "medium-place/coturn:3478"
