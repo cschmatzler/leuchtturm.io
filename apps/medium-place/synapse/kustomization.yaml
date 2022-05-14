@@ -6,6 +6,7 @@ resources:
   - serviceaccount.yaml
   - configmap.yaml
   - deployment.yaml
+  - daemonset.yaml
   - service.yaml
   - ingress.yaml
 generatorOptions:

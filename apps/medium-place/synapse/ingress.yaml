@@ -22,4 +22,4 @@ spec:
               service:
                 name: synapse
                 port:
-                  name: synapse
+                  number: 8008
