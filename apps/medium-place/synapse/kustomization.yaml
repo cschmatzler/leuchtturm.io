@@ -4,7 +4,6 @@ metadata:
   name: synapse
 resources:
   - serviceaccount.yaml
-  #- configmap.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
