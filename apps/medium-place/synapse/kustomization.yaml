@@ -8,8 +8,9 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
-generatorOptions:
-  disableNameSuffixHash: true
 configMapGenerator:
   - name: synapse-env
     env: synapse.env
+  - name: synapse-config
+    files:
+      - config.hcl
