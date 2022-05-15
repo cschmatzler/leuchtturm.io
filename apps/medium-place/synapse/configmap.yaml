@@ -41,7 +41,6 @@ data:
                 compress: false
 
         trusted_key_servers:
-          - server_name: matrix.org
           - server_name: privacytools.io
 
         database:
@@ -81,12 +80,25 @@ data:
         turn_allow_guests: false
         {{ end }}
 
+        email:
+          {{- with secret "secret/external/mail" }}
+          smtp_host: {{ .Data.data.host }}
+          smtp_port: 465
+          enable_tls: true
+          smtp_user: {{ .Data.data.user }}
+          smtp_pass: {{ .Data.data.password }}
+          notif_from: "Your Friendly %(app)s homeserver <services@leuchtturm.io>"
+          {{ end }}
+
         {{- with secret "secret/medium-place/synapse/secret" }}
         enable_registration: true
         registration_requires_token: true
         registration_shared_secret: {{ .Data.data.registration_key }}
         macaroon_secret_key: {{ .Data.data.macaroon_key }}
         {{ end }}
+
+        push:
+          include_content: false
 
         report_stats: true
       EOH
