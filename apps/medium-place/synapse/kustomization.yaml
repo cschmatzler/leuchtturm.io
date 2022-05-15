@@ -4,7 +4,7 @@ metadata:
   name: synapse
 resources:
   - serviceaccount.yaml
-  - configmap.yaml
+  #- configmap.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
@@ -14,3 +14,5 @@ configMapGenerator:
   - name: synapse-config
     files:
       - config.hcl
+configurations:
+  - kustomizeconfig.yaml
