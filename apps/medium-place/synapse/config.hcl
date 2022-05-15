@@ -77,7 +77,7 @@ template {
     email:
       {{- with secret "secret/external/mail" }}
       smtp_host: {{ .Data.data.host }}
-      smtp_port: 587
+      smtp_port: 25
       require_transport_security: true
       smtp_user: {{ .Data.data.user }}
       smtp_pass: {{ .Data.data.password }}
