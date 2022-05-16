@@ -6,11 +6,11 @@ spec:
   selector:
     app: mastodon
   ports:
-    - name: mastodon-web
+    - name: web
       protocol: TCP
       port: 3000
       targetPort: 3000
-    - name: mastodon-streaming
+    - name: streaming
       protocol: TCP
       port: 4000
       targetPort: 4000
