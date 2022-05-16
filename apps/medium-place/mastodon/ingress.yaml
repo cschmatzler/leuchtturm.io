@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mastodon-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: true
+spec:
+  tls:
+    - hosts:
+        - piazza.medium.place
+      secretName: piazza.medium.place-tls
+  rules:
+    - host: piazza.medium.place
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/api/v1/streaming"
+            backend:
+              service:
+                name: mastodon-streaming
+                port:
+                  number: 4000
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: mastodon-web
+                port:
+                  number: 3000
