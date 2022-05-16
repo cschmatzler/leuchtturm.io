@@ -16,6 +16,16 @@ spec:
         app: mastodon-web
     spec:
       serviceAccountName: mastodon
+      initContainers:
+        - name: mastodon-migrations
+          image: tootsuite/mastodon:v3.5.2
+          command: 
+            - bundle
+            - exec
+            - rails:migrate
+          envFrom:
+            - configMapRef:
+                name: mastodon-env
       containers:
         - name: mastodon-web
           image: tootsuite/mastodon:v3.5.2
