@@ -9,6 +9,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: minio
   replicas: 4
+  serviceName: minio-headless
   podManagementPolicy: Parallel
   updateStrategy:
     type: RollingUpdate
