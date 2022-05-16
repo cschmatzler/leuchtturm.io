@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mastodon-web
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: mastodon
+      labels:
+        app: mastodon-web
+    spec:
+      serviceAccountName: mastodon
+      containers:
+        - name: mastodon-web
+          image: tootsuite/mastodon:v3.5.2
+          command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
+          envFrom:
+            - configMapRef:
+                name: mastodon-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-streaming
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mastodon-streaming
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: mastodon
+      labels:
+        app: mastodon-streaming
+    spec:
+      serviceAccountName: mastodon
+      containers:
+        - name: mastodon-streaming
+          image: tootsuite/mastodon:v3.5.2
+          command: node ./streaming
+          envFrom:
+            - configMapRef:
+                name: mastodon-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-sidekiq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mastodon-sidekiq
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: mastodon
+      labels:
+        app: mastodon-sidekiq
+    spec:
+      serviceAccountName: mastodon
+      containers:
+        - name: mastodon-sidekiq
+          image: tootsuite/mastodon:v3.5.2
+          command: bundle exec sidekiq
+          envFrom:
+            - configMapRef:
+                name: mastodon-env

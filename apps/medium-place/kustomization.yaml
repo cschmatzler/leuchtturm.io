@@ -5,5 +5,6 @@ resources:
   - namespace.yaml
   - caddy
   #- wikijs
+  - mastodon
   - synapse
   - teslamate
