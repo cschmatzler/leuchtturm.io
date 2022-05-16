@@ -6,19 +6,26 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vaultwarden
+      app.kubernetes.io/name: vaultwarden
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: vaultwarden
       labels:
-        app: vaultwarden
+        app.kubernetes.io/name: vaultwarden
+        app.kubernetes.io/instance: leuchtturm-io-vaultwarden
+        app.kubernetes.io/version: 1.24.0
     spec:
       serviceAccountName: vaultwarden
       containers:
       - name: vaultwarden
         image: vaultwarden/server:1.24.0
+        ports:
+          - name: http
+            protocol: TCP
+            targetPort: 80
+            containerPort: 80
         envFrom:
         - configMapRef:
             name: vaultwarden-env
