@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: minio
 resources:
-  - helmrelease.yaml
+  - serviceaccount.yaml
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
 configMapGenerator:
-  - name: minio-values
-    files:
-      - values.yaml=values.yaml
-configurations:
-  - kustomizeconfig.yaml
+  - name: minio-env
+    env: configuration/minio.env

@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio
+  labels:
+    app.kubernetes.io/name: minio
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: true
+spec:
+  tls:
+    - hosts:
+        - s3.infrastructure.leuchtturm.io
+      secretName: s3.infrastructure.leuchtturm.io-tls
+  rules:
+    - host: s3.infrastructure.leuchtturm.io
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: minio
+                port:
+                  name: http
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio
+  labels:
+    app.kubernetes.io/name: minio
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: true
+spec:
+  tls:
+    - hosts:
+        - s3-console.infrastructure.leuchtturm.io
+      secretName: s3-console.infrastructure.leuchtturm.io-tls
+  rules:
+    - host: s3-console.infrastructure.leuchtturm.io
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: minio
+                port:
+                  name: http-console
