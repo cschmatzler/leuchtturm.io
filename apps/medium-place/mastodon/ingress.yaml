@@ -3,11 +3,12 @@ kind: Ingress
 metadata:
   name: mastodon-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/limit-rpm: 100
     nginx.ingress.kubernetes.io/proxy-body-size: 10m
     cert-manager.io/cluster-issuer: letsencrypt
     acme.cert-manager.io/http01-edit-in-place: true
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - piazza.medium.place
@@ -17,14 +18,14 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/api/v1/streaming"
+            path: /api/v1/streaming
             backend:
               service:
                 name: mastodon
                 port:
                   name: http-ws
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: mastodon

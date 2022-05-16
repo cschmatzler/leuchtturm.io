@@ -16,6 +16,7 @@ spec:
         app.kubernetes.io/name: mastodon
         app.kubernetes.io/version: 3.5.2
         app.kubernetes.io/part-of: mastodon
+        app.kubernetes.io/component: mastodon
     spec:
       serviceAccountName: mastodon
       initContainers:
@@ -35,27 +36,39 @@ spec:
             - bundle
             - exec
             - rails s -p 3000
-          ports:
-            - name: http
-              protocol: TCP
-              targetPort: 3000
-              containerPort: 3000
           envFrom:
             - configMapRef:
                 name: mastodon-env
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 3000
+          resources:
+            requests:
+              cpu: 8m
+              memory: 1Gi
+            limits:
+              cpu: 16m
+              memory: 2Gi
         - name: mastodon-streaming
           image: tootsuite/mastodon:v3.5.2
           command:
             - node
             - ./streaming
-          ports:
-            - name: http-ws
-              protocol: TCP
-              targetPort: 4000
-              containerPort: 4000
           envFrom:
             - configMapRef:
                 name: mastodon-env
+          ports:
+            - name: http-ws
+              protocol: TCP
+              containerPort: 4000
+          resources:
+            requests:
+              cpu: 8m
+              memory: 64Mi
+            limits:
+              cpu: 16m
+              memory: 128Mi
         - name: mastodon-sidekiq
           image: tootsuite/mastodon:v3.5.2
           command:
@@ -65,6 +78,13 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
+          resources:
+            requests:
+              cpu: 8m
+              memory: 512Mi
+            limits:
+              cpu: 16m
+              memory: 1Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -81,6 +101,7 @@ spec:
         app.kubernetes.io/name: mastodon-redis
         app.kubernetes.io/version: 7.0.0
         app.kubernetes.io/part-of: mastodon
+        app.kubernetes.io/component: redis
     spec:
       serviceAccountName: mastodon
       containers:
@@ -89,5 +110,4 @@ spec:
           ports:
             - name: redis
               protocol: TCP
-              targetPort: 6379
               containerPort: 6379

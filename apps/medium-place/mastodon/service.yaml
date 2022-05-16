@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: mastodon
     app.kubernetes.io/version: 3.5.2
     app.kubernetes.io/part-of: mastodon
+    app.kubernetes.io/component: mastodon
 spec:
   selector:
     app.kubernetes.io/name: mastodon
@@ -13,11 +14,11 @@ spec:
     - name: http
       protocol: TCP
       port: 3000
-      targetPort: 3000
+      targetPort: http
     - name: http-ws
       protocol: TCP
       port: 4000
-      targetPort: 4000
+      targetPort: http-ws
 ---
 apiVersion: v1
 kind: Service
@@ -27,6 +28,7 @@ metadata:
     app.kubernetes.io/name: mastodon-redis
     app.kubernetes.io/version: 7.0.0
     app.kubernetes.io/part-of: mastodon
+    app.kubernetes.io/component: redis
 spec:
   selector:
     app.kubernetes.io/name: mastodon-redis
@@ -34,4 +36,4 @@ spec:
     - name: redis
       protocol: TCP
       port: 6379
-      targetPort: 6379
+      targetPort: redis
