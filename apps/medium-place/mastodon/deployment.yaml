@@ -19,7 +19,10 @@ spec:
       containers:
         - name: mastodon-web
           image: tootsuite/mastodon:v3.5.2
-          command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
+          command: 
+            - bash 
+            - -c
+            - "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
           envFrom:
             - configMapRef:
                 name: mastodon-env
@@ -45,7 +48,9 @@ spec:
       containers:
         - name: mastodon-streaming
           image: tootsuite/mastodon:v3.5.2
-          command: node ./streaming
+          command: 
+            - node 
+            - ./streaming
           envFrom:
             - configMapRef:
                 name: mastodon-env
@@ -71,7 +76,10 @@ spec:
       containers:
         - name: mastodon-sidekiq
           image: tootsuite/mastodon:v3.5.2
-          command: bundle exec sidekiq
+          command: 
+            - bundle 
+            - exec 
+            - sidekiq
           envFrom:
             - configMapRef:
                 name: mastodon-env
