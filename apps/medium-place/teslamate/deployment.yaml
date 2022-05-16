@@ -16,19 +16,26 @@ spec:
         app.kubernetes.io/name: teslamate
         app.kubernetes.io/version: 1.26.1
         app.kubernetes.io/part-of: teslamate
+        app.kubernetes.io/component: teslamate
     spec:
       serviceAccountName: teslamate
       containers:
         - name: teslamate
           image: teslamate/teslamate:1.26.1
-          ports:
-            - name: http
-              protocol: TCP
-              targetPort: 4000
-              containerPort: 4000
           envFrom:
             - configMapRef:
                 name: teslamate-env
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 4000
+          resources:
+            requests:
+              cpu: 8m
+              memory: 256Mi
+            limits:
+              cpu: 16m
+              memory: 384Mi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -48,6 +55,7 @@ spec:
         app.kubernetes.io/name: teslamate-grafana
         app.kubernetes.io/version: 1.26.1
         app.kubernetes.io/part-of: teslamate
+        app.kubernetes.io/component: grafana
     spec:
       serviceAccountName: teslamate
       securityContext:
@@ -61,14 +69,20 @@ spec:
       containers:
         - name: teslamate-grafana
           image: teslamate/grafana:1.26.1
-          ports:
-            - name: http
-              protocol: TCP
-              targetPort: 3000
-              containerPort: 3000
           envFrom:
             - configMapRef:
                 name: teslamate-env
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 3000
           volumeMounts:
             - mountPath: "/var/lib/grafana"
               name: data-teslamate-grafana
+          resources:
+            requests:
+              cpu: 4m
+              memory: 32Mi
+            limits:
+              cpu: 8m
+              memory: 64Mi

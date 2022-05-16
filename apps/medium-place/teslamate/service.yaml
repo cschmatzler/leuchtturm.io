@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: teslamate
     app.kubernetes.io/version: 1.26.1
     app.kubernetes.io/part-of: teslamate
+    app.kubernetes.io/component: teslamate
 spec:
   selector:
     app.kubernetes.io/name: teslamate
@@ -13,7 +14,7 @@ spec:
     - name: http
       protocol: TCP
       port: 4000
-      targetPort: 4000
+      targetPort: http
 ---
 apiVersion: v1
 kind: Service
@@ -23,6 +24,7 @@ metadata:
     app.kubernetes.io/name: teslamate-grafana
     app.kubernetes.io/version: 1.26.1
     app.kubernetes.io/part-of: teslamate
+    app.kubernetes.io/component: grafana
 spec:
   selector:
     app.kubernetes.io/name: teslamate-grafana
@@ -30,4 +32,4 @@ spec:
     - name: http
       protocol: TCP
       port: 3000
-      targetPort: 3000
+      targetPort: http
