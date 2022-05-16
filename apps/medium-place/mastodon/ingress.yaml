@@ -20,13 +20,13 @@ spec:
             path: "/api/v1/streaming"
             backend:
               service:
-                name: mastodon-streaming
+                name: mastodon
                 port:
                   number: 4000
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: mastodon-web
+                name: mastodon
                 port:
                   number: 3000

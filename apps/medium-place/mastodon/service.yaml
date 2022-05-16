@@ -1,23 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mastodon-web
+  name: mastodon
 spec:
   selector:
-    app: mastodon-web
+    app: mastodon
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mastodon-streaming
-spec:
-  selector:
-    app: mastodon-streaming
-  ports:
     - protocol: TCP
       port: 4000
       targetPort: 4000
