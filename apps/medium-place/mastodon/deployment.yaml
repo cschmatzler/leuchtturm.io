@@ -30,9 +30,9 @@ spec:
         - name: mastodon-web
           image: tootsuite/mastodon:v3.5.2
           command: 
-            - bash 
-            - -c
-            - "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
+            - bundle
+            - exec 
+            - rails s -p 3000
           envFrom:
             - configMapRef:
                 name: mastodon-env
