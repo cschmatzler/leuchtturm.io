@@ -22,11 +22,11 @@ spec:
               service:
                 name: mastodon
                 port:
-                  name: mastodon-streaming
+                  name: streaming
           - pathType: Prefix
             path: "/"
             backend:
               service:
                 name: mastodon
                 port:
-                  name: mastodon-web
+                  name: web

@@ -34,7 +34,7 @@ spec:
             - exec 
             - rails s -p 3000
           ports:
-            - name: mastodon-web
+            - name: web
               protocol: TCP
               targetPort: 3000
               containerPort: 3000
@@ -47,7 +47,7 @@ spec:
             - node 
             - ./streaming
           ports:
-            - name: mastodon-streaming
+            - name: streaming
               protocol: TCP
               targetPort: 4000
               containerPort: 4000
