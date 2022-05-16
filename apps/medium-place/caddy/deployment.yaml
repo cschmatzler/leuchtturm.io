@@ -13,6 +13,7 @@ spec:
         app.kubernetes.io/name: caddy
         app.kubernetes.io/version: 2.5.1
         app.kubernetes.io/part-of: caddy
+        app.kubernetes.io/component: caddy
     spec:
       containers:
         - name: caddy
@@ -20,11 +21,17 @@ spec:
           ports:
             - name: http
               protocol: TCP
-              targetPort: 80
               containerPort: 80
           volumeMounts:
             - name: caddy-config
               mountPath: /etc/caddy
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 25m
+              memory: 64Mi
       volumes:
         - name: caddy-config
           configMap:

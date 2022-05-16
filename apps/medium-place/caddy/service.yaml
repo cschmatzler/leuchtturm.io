@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: caddy
     app.kubernetes.io/version: 2.5.1
     app.kubernetes.io/part-of: caddy
+    app.kubernetes.io/component: caddy
 spec:
   selector:
     app.kubernetes.io/name: caddy
@@ -13,4 +14,4 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: http
