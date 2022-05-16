@@ -20,11 +20,11 @@ patchesStrategicMerge:
           - name: manager
             resources:
               requests:
-                cpu: 8m
-                memory: 64Mi
+                cpu: 4m
+                memory: 32Mi
               limits:
-                cpu: 128m
-                memory: 256Mi
+                cpu: 32m
+                memory: 128Mi
 - |-
   apiVersion: apps/v1
   kind: Deployment
@@ -44,7 +44,7 @@ patchesStrategicMerge:
                 memory: 64Mi
               limits:
                 cpu: 128m
-                memory: 256Mi
+                memory: 128Mi
 - |-
   apiVersion: apps/v1
   kind: Deployment
@@ -60,11 +60,11 @@ patchesStrategicMerge:
           - name: manager
             resources:
               requests:
-                cpu: 8m
-                memory: 64Mi
+                cpu: 4m
+                memory: 16Mi
               limits:
-                cpu: 128m
-                memory: 256Mi
+                cpu: 32m
+                memory: 64Mi
 - |-
   apiVersion: apps/v1
   kind: Deployment
@@ -80,8 +80,8 @@ patchesStrategicMerge:
           - name: manager
             resources:
               requests:
-                cpu: 8m
+                cpu: 16m
                 memory: 64Mi
               limits:
-                cpu: 128m
-                memory: 512Mi
+                cpu: 192m
+                memory: 768Mi
