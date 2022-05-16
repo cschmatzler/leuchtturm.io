@@ -41,6 +41,19 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
+        - name: mastodon-streaming
+          image: tootsuite/mastodon:v3.5.2
+          command: 
+            - node 
+            - ./streaming
+          ports:
+            - name: mastodon-streaming
+              protocol: TCP
+              targetPort: 4000
+              containerPort: 4000
+          envFrom:
+            - configMapRef:
+                name: mastodon-env
         - name: mastodon-sidekiq
           image: tootsuite/mastodon:v3.5.2
           command: 
@@ -50,11 +63,4 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
-        - name: mastodon-streaming
-          image: tootsuite/mastodon:v3.5.2
-          command: 
-            - node 
-            - ./streaming
-          envFrom:
-            - configMapRef:
-                name: mastodon-env
+        

@@ -22,7 +22,7 @@ spec:
               service:
                 name: mastodon
                 port:
-                  number: 4000
+                  name: mastodon-streaming
           - pathType: Prefix
             path: "/"
             backend:
