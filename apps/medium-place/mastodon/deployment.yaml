@@ -64,11 +64,11 @@ spec:
               containerPort: 4000
           resources:
             requests:
-              cpu: 64m
-              memory: 64Mi
-            limits:
-              cpu: 128m
+              cpu: 8m
               memory: 128Mi
+            limits:
+              cpu: 16m
+              memory: 256Mi
         - name: mastodon-sidekiq
           image: tootsuite/mastodon:v3.5.2
           command:
@@ -80,10 +80,10 @@ spec:
                 name: mastodon-env
           resources:
             requests:
-              cpu: 64m
+              cpu: 128m
               memory: 512Mi
             limits:
-              cpu: 128m
+              cpu: 256m
               memory: 1Gi
 ---
 apiVersion: apps/v1

@@ -28,10 +28,10 @@ spec:
           resources:
             requests:
               cpu: 8m
-              memory: 32Mi
+              memory: 16Mi
             limits:
               cpu: 16m
-              memory: 64Mi
+              memory: 32Mi
       volumes:
         - name: caddy-config
           configMap:
