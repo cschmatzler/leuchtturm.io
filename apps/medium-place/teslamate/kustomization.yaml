@@ -10,4 +10,4 @@ resources:
   - ingress.yaml
 configMapGenerator:
   - name: teslamate-env
-    env: teslamate.env
+    env: configuration/teslamate.env

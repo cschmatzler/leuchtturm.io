@@ -100,6 +100,9 @@ template {
     macaroon_secret_key: {{ .Data.data.macaroon_key }}
     {{ end }}
 
+    presence:
+      enabled: false 
+    
     allow_public_rooms_over_federation: false
     require_auth_for_profile_requests: true
     allow_profile_lookup_over_federation: false
