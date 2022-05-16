@@ -38,7 +38,7 @@ pgpool:
   adminPassword: vault:secret/data/infrastructure/postgresql/authentication#pgpool_password
   customUsers:
     usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/database#user};${vault:secret/data/medium-place/mastodon/database#user};${vault:secret/data/medium-place/synapse/database#user};${vault:secret/data/medium-place/teslamate/database#user};${vault:secret/data/medium-place/wikijs/database#user}
-    passwords: ${vault:secret/data/leuchtturm-io/vaultwarden/database#password};${vault:secret/data/medium-place/mastodon/database#user};${vault:secret/data/medium-place/synapse/database#password};${vault:secret/data/medium-place/teslamate/database#password};${vault:secret/data/medium-place/wikijs/database#password}
+    passwords: ${vault:secret/data/leuchtturm-io/vaultwarden/database#password};${vault:secret/data/medium-place/mastodon/database#password};${vault:secret/data/medium-place/synapse/database#password};${vault:secret/data/medium-place/teslamate/database#password};${vault:secret/data/medium-place/wikijs/database#password}
   numInitChildren: 64
   maxPool: 10
   childMaxConnections: 10
