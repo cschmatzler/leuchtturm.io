@@ -3,11 +3,11 @@ kind: Ingress
 metadata:
   name: synapse-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 50m
     cert-manager.io/cluster-issuer: letsencrypt
     acme.cert-manager.io/http01-edit-in-place: true
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - synapse.medium.place
@@ -17,7 +17,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: synapse

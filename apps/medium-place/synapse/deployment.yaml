@@ -15,18 +15,25 @@ spec:
         vault.security.banzaicloud.io/vault-agent-configmap: synapse-config
       labels:
         app.kubernetes.io/name: synapse
-        app.kubernetes.io/instance: medium-place-synapse
         app.kubernetes.io/version: 1.58.1
+        app.kubernetes.io/part-of: synapse
+        app.kubernetes.io/component: synapse
     spec:
       serviceAccountName: synapse
       containers:
         - name: synapse
           image: cschmatzler/synapse:v1.58.1
-          ports:
-            - name: http
-              protocol: TCP
-              targetPort: 8008
-              containerPort: 8008
           envFrom:
             - configMapRef:
                 name: synapse-env
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8008
+          resources:
+            requests:
+              cpu: 64m
+              memory: 512Mi
+            limits:
+              cpu: 128m
+              memory: 1Gi

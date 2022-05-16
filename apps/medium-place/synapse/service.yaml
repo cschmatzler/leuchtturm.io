@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: synapse
     app.kubernetes.io/version: 1.58.1
     app.kubernetes.io/part-of: synapse
+    app.kubernetes.io/component: synapse
 spec:
   selector:
     app.kubernetes.io/name: synapse
@@ -13,4 +14,4 @@ spec:
     - name: http
       protocol: TCP
       port: 8008
-      targetPort: 8008
+      targetPort: http
