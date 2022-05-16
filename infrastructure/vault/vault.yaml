@@ -98,6 +98,10 @@ spec:
         rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
           capabilities = ["read", "list"]
           }
+      - name: mastodon
+        rules: path "secret/data/medium-place/mastodon/*" {
+          capabilities = ["read", "list"]
+          }
       - name: synapse
         rules: path "secret/data/medium-place/synapse/*" {
           capabilities = ["read", "list"]
@@ -149,6 +153,13 @@ spec:
             bound_service_account_namespaces: ["leuchtturm-io"]
             policies: 
               - vaultwarden
+              - mail
+            ttl: 1h
+          - name: mastodon
+            bound_service_account_names: ["mastodon"]
+            bound_service_account_namespaces: ["medium-place"]
+            policies: 
+              - mastodon
               - mail
             ttl: 1h
           - name: synapse
