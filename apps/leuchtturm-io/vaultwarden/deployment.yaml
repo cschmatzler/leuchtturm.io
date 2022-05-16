@@ -14,8 +14,8 @@ spec:
         vault.security.banzaicloud.io/vault-role: vaultwarden
       labels:
         app.kubernetes.io/name: vaultwarden
-        app.kubernetes.io/instance: leuchtturm-io-vaultwarden
         app.kubernetes.io/version: 1.24.0
+        app.kubernetes.io/part-of: vaultwarden
     spec:
       serviceAccountName: vaultwarden
       containers:

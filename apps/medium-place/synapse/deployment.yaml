@@ -7,6 +7,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: synapse
+  template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
