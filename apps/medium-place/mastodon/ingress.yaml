@@ -24,7 +24,7 @@ spec:
             path: "/api/v1/streaming"
             backend:
               service:
-                name: mastodon-streaming
+                name: mastodon
                 port:
                   name: http-ws
           - pathType: Prefix
