@@ -84,4 +84,4 @@ patchesStrategicMerge:
                 memory: 64Mi
               limits:
                 cpu: 128m
-                memory: 256Mi
+                memory: 512Mi
