@@ -36,6 +36,15 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
+        - name: mastodon-sidekiq
+          image: tootsuite/mastodon:v3.5.2
+          command: 
+            - bundle 
+            - exec 
+            - sidekiq
+          envFrom:
+            - configMapRef:
+                name: mastodon-env
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -61,35 +70,6 @@ spec:
           command: 
             - node 
             - ./streaming
-          envFrom:
-            - configMapRef:
-                name: mastodon-env
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mastodon-sidekiq
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mastodon-sidekiq
-  template:
-    metadata:
-      annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-        vault.security.banzaicloud.io/vault-role: mastodon
-      labels:
-        app: mastodon-sidekiq
-    spec:
-      serviceAccountName: mastodon
-      containers:
-        - name: mastodon-sidekiq
-          image: tootsuite/mastodon:v3.5.2
-          command: 
-            - bundle 
-            - exec 
-            - sidekiq
           envFrom:
             - configMapRef:
                 name: mastodon-env
