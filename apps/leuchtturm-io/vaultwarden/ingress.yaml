@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: vaultwarden-ingress
   annotations:
-    nginx.ingress.kubernetes.io/limit-rps: 50
+    nginx.ingress.kubernetes.io/limit-rpm: 50
     cert-manager.io/cluster-issuer: letsencrypt
     acme.cert-manager.io/http01-edit-in-place: true
 spec:

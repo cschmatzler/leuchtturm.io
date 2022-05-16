@@ -7,6 +7,11 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+generatorOptions:
+  labels:
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/version: 1.24.0
+    app.kubernetes.io/part-of: vaultwarden
 configMapGenerator:
   - name: vaultwarden-env
     env: configuration/vaultwarden.env
