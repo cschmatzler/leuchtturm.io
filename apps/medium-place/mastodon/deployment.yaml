@@ -111,3 +111,10 @@ spec:
             - name: redis
               protocol: TCP
               containerPort: 6379
+          resources:
+            requests:
+              cpu: 8m
+              memory: 16Mi
+            limits:
+              cpu: 16m
+              memory: 32Mi
