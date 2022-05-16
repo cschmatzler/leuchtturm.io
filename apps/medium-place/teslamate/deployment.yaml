@@ -6,22 +6,29 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: teslamate
+      app.kubernetes.io/name: teslamate
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: teslamate
       labels:
-        app: teslamate
+        app.kubernetes.io/name: teslamate
+        app.kubernetes.io/instance: medium-place-teslamate
+        app.kubernetes.io/version: 1.26.1
     spec:
       serviceAccountName: teslamate
       containers:
-      - name: teslamate
-        image: teslamate/teslamate:1.26.1
-        envFrom:
-        - configMapRef:
-            name: teslamate-env
+        - name: teslamate
+          image: teslamate/teslamate:1.26.1
+          ports:
+            - name: http
+              protocol: TCP
+              targetPort: 4000
+              containerPort: 4000
+          envFrom:
+            - configMapRef:
+                name: teslamate-env
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -31,14 +38,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: teslamate-grafana
+      app.kubernetes.io/name: teslamate
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: teslamate
       labels:
-        app: teslamate-grafana
+        app.kubernetes.io/name: teslamate
+        app.kubernetes.io/instance: medium-place-teslamate
+        app.kubernetes.io/version: 1.26.1
+        app.kubernetes.io/part-of: teslamate
     spec:
       serviceAccountName: teslamate
       securityContext:
@@ -46,15 +56,20 @@ spec:
         runAsGroup: 0
         fsGroup: 0
       volumes:
-      - name: data-teslamate-grafana
-        persistentVolumeClaim:
-          claimName: data-teslamate-grafana
+        - name: data-teslamate-grafana
+          persistentVolumeClaim:
+            claimName: data-teslamate-grafana
       containers:
-      - name: teslamate-grafana
-        image: teslamate/grafana:1.26.1
-        envFrom:
-        - configMapRef:
-            name: teslamate-env
-        volumeMounts:
-          - mountPath: "/var/lib/grafana"
-            name: data-teslamate-grafana
+        - name: teslamate-grafana
+          image: teslamate/grafana:1.26.1
+          ports:
+            - name: http
+              protocol: TCP
+              targetPort: 3000
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: teslamate-env
+          volumeMounts:
+            - mountPath: "/var/lib/grafana"
+              name: data-teslamate-grafana

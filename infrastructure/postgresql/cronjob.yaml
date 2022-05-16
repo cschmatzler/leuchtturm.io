@@ -14,20 +14,24 @@ spec:
         spec:
           serviceAccountName: postgresql
           containers:
-          - name: postgresql-backup
-            image: postgres:14.2
-            command: ["/bin/sh"]
-            args: ["-c", 'pg_dumpall -U postgres -h $PGHOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql']
-            env:
-            - name: PGHOST
-              value: postgresql-postgresql-ha-pgpool.infrastructure.svc
-            - name: PGPASSWORD
-              value: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
-            volumeMounts:
-            - mountPath: /data
-              name: data-postgresql-backup
+            - name: postgresql-backup
+              image: postgres:14.2
+              command: ["/bin/sh"]
+              args:
+                [
+                  "-c",
+                  'pg_dumpall -U postgres -h $PGHOST > /data/backup-$(date +"%m-%d-%Y-%H-%M").sql',
+                ]
+              env:
+                - name: PGHOST
+                  value: postgresql-postgresql-ha-pgpool.infrastructure.svc
+                - name: PGPASSWORD
+                  value: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
+              volumeMounts:
+                - mountPath: /data
+                  name: data-postgresql-backup
           restartPolicy: Never
           volumes:
-          - name: data-postgresql-backup
-            persistentVolumeClaim:
-              claimName: data-postgresql-backup
+            - name: data-postgresql-backup
+              persistentVolumeClaim:
+                claimName: data-postgresql-backup

@@ -21,4 +21,4 @@ spec:
               service:
                 name: teslamate-grafana
                 port:
-                  number: 3000
+                  name: http

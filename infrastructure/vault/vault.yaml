@@ -151,21 +151,21 @@ spec:
           - name: vaultwarden
             bound_service_account_names: ["vaultwarden"]
             bound_service_account_namespaces: ["leuchtturm-io"]
-            policies: 
+            policies:
               - vaultwarden
               - mail
             ttl: 1h
           - name: mastodon
             bound_service_account_names: ["mastodon"]
             bound_service_account_namespaces: ["medium-place"]
-            policies: 
+            policies:
               - mastodon
               - mail
             ttl: 1h
           - name: synapse
             bound_service_account_names: ["synapse"]
             bound_service_account_namespaces: ["medium-place"]
-            policies: 
+            policies:
               - synapse
               - mail
             ttl: 1h

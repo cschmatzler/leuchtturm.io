@@ -6,20 +6,22 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mastodon
+      app.kubernetes.io/name: mastodon
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: mastodon
       labels:
-        app: mastodon
+        app.kubernetes.io/name: mastodon
+        app.kubernetes.io/instance: medium-place-mastodon
+        app.kubernetes.io/version: 3.5.2
     spec:
       serviceAccountName: mastodon
       initContainers:
         - name: mastodon-migrations
           image: tootsuite/mastodon:v3.5.2
-          command: 
+          command:
             - bundle
             - exec
             - rails db:migrate
@@ -29,9 +31,9 @@ spec:
       containers:
         - name: mastodon-web
           image: tootsuite/mastodon:v3.5.2
-          command: 
+          command:
             - bundle
-            - exec 
+            - exec
             - rails s -p 3000
           ports:
             - name: http
@@ -43,8 +45,8 @@ spec:
                 name: mastodon-env
         - name: mastodon-streaming
           image: tootsuite/mastodon:v3.5.2
-          command: 
-            - node 
+          command:
+            - node
             - ./streaming
           ports:
             - name: http-ws
@@ -56,11 +58,10 @@ spec:
                 name: mastodon-env
         - name: mastodon-sidekiq
           image: tootsuite/mastodon:v3.5.2
-          command: 
-            - bundle 
-            - exec 
+          command:
+            - bundle
+            - exec
             - sidekiq
           envFrom:
             - configMapRef:
                 name: mastodon-env
-        

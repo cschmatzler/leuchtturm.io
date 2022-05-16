@@ -18,7 +18,7 @@ postgresql:
       command:
         - bash
         - -ec
-        - 'pg_isready -h localhost -U postgres'
+        - "pg_isready -h localhost -U postgres"
   readinessProbe:
     enabled: false
   customReadinessProbe:
@@ -26,7 +26,7 @@ postgresql:
       command:
         - bash
         - -ec
-        - 'pg_isready -h localhost -U postgres'
+        - "pg_isready -h localhost -U postgres"
   password: vault:secret/data/infrastructure/postgresql/authentication#postgres_password
   repmgrPassword: vault:secret/data/infrastructure/postgresql/authentication#repmgr_password
   maxConnections: 250

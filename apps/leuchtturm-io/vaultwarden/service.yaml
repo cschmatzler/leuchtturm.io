@@ -4,7 +4,7 @@ metadata:
   name: vaultwarden
 spec:
   selector:
-    app: vaultwarden
+    app.kubernetes.io/name: vaultwarden
   ports:
     - name: http
       protocol: TCP

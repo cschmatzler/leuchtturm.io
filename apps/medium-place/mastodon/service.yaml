@@ -4,7 +4,7 @@ metadata:
   name: mastodon
 spec:
   selector:
-    app: mastodon
+    app.kubernetes.io/name: mastodon
   ports:
     - name: http
       protocol: TCP

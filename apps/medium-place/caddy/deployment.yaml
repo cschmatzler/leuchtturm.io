@@ -15,17 +15,17 @@ spec:
         app.kubernetes.io/version: 2.5.1
     spec:
       containers:
-      - name: caddy
-        image: caddy:2.5.1
-        ports:
-          - name: http
-            protocol: TCP
-            targetPort: 80
-            containerPort: 80
-        volumeMounts:
-        - name: caddy-config
-          mountPath: /etc/caddy
+        - name: caddy
+          image: caddy:2.5.1
+          ports:
+            - name: http
+              protocol: TCP
+              targetPort: 80
+              containerPort: 80
+          volumeMounts:
+            - name: caddy-config
+              mountPath: /etc/caddy
       volumes:
         - name: caddy-config
-          configMap: 
+          configMap:
             name: caddy-config

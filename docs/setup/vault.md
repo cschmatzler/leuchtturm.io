@@ -1,4 +1,5 @@
 # Creation of Vault
+
 ```
 vault auth enable github
 vault write auth/github/config organization=leuchtturm-io

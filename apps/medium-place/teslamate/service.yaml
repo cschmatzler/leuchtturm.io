@@ -4,9 +4,10 @@ metadata:
   name: teslamate
 spec:
   selector:
-    app: teslamate
+    app.kubernetes.io/name: teslamate
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 4000
       targetPort: 4000
 ---
@@ -16,8 +17,9 @@ metadata:
   name: teslamate-grafana
 spec:
   selector:
-    app: teslamate-grafana
+    app.kubernetes.io/name: teslamate
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 3000
       targetPort: 3000
