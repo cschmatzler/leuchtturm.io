@@ -77,9 +77,9 @@ template {
     email:
       {{- with secret "secret/external/mail" }}
       smtp_host: {{ .Data.data.host }}
-      smtp_port: 465
+      smtp_port: 587
       enable_tls: true
-      require_transport_security: false
+      require_transport_security: true
       smtp_user: {{ .Data.data.user }}
       smtp_pass: {{ .Data.data.password }}
       notif_from: "Your Friendly %(app)s homeserver <services@leuchtturm.io>"
