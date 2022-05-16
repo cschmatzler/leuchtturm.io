@@ -9,9 +9,9 @@ resources:
   - ingress.yaml
 configMapGenerator:
   - name: synapse-env
-    env: synapse.env
+    env: configuration/synapse.env
   - name: synapse-config
     files:
-      - config.hcl
+      - configuration/config.hcl
 configurations:
   - kustomizeconfig.yaml

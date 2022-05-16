@@ -9,4 +9,4 @@ resources:
   - ingress.yaml
 configMapGenerator:
   - name: vaultwarden-env
-    env: vaultwarden.env
+    env: configuration/vaultwarden.env
