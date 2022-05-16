@@ -77,9 +77,6 @@ spec:
       app.kubernetes.io/name: mastodon-redis
   template:
     metadata:
-      annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-        vault.security.banzaicloud.io/vault-role: mastodon
       labels:
         app.kubernetes.io/name: mastodon-redis
         app.kubernetes.io/version: 7.0.0
