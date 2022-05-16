@@ -5,6 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: minio
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
     cert-manager.io/cluster-issuer: letsencrypt
     acme.cert-manager.io/http01-edit-in-place: true
 spec:
