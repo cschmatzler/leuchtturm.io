@@ -11,8 +11,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: caddy
-        app.kubernetes.io/instance: medium-place-caddy
         app.kubernetes.io/version: 2.5.1
+        app.kubernetes.io/part-of: caddy
     spec:
       containers:
         - name: caddy

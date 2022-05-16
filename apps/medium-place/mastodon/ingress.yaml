@@ -2,6 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mastodon-ingress
+  labels:
+    app.kubernetes.io/name: mastodon
+    app.kubernetes.io/version: 3.5.2
+    app.kubernetes.io/part-of: mastodon
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-body-size: 10m
@@ -20,7 +24,7 @@ spec:
             path: "/api/v1/streaming"
             backend:
               service:
-                name: mastodon
+                name: mastodon-streaming
                 port:
                   name: http-ws
           - pathType: Prefix

@@ -14,8 +14,8 @@ spec:
         vault.security.banzaicloud.io/vault-role: mastodon
       labels:
         app.kubernetes.io/name: mastodon
-        app.kubernetes.io/instance: medium-place-mastodon
         app.kubernetes.io/version: 3.5.2
+        app.kubernetes.io/part-of: mastodon
     spec:
       serviceAccountName: mastodon
       initContainers:
@@ -43,6 +43,37 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
+        - name: mastodon-sidekiq
+          image: tootsuite/mastodon:v3.5.2
+          command:
+            - bundle
+            - exec
+            - sidekiq
+          envFrom:
+            - configMapRef:
+                name: mastodon-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-streaming
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mastodon-streaming
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: mastodon
+      labels:
+        app.kubernetes.io/name: mastodon-streaming
+        app.kubernetes.io/version: 3.5.2
+        app.kubernetes.io/part-of: mastodon
+    spec:
+      serviceAccountName: mastodon
+      containers:
         - name: mastodon-streaming
           image: tootsuite/mastodon:v3.5.2
           command:
@@ -53,15 +84,6 @@ spec:
               protocol: TCP
               targetPort: 4000
               containerPort: 4000
-          envFrom:
-            - configMapRef:
-                name: mastodon-env
-        - name: mastodon-sidekiq
-          image: tootsuite/mastodon:v3.5.2
-          command:
-            - bundle
-            - exec
-            - sidekiq
           envFrom:
             - configMapRef:
                 name: mastodon-env
