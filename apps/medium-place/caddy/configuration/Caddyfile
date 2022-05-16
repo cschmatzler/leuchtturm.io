@@ -5,7 +5,13 @@
   header Content-Type "application/json"
 }
 
-http://medium.place {
+http://medium.place { 
+  # Mastodon
+  handle /.well-known/webfinger {
+    redir https://piazza.medium.place{uri} permanent
+  }
+
+  # Synapse
   handle /.well-known/matrix/server {
     import matrix-well-known-header
     respond `{"m.server":"synapse.medium.place:443"}`
