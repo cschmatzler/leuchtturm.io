@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mastodon-web
+  name: mastodon
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mastodon-web
+      app: mastodon
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: mastodon
       labels:
-        app: mastodon-web
+        app: mastodon
     spec:
       serviceAccountName: mastodon
       initContainers:
@@ -45,26 +45,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mastodon-streaming
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mastodon-streaming
-  template:
-    metadata:
-      annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
-        vault.security.banzaicloud.io/vault-role: mastodon
-      labels:
-        app: mastodon-streaming
-    spec:
-      serviceAccountName: mastodon
-      containers:
         - name: mastodon-streaming
           image: tootsuite/mastodon:v3.5.2
           command: 
