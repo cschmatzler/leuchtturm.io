@@ -14,8 +14,8 @@ spec:
         vault.security.banzaicloud.io/vault-role: teslamate
       labels:
         app.kubernetes.io/name: teslamate
-        app.kubernetes.io/instance: medium-place-teslamate
         app.kubernetes.io/version: 1.26.1
+        app.kubernetes.io/part-of: teslamate
     spec:
       serviceAccountName: teslamate
       containers:
@@ -38,15 +38,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: teslamate
+      app.kubernetes.io/name: teslamate-grafana
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: teslamate
       labels:
-        app.kubernetes.io/name: teslamate
-        app.kubernetes.io/instance: medium-place-teslamate
+        app.kubernetes.io/name: teslamate-grafana
         app.kubernetes.io/version: 1.26.1
         app.kubernetes.io/part-of: teslamate
     spec:
