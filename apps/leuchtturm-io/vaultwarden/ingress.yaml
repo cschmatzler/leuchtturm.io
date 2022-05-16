@@ -2,10 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: vaultwarden-ingress
-  labels:
-    app.kubernetes.io/name: vaultwarden
-    app.kubernetes.io/version: 1.24.0
-    app.kubernetes.io/part-of: vaultwarden
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt

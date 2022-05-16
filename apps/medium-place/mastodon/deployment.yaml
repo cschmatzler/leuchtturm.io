@@ -65,3 +65,32 @@ spec:
           envFrom:
             - configMapRef:
                 name: mastodon-env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mastodon-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mastodon-rediss
+  template:
+    metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: mastodon
+      labels:
+        app.kubernetes.io/name: mastodon-redis
+        app.kubernetes.io/version: 7.0.0
+        app.kubernetes.io/part-of: mastodon
+    spec:
+      serviceAccountName: mastodon
+      containers:
+        - name: mastodon-redis
+          image: redis:7.0.0
+          ports:
+            - name: redis
+              protocol: TCP
+              targetPort: 6379
+              containerPort: 6379
