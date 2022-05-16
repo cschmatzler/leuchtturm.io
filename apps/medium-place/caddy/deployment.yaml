@@ -27,11 +27,11 @@ spec:
               mountPath: /etc/caddy
           resources:
             requests:
-              cpu: 8m
-              memory: 16Mi
-            limits:
-              cpu: 16m
+              cpu: 4m
               memory: 32Mi
+            limits:
+              cpu: 8m
+              memory: 64Mi
       volumes:
         - name: caddy-config
           configMap:
