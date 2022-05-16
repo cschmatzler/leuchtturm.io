@@ -33,6 +33,10 @@ spec:
             - bundle
             - exec 
             - rails s -p 3000
+          ports:
+            - name: mastodon-web
+              protocol: TCP
+              port: 3000
           envFrom:
             - configMapRef:
                 name: mastodon-env
