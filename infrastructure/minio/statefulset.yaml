@@ -25,7 +25,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: minio
-          image: docker.io/bitnami/minio:2022.5.8-debian-10-r0
+          image: bitnami/minio:2022.5.8-debian-10-r0
           securityContext:
             runAsNonRoot: true
             runAsUser: 1001

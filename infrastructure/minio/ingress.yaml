@@ -28,7 +28,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minio
+  name: minio-console
   labels:
     app.kubernetes.io/name: minio
   annotations:
