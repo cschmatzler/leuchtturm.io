@@ -36,7 +36,8 @@ spec:
           ports:
             - name: mastodon-web
               protocol: TCP
-              port: 3000
+              targetPort: 3000
+              containerPort: 3000
           envFrom:
             - configMapRef:
                 name: mastodon-env
