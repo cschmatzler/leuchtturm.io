@@ -22,7 +22,7 @@ spec:
           command: 
             - bundle
             - exec
-            - rails:migrate
+            - rails db:migrate
           envFrom:
             - configMapRef:
                 name: mastodon-env
