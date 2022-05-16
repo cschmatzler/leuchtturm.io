@@ -22,6 +22,7 @@ template {
 template {
   contents = <<EOH
     server_name: medium.place
+    public_baseurl: https://synapse.medium.place
 
     listeners:
       - port: 8008
