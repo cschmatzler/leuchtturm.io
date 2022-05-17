@@ -69,6 +69,7 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: data
+        namespace: infrastructure
         labels:
           app.kubernetes.io/name: minio
       spec:
