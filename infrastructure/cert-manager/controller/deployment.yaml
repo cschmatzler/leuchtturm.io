@@ -23,7 +23,7 @@ spec:
     spec:
       serviceAccountName: cert-manager-controller
       containers:
-        - name: cert-manager
+        - name: controller
           image: bitnami/cert-manager:1.8.0-debian-10-r21
           args:
             - --v=2
@@ -41,8 +41,8 @@ spec:
               containerPort: 9402
           resources:
             requests:
-              cpu: 4m
+              cpu: 32m
               memory: 64Mi
             limits:
-              cpu: 8m
+              cpu: 64m
               memory: 128Mi

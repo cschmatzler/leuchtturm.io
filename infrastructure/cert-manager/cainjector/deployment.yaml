@@ -28,3 +28,10 @@ spec:
           args:
             - --v=2
             - --leader-election-namespace=kube-system
+          resources:
+            requests:
+              cpu: 8m
+              memory: 128Mi
+            limits:
+              cpu: 32m
+              memory: 192Mi

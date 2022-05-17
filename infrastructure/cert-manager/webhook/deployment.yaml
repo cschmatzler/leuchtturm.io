@@ -23,7 +23,7 @@ spec:
     spec:
       serviceAccountName: cert-manager-webhook
       containers:
-        - name: cert-manager-webhook
+        - name: webhook
           image: bitnami/cert-manager-webhook:1.8.0-debian-10-r21
           args:
             - --v=2
@@ -42,10 +42,10 @@ spec:
               containerPort: 10250
           resources:
             requests:
-              cpu: 8m
+              cpu: 2m
               memory: 24Mi
             limits:
-              cpu: 32m
+              cpu: 8m
               memory: 64Mi
           livenessProbe:
             httpGet:
