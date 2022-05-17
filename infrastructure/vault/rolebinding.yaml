@@ -2,6 +2,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: vault
+  namespace: infrastructure
 roleRef:
   kind: Role
   name: vault
@@ -9,3 +10,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: vault
+    namespace: infrastructure

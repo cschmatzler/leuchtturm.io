@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cert-manager-controller-metrics
+  namespace: infrastructure
   labels:
     app.kubernetes.io/name: cert-manager
     app.kubernetes.io/component: controller

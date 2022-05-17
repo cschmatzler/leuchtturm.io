@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cert-manager-controller
+  namespace: infrastructure
   labels:
     app.kubernetes.io/name: cert-manager
     app.kubernetes.io/component: controller

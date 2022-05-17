@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: postgresql-backup
+  namespace: infrastructure
 spec:
   schedule: "0 2 * * *"
   jobTemplate:
