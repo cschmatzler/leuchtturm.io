@@ -7,4 +7,5 @@ resources:
   - ingress.yaml
 configMapGenerator:
   - name: minio-env
+    namespace: infrastructure
     env: configuration/minio.env
