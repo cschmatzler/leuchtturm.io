@@ -7,6 +7,12 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+generatorOptions:
+  label:
+    app.kubernetes.io/name: mastodon
+    app.kubernetes.io/part-of: mastodon
+    app.kubernetes.io/component: mastodon
+    app.kubernetes.io/version: 3.5.2
 configMapGenerator:
   - name: mastodon-env
     env: configuration/mastodon.env
