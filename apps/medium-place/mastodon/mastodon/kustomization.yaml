@@ -14,5 +14,5 @@ generatorOptions:
     app.kubernetes.io/component: mastodon
     app.kubernetes.io/version: 3.5.2
 configMapGenerator:
-  - name: mastodon-env
+  - name: mastodon-mastodon-env
     env: configuration/mastodon.env
