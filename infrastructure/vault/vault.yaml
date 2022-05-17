@@ -155,8 +155,10 @@ spec:
               - mail
             ttl: 1h
           - name: mastodon
-            bound_service_account_names: ["mastodon"]
-            bound_service_account_namespaces: ["medium-place"]
+            bound_service_account_names:
+              - mastodon-mastodon
+            bound_service_account_namespaces:
+              - medium-place
             policies:
               - mastodon
               - mail
