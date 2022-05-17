@@ -8,7 +8,7 @@ resources:
   - service.yaml
   - ingress.yaml
 generatorOptions:
-  label:
+  labels:
     app.kubernetes.io/name: mastodon
     app.kubernetes.io/part-of: mastodon
     app.kubernetes.io/component: mastodon
