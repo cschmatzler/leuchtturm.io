@@ -4,3 +4,4 @@ metadata:
   name: mastodon-redis
 resources:
   - deployment.yaml
+  - service.yaml
