@@ -10,8 +10,9 @@ resources:
 generatorOptions:
   labels:
     app.kubernetes.io/name: vaultwarden
-    app.kubernetes.io/version: 1.24.0
     app.kubernetes.io/part-of: vaultwarden
+    app.kubernetes.io/component: vaultwarden
+    app.kubernetes.io/version: 1.24.0
 configMapGenerator:
   - name: vaultwarden-env
     env: configuration/vaultwarden.env

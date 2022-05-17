@@ -2,11 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vaultwarden
+  labels:
+    app.kubernetes.io/name: vaultwarden
+    app.kubernetes.io/part-of: vaultwarden
+    app.kubernetes.io/component: vaultwarden
+    app.kubernetes.io/version: 1.24.0
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: vaultwarden
+      app.kubernetes.io/component: vaultwarden
   template:
     metadata:
       annotations:
@@ -14,9 +20,9 @@ spec:
         vault.security.banzaicloud.io/vault-role: vaultwarden
       labels:
         app.kubernetes.io/name: vaultwarden
-        app.kubernetes.io/version: 1.24.0
         app.kubernetes.io/part-of: vaultwarden
         app.kubernetes.io/component: vaultwarden
+        app.kubernetes.io/version: 1.24.0
     spec:
       serviceAccountName: vaultwarden
       containers:

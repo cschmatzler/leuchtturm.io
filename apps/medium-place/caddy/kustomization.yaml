@@ -6,6 +6,12 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+generatorOptions:
+  labels:
+    app.kubernetes.io/name: caddy
+    app.kubernetes.io/part-of: caddy
+    app.kubernetes.io/component: caddy
+    app.kubernetes.io/version: 2.5.1
 configMapGenerator:
   - name: caddy-config
     files:

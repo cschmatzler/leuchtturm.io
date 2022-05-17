@@ -1,7 +1,0 @@
-replicaCount: 2
-
-defaultBackend:
-  replicaCount: 2
-
-publishService:
-  enabled: true
