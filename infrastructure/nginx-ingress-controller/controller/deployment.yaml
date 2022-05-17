@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-ingress-controller
+  name: nginx-ingress-controller-controller
   namespace: infrastructure
   labels:
     app.kubernetes.io/name: nginx-ingress-controller
