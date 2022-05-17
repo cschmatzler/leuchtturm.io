@@ -21,6 +21,7 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: minio
+        vault.security.banzaicloud.io/vault-namespace: infrastructure
     spec:
       serviceAccountName: minio
       securityContext:
