@@ -27,7 +27,7 @@ spec:
             - --v=2
             - --cluster-resource-namespace=$(POD_NAMESPACE)
             - --leader-election-namespace=kube-system
-            - --acme-http01-solver-image=docker.io/bitnami/acmesolver:1.8.0-debian-10-r21
+            - --acme-http01-solver-image=bitnami/acmesolver:1.8.0-debian-10-r21
           securityContext:
             runAsNonRoot: true
             runAsUser: 1001
