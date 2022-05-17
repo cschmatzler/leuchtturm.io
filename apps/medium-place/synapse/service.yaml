@@ -4,12 +4,13 @@ metadata:
   name: synapse
   labels:
     app.kubernetes.io/name: synapse
-    app.kubernetes.io/version: 1.58.1
     app.kubernetes.io/part-of: synapse
     app.kubernetes.io/component: synapse
+    app.kubernetes.io/version: 1.59.0
 spec:
   selector:
     app.kubernetes.io/name: synapse
+    app.kubernetes.io/component: synapse
   ports:
     - name: http
       protocol: TCP

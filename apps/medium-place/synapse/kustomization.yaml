@@ -7,6 +7,12 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+generatorOptions:
+  labels:
+    app.kubernetes.io/name: synapse
+    app.kubernetes.io/part-of: synapse
+    app.kubernetes.io/component: synapse
+    app.kubernetes.io/version: 1.59.0
 configMapGenerator:
   - name: synapse-env
     env: configuration/synapse.env

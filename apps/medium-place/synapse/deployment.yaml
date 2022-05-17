@@ -2,11 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: synapse
+  labels:
+    app.kubernetes.io/name: synapse
+    app.kubernetes.io/part-of: synapse
+    app.kubernetes.io/component: synapse
+    app.kubernetes.io/version: 1.59.0
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: synapse
+      app.kubernetes.io/component: synapse
   template:
     metadata:
       annotations:
@@ -15,14 +21,14 @@ spec:
         vault.security.banzaicloud.io/vault-agent-configmap: synapse-config
       labels:
         app.kubernetes.io/name: synapse
-        app.kubernetes.io/version: 1.58.1
         app.kubernetes.io/part-of: synapse
         app.kubernetes.io/component: synapse
+        app.kubernetes.io/version: 1.59.0
     spec:
       serviceAccountName: synapse
       containers:
         - name: synapse
-          image: cschmatzler/synapse:v1.58.1
+          image: cschmatzler/synapse:v1.59.0
           envFrom:
             - configMapRef:
                 name: synapse-env
