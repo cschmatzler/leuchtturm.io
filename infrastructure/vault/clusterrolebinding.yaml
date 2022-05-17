@@ -9,4 +9,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: vault
-    namespace: default
+    namespace: infrastructure
