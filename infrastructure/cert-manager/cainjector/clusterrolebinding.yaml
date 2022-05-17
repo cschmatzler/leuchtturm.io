@@ -13,3 +13,4 @@ roleRef:
 subjects:
   - name: cert-manager-cainjector
     kind: ServiceAccount
+    namespace: infrastructure
