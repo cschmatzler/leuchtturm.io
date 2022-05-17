@@ -19,8 +19,6 @@ spec:
         app.kubernetes.io/component: webhook
     spec:
       serviceAccountName: cert-manager-webhook
-      securityContext:
-        fsGroup: 1001  
       containers:
         - name: cert-manager-webhook
           image: bitnami/cert-manager-webhook:1.8.0-debian-10-r21
@@ -29,10 +27,7 @@ spec:
             - --secure-port=10250
             - --dynamic-serving-ca-secret-namespace=$(POD_NAMESPACE)
             - --dynamic-serving-ca-secret-name=cert-manager-webhook-ca
-            - --dynamic-serving-dns-names=cert-manager-webhook,cert-manager-webhook.default,cert-manager-webhook.default.svc
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 1001
+            - --dynamic-serving-dns-names=cert-manager-webhook,cert-manager-webhook.infrastructure,cert-manager-webhook.infrastructure.svc
           env:
             - name: POD_NAMESPACE
               valueFrom:
@@ -46,18 +41,8 @@ spec:
                path: /livez
                scheme: HTTP
                port: 6080
-             initialDelaySeconds: 60
-             periodSeconds: 10
-             timeoutSeconds: 1
-             successThreshold: 1
-             failureThreshold: 3
           readinessProbe:
              httpGet:
                path: /healthz
                port: 6080
                scheme: HTTP
-             initialDelaySeconds: 5
-             periodSeconds: 5
-             timeoutSeconds: 1
-             successThreshold: 1
-             failureThreshold: 3

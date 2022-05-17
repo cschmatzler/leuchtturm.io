@@ -19,19 +19,9 @@ spec:
         app.kubernetes.io/component: cainjector
     spec:
       serviceAccountName: cert-manager-cainjector
-      securityContext:
-        fsGroup: 1001
       containers:
         - name: cainjector
           image: bitnami/cainjector:1.8.0-debian-10-r22
           args:
             - --v=2
             - --leader-election-namespace=kube-system
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 1001
-          env:
-            - name: POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace

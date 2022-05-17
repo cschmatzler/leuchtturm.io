@@ -19,19 +19,14 @@ spec:
         app.kubernetes.io/component: controller
     spec:
       serviceAccountName: cert-manager-controller
-      securityContext:
-        fsGroup: 1001
       containers:
         - name: cert-manager
           image: bitnami/cert-manager:1.8.0-debian-10-r21
           args:
             - --v=2
-            - --cluster-resource-namespace=$(POD_NAMESPACE)
             - --leader-election-namespace=kube-system
+            - --cluster-resource-namespace=$(POD_NAMESPACE)
             - --acme-http01-solver-image=bitnami/acmesolver:1.8.0-debian-10-r21
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 1001
           env:
             - name: POD_NAMESPACE
               valueFrom:
