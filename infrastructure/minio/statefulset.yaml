@@ -46,22 +46,12 @@ spec:
             requests: {}
           livenessProbe:
             httpGet:
-              path: /minio/health/live
               port: http
               scheme: "HTTP"
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            timeoutSeconds: 5
-            successThreshold: 1
-            failureThreshold: 5
+              path: /minio/health/live
           readinessProbe:
             tcpSocket:
               port: http
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            timeoutSeconds: 1
-            successThreshold: 1
-            failureThreshold: 5
 
   volumeClaimTemplates:
     - metadata:
