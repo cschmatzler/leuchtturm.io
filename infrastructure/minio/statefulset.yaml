@@ -11,9 +11,6 @@ spec:
       app.kubernetes.io/name: minio
   replicas: 4
   serviceName: minio-headless
-  podManagementPolicy: Parallel
-  updateStrategy:
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -21,7 +18,6 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: minio
-        vault.security.banzaicloud.io/vault-namespace: infrastructure
     spec:
       serviceAccountName: minio
       securityContext:
