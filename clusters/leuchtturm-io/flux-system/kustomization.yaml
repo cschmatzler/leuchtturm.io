@@ -80,8 +80,8 @@ patchesStrategicMerge:
           - name: manager
             resources:
               requests:
-                cpu: 16m
-                memory: 64Mi
+                cpu: 8m
+                memory: 192Mi
               limits:
                 cpu: 192m
                 memory: 768Mi
