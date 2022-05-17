@@ -2,6 +2,10 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
+    app.kubernetes.io/component: letsencrypt-issuer
 spec:
   acme:
     email: admin@leuchtturm.io
@@ -17,6 +21,10 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
+    app.kubernetes.io/component: letsencrypt-staging-issuer
 spec:
   acme:
     email: admin@leuchtturm.io

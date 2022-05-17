@@ -4,7 +4,9 @@ metadata:
   name: cert-manager-controller-controller-issuers
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -20,7 +22,9 @@ metadata:
   name: cert-manager-controller-controller-clusterissuers
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -36,7 +40,9 @@ metadata:
   name: cert-manager-controller-controller-certificates
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -52,7 +58,9 @@ metadata:
   name: cert-manager-controller-controller-orders
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -68,7 +76,9 @@ metadata:
   name: cert-manager-controller-controller-challenges
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -84,7 +94,9 @@ metadata:
   name: cert-manager-controller-controller-ingress-shim
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -100,7 +112,9 @@ metadata:
   name: cert-manager-controller-controller-approve
   labels:
     app.kubernetes.io/name: cert-manager
-    app.kubernetes.io/component: cert-manager
+    app.kubernetes.io/part-of: cert-manager
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/version: 1.8.0
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

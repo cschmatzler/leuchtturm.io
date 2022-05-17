@@ -5,23 +5,43 @@ metadata:
   namespace: kube-system
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: cainjector
+    app.kubernetes.io/version: 1.8.0
 rules:
-  - apiGroups: [""]
-    resources: ["configmaps"]
+  - apiGroups:
+      - ''
+    resources:
+      - configmaps
     resourceNames:
-      [
-        "cert-manager-cainjector-leader-election",
-        "cert-manager-cainjector-leader-election-core",
-      ]
-    verbs: ["get", "update", "patch"]
-  - apiGroups: [""]
-    resources: ["configmaps"]
-    verbs: ["create"]
-  - apiGroups: ["coordination.k8s.io"]
-    resources: ["leases"]
-    resourceNames: ["cert-manager-controller"]
-    verbs: ["get", "update", "patch"]
-  - apiGroups: ["coordination.k8s.io"]
-    resources: ["leases"]
-    verbs: ["create", "get", "update"]
+      - cert-manager-cainjector-leader-election
+      - cert-manager-cainjector-leader-election-core
+    verbs:
+      - get
+      - update
+      - patch
+  - apiGroups:
+      - ''
+    resources:
+      - configmaps
+    verbs:
+      - create
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    resourceNames:
+      - cert-manager-controller
+    verbs:
+      - get
+      - update
+      - patch
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - create
+      - get
+      - update
+

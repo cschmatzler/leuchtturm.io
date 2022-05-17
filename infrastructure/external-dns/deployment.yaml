@@ -5,9 +5,9 @@ metadata:
   namespace: infrastructure
   labels: 
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/version: 0.11.1
     app.kubernetes.io/part-of: external-dns
     app.kubernetes.io/component: external-dns
+    app.kubernetes.io/version: 0.11.1
 spec:
   replicas: 1
   selector:
@@ -18,9 +18,9 @@ spec:
     metadata:
       labels: 
         app.kubernetes.io/name: external-dns
-        app.kubernetes.io/version: 0.11.1
         app.kubernetes.io/part-of: external-dns
         app.kubernetes.io/component: external-dns
+        app.kubernetes.io/version: 0.11.1
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: external-dns

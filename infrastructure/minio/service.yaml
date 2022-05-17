@@ -5,6 +5,9 @@ metadata:
   namespace: infrastructure
   labels:
     app.kubernetes.io/name: minio
+    app.kubernetes.io/part-of: minio
+    app.kubernetes.io/component: minio
+    app.kubernetes.io/version: 2022.5.8
 spec:
   type: ClusterIP
   selector:

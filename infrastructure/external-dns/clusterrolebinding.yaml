@@ -5,9 +5,9 @@ metadata:
   namespace: infrastructure
   labels: 
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/version: 0.11.1
     app.kubernetes.io/part-of: external-dns
     app.kubernetes.io/component: external-dns
+    app.kubernetes.io/version: 0.11.1
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
