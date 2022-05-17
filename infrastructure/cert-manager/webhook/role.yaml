@@ -7,11 +7,11 @@ metadata:
     app.kubernetes.io/name: cert-manager
     app.kubernetes.io/component: webhook
 rules:
-- apiGroups: [""]
-  resources: ["secrets"]
-  resourceNames:
-  - 'cert-manager-webhook-ca'
-  verbs: ["get", "list", "watch", "update"]
-- apiGroups: [""]
-  resources: ["secrets"]
-  verbs: ["create"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames:
+      - "cert-manager-webhook-ca"
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["create"]

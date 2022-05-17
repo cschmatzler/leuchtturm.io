@@ -131,7 +131,7 @@ spec:
             policies: grafana
             ttl: 1h
           - name: minio
-            bound_service_account_names: 
+            bound_service_account_names:
               - minio
             bound_service_account_namespaces:
               - infrastructure

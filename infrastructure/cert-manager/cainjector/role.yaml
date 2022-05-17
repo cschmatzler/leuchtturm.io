@@ -9,15 +9,19 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["configmaps"]
-    resourceNames: ["cert-manager-cainjector-leader-election", "cert-manager-cainjector-leader-election-core"]
+    resourceNames:
+      [
+        "cert-manager-cainjector-leader-election",
+        "cert-manager-cainjector-leader-election-core",
+      ]
     verbs: ["get", "update", "patch"]
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["create"]
-  - apiGroups: [ "coordination.k8s.io" ]
-    resources: [ "leases" ]
-    resourceNames: [ "cert-manager-controller" ]
-    verbs: [ "get", "update", "patch" ]
-  - apiGroups: [ "coordination.k8s.io" ]
-    resources: [ "leases" ]
-    verbs: [ "create", "get", "update" ]
+  - apiGroups: ["coordination.k8s.io"]
+    resources: ["leases"]
+    resourceNames: ["cert-manager-controller"]
+    verbs: ["get", "update", "patch"]
+  - apiGroups: ["coordination.k8s.io"]
+    resources: ["leases"]
+    verbs: ["create", "get", "update"]

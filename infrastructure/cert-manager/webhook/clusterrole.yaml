@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/name: cert-manager
     app.kubernetes.io/component: webhook
 rules:
-- apiGroups: ["authorization.k8s.io"]
-  resources: ["subjectaccessreviews"]
-  verbs: ["create"]
+  - apiGroups: ["authorization.k8s.io"]
+    resources: ["subjectaccessreviews"]
+    verbs: ["create"]

@@ -17,7 +17,8 @@ rules:
     resources: ["events"]
     verbs: ["get", "create", "update", "patch"]
   - apiGroups: ["admissionregistration.k8s.io"]
-    resources: ["validatingwebhookconfigurations", "mutatingwebhookconfigurations"]
+    resources:
+      ["validatingwebhookconfigurations", "mutatingwebhookconfigurations"]
     verbs: ["get", "list", "watch", "update"]
   - apiGroups: ["apiregistration.k8s.io"]
     resources: ["apiservices"]

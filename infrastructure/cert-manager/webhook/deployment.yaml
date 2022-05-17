@@ -5,17 +5,20 @@ metadata:
   namespace: infrastructure
   labels:
     app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/part-of: cert-manager
     app.kubernetes.io/component: webhook
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: cert-manager
+      app.kubernetes.io/part-of: cert-manager
       app.kubernetes.io/component: webhook
   replicas: 1
   template:
     metadata:
       labels:
         app.kubernetes.io/name: cert-manager
+        app.kubernetes.io/part-of: cert-manager
         app.kubernetes.io/component: webhook
     spec:
       serviceAccountName: cert-manager-webhook
@@ -35,14 +38,23 @@ spec:
                   fieldPath: metadata.namespace
           ports:
             - name: https
+              protocol: TCP
               containerPort: 10250
+          resources:
+            requests:
+              cpu: 8m
+              memory: 24Mi
+            limits:
+              cpu: 32m
+              memory: 64Mi
           livenessProbe:
-             httpGet:
-               path: /livez
-               scheme: HTTP
-               port: 6080
+            httpGet:
+              scheme: HTTP
+              path: /livez
+              port: 6080
           readinessProbe:
-             httpGet:
-               path: /healthz
-               port: 6080
-               scheme: HTTP
+            httpGet:
+              scheme: HTTP
+              path: /healthz
+              port: 6080
+               
