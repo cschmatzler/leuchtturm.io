@@ -4,6 +4,7 @@ resources:
   - helmrelease.yaml
 configMapGenerator:
   - name: external-dns-values
+    namespace: infrastructure
     files:
       - values.yaml=values.yaml
 configurations:

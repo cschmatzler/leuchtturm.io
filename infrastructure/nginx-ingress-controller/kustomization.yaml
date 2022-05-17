@@ -5,6 +5,7 @@ resources:
   - helmrelease.yaml
 configMapGenerator:
   - name: nginx-ingress-controller-values
+    namespace: infrastructure
     files:
       - values.yaml=values.yaml
 configurations:
