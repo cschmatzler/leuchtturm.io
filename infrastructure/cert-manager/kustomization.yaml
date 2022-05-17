@@ -4,5 +4,7 @@ metadata:
   name: cert-manager
 resources:
   - customresourcedefinition.yaml
-  - helmrelease.yaml
+  - cainjector
+  - controller
+  - webhook
   - clusterissuer.yaml
