@@ -50,14 +50,6 @@ spec:
             limits: 
               cpu: 16m
               memory: 768Mi
-          livenessProbe:
-            httpGet:
-              port: http
-              scheme: "HTTP"
-              path: /minio/health/live
-          readinessProbe:
-            tcpSocket:
-              port: http
   volumeClaimTemplates:
     - metadata:
         name: data
