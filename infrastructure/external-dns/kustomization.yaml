@@ -8,4 +8,5 @@ resources:
   - service.yaml
 configMapGenerator:
   - name: external-dns-env
+    namespace: infrastructure
     env: configuration/external-dns.env
