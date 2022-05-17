@@ -41,10 +41,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - s3-console.infrastructure.leuchtturm.io
-      secretName: s3-console.infrastructure.leuchtturm.io-tls
+        - console.s3.infrastructure.leuchtturm.io
+      secretName: console.s3.infrastructure.leuchtturm.io-tls
   rules:
-    - host: s3-console.infrastructure.leuchtturm.io
+    - host: console.s3.infrastructure.leuchtturm.io
       http:
         paths:
           - pathType: Prefix
