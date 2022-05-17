@@ -36,6 +36,15 @@ spec:
             - --publish-service=infrastructure/nginx-ingress-controller-controller
             - --election-id=ingress-controller-leader
             - --controller-class=k8s.io/ingress-nginx
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
           ports:
             - name: http
               protocol: TCP
