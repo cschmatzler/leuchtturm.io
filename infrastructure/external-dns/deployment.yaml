@@ -46,6 +46,13 @@ spec:
             - name: http
               protocol: TCP
               containerPort: 7979
+          resources:
+            requests:
+              cpu: 4m
+              memory: 64Mi
+            limits:
+              cpu: 8m
+              memory: 128Mi
           livenessProbe:
             httpGet:
               path: /healthz
@@ -54,6 +61,3 @@ spec:
             httpGet:
               path: /healthz
               port: http
-          resources:
-            limits: {}
-            requests: {}

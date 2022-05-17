@@ -44,8 +44,12 @@ spec:
               protocol: TCP
               containerPort: 9001
           resources:
-            limits: {}
-            requests: {}
+            requests: 
+              cpu: 8m
+              memory: 512Mi
+            limits: 
+              cpu: 16m
+              memory: 768Mi
           livenessProbe:
             httpGet:
               port: http
