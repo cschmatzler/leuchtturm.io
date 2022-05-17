@@ -111,10 +111,6 @@ spec:
         rules: path "secret/data/medium-place/teslamate/*" {
           capabilities = ["read", "list"]
           }
-      - name: wikijs
-        rules: path "secret/data/medium-place/wikijs/*" {
-          capabilities = ["read", "list"]
-          }
 
     auth:
       - type: kubernetes
@@ -135,8 +131,10 @@ spec:
             policies: grafana
             ttl: 1h
           - name: minio
-            bound_service_account_names: ["minio"]
-            bound_service_account_namespaces: ["infrastructure"]
+            bound_service_account_names: 
+              - minio
+            bound_service_account_namespaces:
+              - infrastructure
             policies: minio
             ttl: 1h
           - name: postgresql
@@ -175,14 +173,9 @@ spec:
             bound_service_account_namespaces: ["medium-place"]
             policies: teslamate
             ttl: 1h
-          - name: wikijs
-            bound_service_account_names: ["wikijs"]
-            bound_service_account_namespaces: ["medium-place"]
-            policies: wikijs
-            ttl: 1h
       - type: github
         options:
-          listing_visibility: "unauth"
+          listing_visibility: unauth
         config:
           organization: leuchtturm-io
         map:
