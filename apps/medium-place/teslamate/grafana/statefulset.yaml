@@ -59,9 +59,11 @@ spec:
           app.kubernetes.io/part-of: teslamate
           app.kubernetes.io/component: server
       spec:
+        storageClassName: scw-bssd-retain
         accessModes:
           - ReadWriteOnce
+        volumeMode: Filesystem
         resources:
           requests:
             storage: 1Gi
-        storageClassName: scw-bssd-retain
+        

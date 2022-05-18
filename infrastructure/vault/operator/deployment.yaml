@@ -57,16 +57,16 @@ spec:
               memory: 256Mi
           livenessProbe:
             httpGet:
+              port: http
               path: /
-              port: 8080
             initialDelaySeconds: 60
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
           readinessProbe:
             httpGet:
+              port: http
               path: /ready
-              port: 8080
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
