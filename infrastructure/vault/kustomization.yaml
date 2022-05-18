@@ -4,15 +4,4 @@ resources:
   - customresourcedefinition.yaml
   - vault
   - operator
-  - helmrelease.yaml
-configMapGenerator:
-  - name: vault-operator-values
-    namespace: infrastructure
-    files:
-      - values.yaml=vault-operator-values.yaml
-  - name: vault-secrets-webhook-values
-    namespace: infrastructure
-    files:
-      - values.yaml=vault-secrets-webhook-values.yaml
-configurations:
-  - kustomizeconfig.yaml
+  - secrets-webhook
