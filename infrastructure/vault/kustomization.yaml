@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - customresourcedefinition.yaml
   - vault
+  - operator
   - helmrelease.yaml
 configMapGenerator:
   - name: vault-operator-values

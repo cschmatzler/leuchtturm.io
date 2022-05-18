@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-operator
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/part-of: vault
+    app.kubernetes.io/component: operator
+    app.kubernetes.io/version: 1.15.2
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/component: operator
+  ports:
+  - name: http
+    protocol: TCP 
+    port: 80
+    targetPort: 8080  
+  - name: http-metrics
+    protocol: TCP
+    port: 8383
+    targetPort: 8383
+    
+    
+  
