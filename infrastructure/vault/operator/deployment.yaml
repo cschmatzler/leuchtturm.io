@@ -41,12 +41,12 @@ spec:
             configMapRef:
               - name: vault-operator-env
           ports:
-          - name: http
-            protocol: TCP
-            containerPort: 8080
-          - name: http-metrics
-            protocol: TCP
-            containerPort: 8383
+            - name: http
+              protocol: TCP
+              containerPort: 8080
+            - name: http-metrics
+              protocol: TCP
+              containerPort: 8383
           resources:
             requests:
               cpu: 25m
@@ -69,6 +69,3 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-
-
-      

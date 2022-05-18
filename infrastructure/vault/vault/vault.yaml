@@ -190,7 +190,7 @@ spec:
         description: General secrets.
         options:
           version: 2
-          
+
   resources:
     vault:
       requests:
@@ -199,5 +199,3 @@ spec:
       limits:
         cpu: 100m
         memory: 512Mi
-
-
