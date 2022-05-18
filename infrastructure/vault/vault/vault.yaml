@@ -62,86 +62,86 @@ spec:
         cpu: 100m
         memory: 512Mi
 
-    auth:
-      - type: kubernetes
-        roles:
-          - name: default
-            bound_service_account_names:
-              - default
-              - vault-secrets-webhook
-            bound_service_account_namespaces:
-              - "*"
-            policies: allow_secrets
-            ttl: 1h
-          # infrastructure
-          # --------------
-          - name: external-dns
-            bound_service_account_names:
-              - external-dns
-            bound_service_account_namespaces:
-              - infrastructure
-            policies: cloudflare
-            ttl: 1h
-          - name: minio
-            bound_service_account_names:
-              - minio
-            bound_service_account_namespaces:
-              - infrastructure
-            policies: minio
-            ttl: 1h
-          - name: postgresql
-            bound_service_account_names:
-              - postgresql
-            bound_service_account_namespaces:
-              - infrastructure
-            policies: postgresql
-            ttl: 1h
-          # leuchtturm-io
-          # -------------
-          - name: vaultwarden
-            bound_service_account_names:
-              - vaultwarden
-            bound_service_account_namespaces:
-              - leuchtturm-io
-            policies:
-              - vaultwarden
-              - mail
-            ttl: 1h
-          # medium-place
-          # ------------
-          - name: mastodon
-            bound_service_account_names:
-              - mastodon
-            bound_service_account_namespaces:
-              - medium-place
-            policies:
-              - mastodon
-              - mail
-            ttl: 1h
-          - name: synapse
-            bound_service_account_names:
-              - synapse
-            bound_service_account_namespaces:
-              - medium-place
-            policies:
-              - synapse
-              - mail
-            ttl: 1h
-          - name: teslamate
-            bound_service_account_names:
-              - teslamate
-            bound_service_account_namespaces:
-              - medium-place
-            policies: teslamate
-            ttl: 1h
-      - type: github
-        options:
-          listing_visibility: unauth
-        config:
-          organization: leuchtturm-io
-        map:
-          users:
-            cschmatzler: allow_all
+  auth:
+    - type: kubernetes
+      roles:
+        - name: default
+          bound_service_account_names:
+            - default
+            - vault-secrets-webhook
+          bound_service_account_namespaces:
+            - "*"
+          policies: allow_secrets
+          ttl: 1h
+        # infrastructure
+        # --------------
+        - name: external-dns
+          bound_service_account_names:
+            - external-dns
+          bound_service_account_namespaces:
+            - infrastructure
+          policies: cloudflare
+          ttl: 1h
+        - name: minio
+          bound_service_account_names:
+            - minio
+          bound_service_account_namespaces:
+            - infrastructure
+          policies: minio
+          ttl: 1h
+        - name: postgresql
+          bound_service_account_names:
+            - postgresql
+          bound_service_account_namespaces:
+            - infrastructure
+          policies: postgresql
+          ttl: 1h
+        # leuchtturm-io
+        # -------------
+        - name: vaultwarden
+          bound_service_account_names:
+            - vaultwarden
+          bound_service_account_namespaces:
+            - leuchtturm-io
+          policies:
+            - vaultwarden
+            - mail
+          ttl: 1h
+        # medium-place
+        # ------------
+        - name: mastodon
+          bound_service_account_names:
+            - mastodon
+          bound_service_account_namespaces:
+            - medium-place
+          policies:
+            - mastodon
+            - mail
+          ttl: 1h
+        - name: synapse
+          bound_service_account_names:
+            - synapse
+          bound_service_account_namespaces:
+            - medium-place
+          policies:
+            - synapse
+            - mail
+          ttl: 1h
+        - name: teslamate
+          bound_service_account_names:
+            - teslamate
+          bound_service_account_namespaces:
+            - medium-place
+          policies: teslamate
+          ttl: 1h
+    - type: github
+      options:
+        listing_visibility: unauth
+      config:
+        organization: leuchtturm-io
+      map:
+        users:
+          cschmatzler: allow_all
 
   externalConfig:
     policies:
