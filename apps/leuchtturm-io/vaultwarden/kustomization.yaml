@@ -13,5 +13,5 @@ generatorOptions:
     app.kubernetes.io/version: 1.24.0
 configMapGenerator:
   - name: vaultwarden-env
-    namespace: medium-place
+    namespace: leuchtturm-io
     env: configuration/vaultwarden.env
