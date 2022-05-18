@@ -14,11 +14,11 @@ http://medium.place {
   # Synapse
   handle /.well-known/matrix/server {
     import matrix-well-known-header
-    respond `{"m.server":"synapse.medium.place:443"}`
+    respond `{ "m.server": "synapse.medium.place:443" }`
   }
 
   handle /.well-known/matrix/client {
     import matrix-well-known-header
-    respond `{"m.homeserver":{"base_url":"https://synapse.medium.place"}}`
+    respond `{ "m.homeserver": { "base_url": "https://synapse.medium.place" }}`
   }
 }
