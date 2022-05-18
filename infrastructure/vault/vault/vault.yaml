@@ -53,6 +53,137 @@ spec:
     cluster_addr: https://${.Env.POD_NAME}:8201
     ui: true
 
+    auth:
+      - type: kubernetes
+        roles:
+          - name: default
+            bound_service_account_names:
+              - default
+              - vault-secrets-webhook
+            bound_service_account_namespaces:
+              - "*"
+            policies: allow_secrets
+            ttl: 1h
+          # infrastructure
+          # --------------
+          - name: external-dns
+            bound_service_account_names:
+              - external-dns
+            bound_service_account_namespaces:
+              - infrastructure
+            policies: cloudflare
+            ttl: 1h
+          - name: minio
+            bound_service_account_names:
+              - minio
+            bound_service_account_namespaces:
+              - infrastructure
+            policies: minio
+            ttl: 1h
+          - name: postgresql
+            bound_service_account_names:
+              - postgresql
+            bound_service_account_namespaces:
+              - infrastructure
+            policies: postgresql
+            ttl: 1h
+          # leuchtturm-io
+          # -------------
+          - name: vaultwarden
+            bound_service_account_names:
+              - vaultwarden
+            bound_service_account_namespaces:
+              - leuchtturm-io
+            policies:
+              - vaultwarden
+              - mail
+            ttl: 1h
+          # medium-place
+          # ------------
+          - name: mastodon
+            bound_service_account_names:
+              - mastodon
+            bound_service_account_namespaces:
+              - medium-place
+            policies:
+              - mastodon
+              - mail
+            ttl: 1h
+          - name: synapse
+            bound_service_account_names:
+              - synapse
+            bound_service_account_namespaces:
+              - medium-place
+            policies:
+              - synapse
+              - mail
+            ttl: 1h
+          - name: teslamate
+            bound_service_account_names:
+              - teslamate
+            bound_service_account_namespaces:
+              - medium-place
+            policies: teslamate
+            ttl: 1h
+      - type: github
+        options:
+          listing_visibility: unauth
+        config:
+          organization: leuchtturm-io
+        map:
+          users:
+            cschmatzler: allow_all
+
+    externalConfig:
+      policies:
+        - name: allow_all
+          rules: path "*" {
+            capabilities = ["create", "read", "update", "delete", "list"]
+            }
+        - name: cloudflare
+          rules: path "secret/data/external/cloudflare" {
+            capabilities = ["read", "list"]
+            }
+        - name: mail
+          rules: path "secret/data/external/mail" {
+            capabilities = ["read", "list"]
+            }
+        - name: grafana
+          rules: path "secret/data/infrastructure/grafana/*" {
+            capabilities = ["read", "list"]
+            }
+        - name: minio
+          rules: path "secret/data/infrastructure/minio/*" {
+            capabilities = ["read", "list"]
+            }
+        - name: postgresql
+          rules: path "secret/data/infrastructure/postgresql/*" {
+            capabilities = ["read", "list"]
+            }
+            path "secret/data/+/+/database" {
+            capabilities = ["read", "list"]
+            }
+        - name: redis
+          rules: path "secret/data/infrastructure/redis/*" {
+            capabilities = ["read", "list"]
+            }
+        - name: vaultwarden
+          rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
+            capabilities = ["read", "list"]
+            }
+        - name: mastodon
+          rules: path "secret/data/medium-place/mastodon/*" {
+            capabilities = ["read", "list"]
+            }
+        - name: synapse
+          rules: path "secret/data/medium-place/synapse/*" {
+            capabilities = ["read", "list"]
+            }
+        - name: teslamate
+          rules: path "secret/data/medium-place/teslamate/*" {
+            capabilities = ["read", "list"]
+            }
+
   resources:
     vault:
       requests:
@@ -61,137 +192,6 @@ spec:
       limits:
         cpu: 100m
         memory: 512Mi
-
-  auth:
-    - type: kubernetes
-      roles:
-        - name: default
-          bound_service_account_names:
-            - default
-            - vault-secrets-webhook
-          bound_service_account_namespaces:
-            - "*"
-          policies: allow_secrets
-          ttl: 1h
-        # infrastructure
-        # --------------
-        - name: external-dns
-          bound_service_account_names:
-            - external-dns
-          bound_service_account_namespaces:
-            - infrastructure
-          policies: cloudflare
-          ttl: 1h
-        - name: minio
-          bound_service_account_names:
-            - minio
-          bound_service_account_namespaces:
-            - infrastructure
-          policies: minio
-          ttl: 1h
-        - name: postgresql
-          bound_service_account_names:
-            - postgresql
-          bound_service_account_namespaces:
-            - infrastructure
-          policies: postgresql
-          ttl: 1h
-        # leuchtturm-io
-        # -------------
-        - name: vaultwarden
-          bound_service_account_names:
-            - vaultwarden
-          bound_service_account_namespaces:
-            - leuchtturm-io
-          policies:
-            - vaultwarden
-            - mail
-          ttl: 1h
-        # medium-place
-        # ------------
-        - name: mastodon
-          bound_service_account_names:
-            - mastodon
-          bound_service_account_namespaces:
-            - medium-place
-          policies:
-            - mastodon
-            - mail
-          ttl: 1h
-        - name: synapse
-          bound_service_account_names:
-            - synapse
-          bound_service_account_namespaces:
-            - medium-place
-          policies:
-            - synapse
-            - mail
-          ttl: 1h
-        - name: teslamate
-          bound_service_account_names:
-            - teslamate
-          bound_service_account_namespaces:
-            - medium-place
-          policies: teslamate
-          ttl: 1h
-    - type: github
-      options:
-        listing_visibility: unauth
-      config:
-        organization: leuchtturm-io
-      map:
-        users:
-          cschmatzler: allow_all
-
-  externalConfig:
-    policies:
-      - name: allow_all
-        rules: path "*" {
-          capabilities = ["create", "read", "update", "delete", "list"]
-          }
-      - name: cloudflare
-        rules: path "secret/data/external/cloudflare" {
-          capabilities = ["read", "list"]
-          }
-      - name: mail
-        rules: path "secret/data/external/mail" {
-          capabilities = ["read", "list"]
-          }
-      - name: grafana
-        rules: path "secret/data/infrastructure/grafana/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: minio
-        rules: path "secret/data/infrastructure/minio/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: postgresql
-        rules: path "secret/data/infrastructure/postgresql/*" {
-          capabilities = ["read", "list"]
-          }
-          path "secret/data/+/+/database" {
-          capabilities = ["read", "list"]
-          }
-      - name: redis
-        rules: path "secret/data/infrastructure/redis/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: vaultwarden
-        rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: mastodon
-        rules: path "secret/data/medium-place/mastodon/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: synapse
-        rules: path "secret/data/medium-place/synapse/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: teslamate
-        rules: path "secret/data/medium-place/teslamate/*" {
-          capabilities = ["read", "list"]
-          }
 
     secrets:
       - path: secret
