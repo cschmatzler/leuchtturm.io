@@ -118,6 +118,7 @@ spec:
             policies:
               - synapse
               - mail
+              - s3
             ttl: 1h
           - name: teslamate
             bound_service_account_names:
@@ -146,6 +147,10 @@ spec:
           }
       - name: mail
         rules: path "secret/data/external/mail" {
+          capabilities = ["read", "list"]
+          }
+      - name: s3
+        rules: path "secret/data/external/s3" {
           capabilities = ["read", "list"]
           }
       - name: grafana
