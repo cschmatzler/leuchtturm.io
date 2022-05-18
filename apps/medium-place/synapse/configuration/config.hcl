@@ -60,12 +60,14 @@ template {
         store_remote: true
         store_synchronous: true
         config:
-          {{- with secret "secret/medium-place/synapse/s3" }}
-          bucket: {{ .Data.data.bucket }}
-          region_name: {{ .Data.data.region }}
+          {{- with secret "secret/external/s3" }}
           endpoint_url: {{ .Data.data.endpoint }}
+          region_name: {{ .Data.data.region }}
           access_key_id: {{ .Data.data.access_key }}
           secret_access_key: {{ .Data.data.secret_key }}
+          {{ end }}
+          {{- with secret "secret/medium-place/synapse/s3" }}
+          bucket: {{ .Data.data.bucket }}
           {{ end }}
 
     {{- with secret "secret/medium-place/synapse/secret" }}
