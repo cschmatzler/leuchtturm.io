@@ -109,6 +109,7 @@ spec:
             policies:
               - mastodon
               - mail
+              - s3
             ttl: 1h
           - name: synapse
             bound_service_account_names:
