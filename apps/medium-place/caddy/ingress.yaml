@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: caddy
     app.kubernetes.io/part-of: caddy
-    app.kubernetes.io/component: caddy
+    app.kubernetes.io/component: server
     app.kubernetes.io/version: 2.5.1
   annotations:
     nginx.ingress.kubernetes.io/limit-rpm: 100

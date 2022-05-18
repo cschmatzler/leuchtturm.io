@@ -6,12 +6,12 @@ metadata:
   labels:
     app.kubernetes.io/name: mastodon
     app.kubernetes.io/part-of: mastodon
-    app.kubernetes.io/component: mastodon
+    app.kubernetes.io/component: server
     app.kubernetes.io/version: 3.5.2
 spec:
   selector:
     app.kubernetes.io/name: mastodon
-    app.kubernetes.io/component: mastodon
+    app.kubernetes.io/part-of: mastodon
   ports:
     - name: http
       protocol: TCP

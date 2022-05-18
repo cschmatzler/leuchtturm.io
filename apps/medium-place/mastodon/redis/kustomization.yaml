@@ -4,6 +4,12 @@ resources:
   - serviceaccount.yaml
   - deployment.yaml
   - service.yaml
+generatorOptions:
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/part-of: kv-store
+    app.kubernetes.io/component: server
+    app.kubernetes.io/version: 7.0.0
 configMapGenerator:
   - name: mastodon-redis-env
     namespace: medium-place
