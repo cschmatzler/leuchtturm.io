@@ -30,10 +30,10 @@ spec:
           image: redis:7.0.0
           command:
             - redis-server
-            - --requirepass $(REDIS_PASSWORD)
-          envFrom:
-            - configMapRef:
-                name: mastodon-redis-env
+          #  - --requirepass $(REDIS_PASSWORD)
+          #envFrom:
+          #  - configMapRef:
+          #      name: mastodon-redis-env
           ports:
             - name: redis
               protocol: TCP
