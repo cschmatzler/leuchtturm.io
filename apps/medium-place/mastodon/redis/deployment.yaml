@@ -30,7 +30,6 @@ spec:
           image: redis:7.0.0
           command:
             - redis-server
-          args:
             - --requirepass $(REDIS_PASSWORD)
           envFrom:
             - configMapRef:
