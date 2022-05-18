@@ -74,13 +74,6 @@ spec:
               - infrastructure
             policies: cloudflare
             ttl: 1h
-          - name: minio
-            bound_service_account_names:
-              - minio
-            bound_service_account_namespaces:
-              - infrastructure
-            policies: minio
-            ttl: 1h
           - name: postgresql
             bound_service_account_names:
               - postgresql
@@ -156,14 +149,8 @@ spec:
         rules: path "secret/data/external/s3" {
           capabilities = ["read", "list"]
           }
-      - name: grafana
-        rules: path "secret/data/infrastructure/grafana/*" {
-          capabilities = ["read", "list"]
-          }
-      - name: minio
-        rules: path "secret/data/infrastructure/minio/*" {
-          capabilities = ["read", "list"]
-          }
+      # infrastructure
+      # --------------
       - name: postgresql
         rules: path "secret/data/infrastructure/postgresql/*" {
           capabilities = ["read", "list"]
@@ -171,14 +158,14 @@ spec:
           path "secret/data/+/+/database" {
           capabilities = ["read", "list"]
           }
-      - name: redis
-        rules: path "secret/data/infrastructure/redis/*" {
-          capabilities = ["read", "list"]
-          }
+      # leuchtturm-io
+      # -------------
       - name: vaultwarden
         rules: path "secret/data/leuchtturm-io/vaultwarden/*" {
           capabilities = ["read", "list"]
           }
+      # medium-place
+      # ------------
       - name: mastodon
         rules: path "secret/data/medium-place/mastodon/*" {
           capabilities = ["read", "list"]
