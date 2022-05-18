@@ -16,7 +16,7 @@ spec:
 
   volumeClaimTemplates:
     - metadata:
-        name: data-vault
+        name: data
       spec:
         storageClassName: scw-bssd-retain
         accessModes:
@@ -27,7 +27,7 @@ spec:
             storage: 1Gi
 
   volumeMounts:
-    - name: data-vault
+    - name: data
       mountPath: /vault/file
 
   caNamespaces:
