@@ -23,9 +23,7 @@ spec:
         app.kubernetes.io/version: 1.26.1
     spec:
       securityContext:
-        runAsUser: 1001
-        runAsGroup: 0
-        fsGroup: 0
+        fsGroup: 1001
       containers:
         - name: elasticsearch
           image: bitnami/elasticsearch:8.2.0-debian-10-r12
