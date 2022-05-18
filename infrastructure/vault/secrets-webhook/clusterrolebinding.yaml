@@ -12,7 +12,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   name: vault-secrets-webhook
 subjects:
-- kind: ServiceAccount
-  name: vault-secrets-webhook
-  namespace: infrastructure
-  
+  - kind: ServiceAccount
+    name: vault-secrets-webhook
+    namespace: infrastructure

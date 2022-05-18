@@ -41,7 +41,7 @@ spec:
             httpGet:
               port: https
               scheme: HTTPS
-              path: /healthz  
+              path: /healthz
           resources:
             requests:
               cpu: 25m
