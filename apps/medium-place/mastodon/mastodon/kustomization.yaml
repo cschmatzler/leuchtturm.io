@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 metadata:
-  name: mastodon-mastodon
+  name: mastodon
 resources:
   - serviceaccount.yaml
   - deployment.yaml
@@ -14,5 +14,5 @@ generatorOptions:
     app.kubernetes.io/component: mastodon
     app.kubernetes.io/version: 3.5.2
 configMapGenerator:
-  - name: mastodon-mastodon-env
+  - name: mastodon-env
     env: configuration/mastodon.env

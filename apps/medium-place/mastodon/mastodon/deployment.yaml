@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mastodon-mastodon
+  name: mastodon
   labels:
     app.kubernetes.io/name: mastodon
     app.kubernetes.io/part-of: mastodon
@@ -24,9 +24,9 @@ spec:
         app.kubernetes.io/component: mastodon
         app.kubernetes.io/version: 3.5.2
     spec:
-      serviceAccountName: mastodon-mastodon
+      serviceAccountName: mastodon
       initContainers:
-        - name: mastodon-migrations
+        - name: migrations
           image: tootsuite/mastodon:v3.5.2
           command:
             - bundle
@@ -34,9 +34,9 @@ spec:
             - rails db:migrate
           envFrom:
             - configMapRef:
-                name: mastodon-mastodon-env
+                name: mastodon-env
       containers:
-        - name: mastodon-web
+        - name: web
           image: tootsuite/mastodon:v3.5.2
           command:
             - bundle
@@ -44,7 +44,7 @@ spec:
             - rails s -p 3000
           envFrom:
             - configMapRef:
-                name: mastodon-mastodon-env
+                name: mastodon-env
           ports:
             - name: http
               protocol: TCP
@@ -56,14 +56,14 @@ spec:
             limits:
               cpu: 512m
               memory: 768Mi
-        - name: mastodon-streaming
+        - name: streaming
           image: tootsuite/mastodon:v3.5.2
           command:
             - node
             - ./streaming
           envFrom:
             - configMapRef:
-                name: mastodon-mastodon-env
+                name: mastodon-env
           ports:
             - name: http-ws
               protocol: TCP
@@ -75,7 +75,7 @@ spec:
             limits:
               cpu: 192m
               memory: 192Mi
-        - name: mastodon-sidekiq
+        - name: sidekiq
           image: tootsuite/mastodon:v3.5.2
           command:
             - bundle
@@ -83,7 +83,7 @@ spec:
             - sidekiq
           envFrom:
             - configMapRef:
-                name: mastodon-mastodon-env
+                name: mastodon-env
           resources:
             requests:
               cpu: 16m
