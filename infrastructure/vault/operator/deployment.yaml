@@ -24,7 +24,7 @@ spec:
         app.kubernetes.io/component: operator
         app.kubernetes.io/version: 1.15.2
     spec:
-      serviceAccountName: operator-vault-operator
+      serviceAccountName: vault-operator
       terminationGracePeriodSeconds: 10
       containers:
         - name: operator
