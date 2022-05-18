@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - sources
-  #- vault
+  - vault
   - postgresql
   - minio
   - external-dns
