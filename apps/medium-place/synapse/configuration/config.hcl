@@ -42,7 +42,7 @@ template {
       name: psycopg2
       txn_limit: 10000
       args:
-        {{- with secret "secret/medium-place/synapse/database" }}
+        {{- with secret "secret/medium-place/synapse/postgresql" }}
         host: {{ .Data.data.host }}
         port: 5432
         user: {{ .Data.data.user }}
