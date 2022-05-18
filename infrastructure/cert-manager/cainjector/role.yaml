@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: 1.8.0
 rules:
   - apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
     resourceNames:
@@ -21,7 +21,7 @@ rules:
       - update
       - patch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - configmaps
     verbs:
@@ -44,4 +44,3 @@ rules:
       - create
       - get
       - update
-

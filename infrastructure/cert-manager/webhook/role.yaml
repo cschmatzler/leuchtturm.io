@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/version: 1.8.0
 rules:
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     resourceNames:
@@ -21,9 +21,8 @@ rules:
       - watch
       - update
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
       - create
-

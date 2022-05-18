@@ -4,15 +4,15 @@ metadata:
   name: vault
   namespace: infrastructure
 rules:
-  - apiGroups: 
+  - apiGroups:
       - ""
-    resources: 
+    resources:
       - secrets
     verbs:
-      - *
-  - apiGroups: 
+      - "*"
+  - apiGroups:
       - ""
-    resources: 
+    resources:
       - pods
     verbs:
       - get

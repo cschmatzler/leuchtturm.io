@@ -70,7 +70,7 @@ spec:
               - default
               - vault-secrets-webhook
             bound_service_account_namespaces:
-              - *
+              - "*"
             policies: allow_secrets
             ttl: 1h
           # infrastructure
@@ -90,7 +90,7 @@ spec:
             policies: minio
             ttl: 1h
           - name: postgresql
-            bound_service_account_names: 
+            bound_service_account_names:
               - postgresql
             bound_service_account_namespaces:
               - infrastructure
@@ -119,7 +119,7 @@ spec:
               - mail
             ttl: 1h
           - name: synapse
-            bound_service_account_names: 
+            bound_service_account_names:
               - synapse
             bound_service_account_namespaces:
               - medium-place

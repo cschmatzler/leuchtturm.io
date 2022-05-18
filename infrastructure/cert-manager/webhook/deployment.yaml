@@ -58,4 +58,3 @@ spec:
               scheme: HTTP
               path: /healthz
               port: 6080
-               

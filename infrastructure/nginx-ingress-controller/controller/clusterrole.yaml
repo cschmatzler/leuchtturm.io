@@ -49,13 +49,13 @@ rules:
     verbs:
       - create
       - patch
-  - apiGroups: 
+  - apiGroups:
       - networking.k8s.io
     resources:
       - ingresses/status
     verbs:
       - update
-  - apiGroups:    
+  - apiGroups:
       - networking.k8s.io
     resources:
       - ingressclasses

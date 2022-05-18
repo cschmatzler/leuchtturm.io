@@ -24,7 +24,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
@@ -36,7 +36,7 @@ rules:
       - patch
       - delete
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
@@ -69,7 +69,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
@@ -81,7 +81,7 @@ rules:
       - patch
       - delete
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
@@ -136,7 +136,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
@@ -147,7 +147,7 @@ rules:
       - update
       - delete
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
@@ -203,7 +203,7 @@ rules:
     verbs:
       - update
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
@@ -211,7 +211,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
@@ -253,7 +253,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
@@ -261,14 +261,14 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:
       - create
       - patch
   - apiGroups:
-      - ''
+      - ""
     resources:
       - pods
       - services
@@ -302,7 +302,7 @@ rules:
     verbs:
       - update
   - apiGroups:
-      - ''
+      - ""
     resources:
       - secrets
     verbs:
@@ -355,7 +355,7 @@ rules:
     verbs:
       - update
   - apiGroups:
-      - ''
+      - ""
     resources:
       - events
     verbs:

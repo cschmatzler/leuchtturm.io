@@ -14,4 +14,3 @@ rules:
       - subjectaccessreviews
     verbs:
       - create
-

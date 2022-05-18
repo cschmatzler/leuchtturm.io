@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: external-dns
   namespace: infrastructure
-  labels: 
+  labels:
     app.kubernetes.io/name: external-dns
     app.kubernetes.io/part-of: external-dns
     app.kubernetes.io/component: external-dns
@@ -11,12 +11,12 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app.kubernetes.io/name: external-dns
       app.kubernetes.io/component: external-dns
   template:
     metadata:
-      labels: 
+      labels:
         app.kubernetes.io/name: external-dns
         app.kubernetes.io/part-of: external-dns
         app.kubernetes.io/component: external-dns

@@ -30,7 +30,7 @@ spec:
           ports:
             - name: http
               protocol: TCP
-              containerPort: 8080       
+              containerPort: 8080
           volumeMounts:
             - name: nginx-ingress-controller-nginx-config
               mountPath: /opt/bitnami/nginx/conf/bitnami/
@@ -39,12 +39,12 @@ spec:
             httpGet:
               scheme: HTTP
               path: /healthz
-              port: http      
+              port: http
           readinessProbe:
             httpGet:
               scheme: HTTP
               path: /healthz
-              port: http     
+              port: http
           resources:
             limits: {}
             requests: {}
