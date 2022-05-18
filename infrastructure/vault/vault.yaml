@@ -156,7 +156,7 @@ spec:
             ttl: 1h
           - name: mastodon
             bound_service_account_names:
-              - mastodon-mastodon
+              - mastodon
             bound_service_account_namespaces:
               - medium-place
             policies:
