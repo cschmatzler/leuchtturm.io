@@ -15,15 +15,24 @@ spec:
       app.kubernetes.io/component: redis
   template:
     metadata:
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: mastodon
       labels:
         app.kubernetes.io/name: mastodon
         app.kubernetes.io/part-of: mastodon
         app.kubernetes.io/component: redis
         app.kubernetes.io/version: 7.0.0
     spec:
+      serviceAccountName: mastodon-redis
       containers:
         - name: redis
           image: redis:7.0.0
+          args:
+            - --requirepass $(REDIS_PASSWORD)
+          envFrom:
+            - configMapRef:
+                name: mastodon-redis-env
           ports:
             - name: redis
               protocol: TCP

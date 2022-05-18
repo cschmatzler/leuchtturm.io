@@ -3,5 +3,9 @@ kind: Kustomization
 metadata:
   name: mastodon-redis
 resources:
+  - serviceaccount.yaml
   - deployment.yaml
   - service.yaml
+configMapGenerator:
+  - name: mastodon-redis-env
+    env: configuration/mastodon-redis.env

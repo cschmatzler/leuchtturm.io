@@ -104,6 +104,7 @@ spec:
           - name: mastodon
             bound_service_account_names:
               - mastodon
+              - mastodon-redis
             bound_service_account_namespaces:
               - medium-place
             policies:
