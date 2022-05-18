@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: elasticsearch
     app.kubernetes.io/part-of: mastodon
     app.kubernetes.io/component: search
-    app.kubernetes.io/version: 1.26.1
+    app.kubernetes.io/version: 8.2.0
 spec:
   replicas: 1
   selector:
@@ -20,13 +20,19 @@ spec:
         app.kubernetes.io/name: elasticsearch
         app.kubernetes.io/part-of: mastodon
         app.kubernetes.io/component: search
-        app.kubernetes.io/version: 1.26.1
+        app.kubernetes.io/version: 8.2.0
     spec:
       securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
         fsGroup: 1001
       containers:
         - name: elasticsearch
           image: bitnami/elasticsearch:8.2.0-debian-10-r12
+          envFrom:
+            - configMapRef:
+                name: mastodon-elasticsearch-env
           ports:
             - name: http
               protocol: TCP
