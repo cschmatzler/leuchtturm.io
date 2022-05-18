@@ -5,7 +5,6 @@ resources:
   - sources
   - vault
   - postgresql
-  - minio
   - external-dns
   - cert-manager
   - nginx-ingress-controller
