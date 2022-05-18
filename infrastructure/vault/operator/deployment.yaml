@@ -38,8 +38,8 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
           envFrom:
-            configMapRef:
-              - name: vault-operator-env
+            - configMapRef:
+                name: vault-operator-env
           ports:
             - name: http
               protocol: TCP
