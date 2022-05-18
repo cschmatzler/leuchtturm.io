@@ -2,23 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caddy
+  namespace: medium-place
   labels:
     app.kubernetes.io/name: caddy
     app.kubernetes.io/part-of: caddy
-    app.kubernetes.io/component: caddy
+    app.kubernetes.io/component: server
     app.kubernetes.io/version: 2.5.1
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
   selector:
     matchLabels:
       app.kubernetes.io/name: caddy
-      app.kubernetes.io/component: caddy
+      app.kubernetes.io/part-of: caddy
   template:
     metadata:
       labels:
         app.kubernetes.io/name: caddy
         app.kubernetes.io/part-of: caddy
-        app.kubernetes.io/component: caddy
+        app.kubernetes.io/component: server
         app.kubernetes.io/version: 2.5.1
     spec:
       containers:

@@ -2,26 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mastodon-redis
+  namespace: medium-place
   labels:
-    app.kubernetes.io/name: mastodon
+    app.kubernetes.io/name: redis
     app.kubernetes.io/part-of: mastodon
-    app.kubernetes.io/component: redis
+    app.kubernetes.io/component: kv-store
     app.kubernetes.io/version: 7.0.0
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
   selector:
     matchLabels:
-      app.kubernetes.io/name: mastodon
-      app.kubernetes.io/component: redis
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/part-of: mastodon
   template:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: mastodon
       labels:
-        app.kubernetes.io/name: mastodon
+        app.kubernetes.io/name: redis
         app.kubernetes.io/part-of: mastodon
-        app.kubernetes.io/component: redis
+        app.kubernetes.io/component: kv-store
         app.kubernetes.io/version: 7.0.0
     spec:
       serviceAccountName: mastodon-redis

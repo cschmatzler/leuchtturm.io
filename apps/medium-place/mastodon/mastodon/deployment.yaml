@@ -2,17 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mastodon
+  namespace: medium-place
   labels:
     app.kubernetes.io/name: mastodon
     app.kubernetes.io/part-of: mastodon
-    app.kubernetes.io/component: mastodon
+    app.kubernetes.io/component: server
     app.kubernetes.io/version: 3.5.2
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
   selector:
     matchLabels:
       app.kubernetes.io/name: mastodon
-      app.kubernetes.io/component: mastodon
+      app.kubernetes.io/part-of: mastodon
   template:
     metadata:
       annotations:
@@ -21,7 +24,7 @@ spec:
       labels:
         app.kubernetes.io/name: mastodon
         app.kubernetes.io/part-of: mastodon
-        app.kubernetes.io/component: mastodon
+        app.kubernetes.io/component: server
         app.kubernetes.io/version: 3.5.2
     spec:
       serviceAccountName: mastodon

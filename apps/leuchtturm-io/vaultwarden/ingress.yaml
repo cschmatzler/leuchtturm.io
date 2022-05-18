@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: vaultwarden
+  namespace: leuchtturm-io
   labels:
     app.kubernetes.io/name: vaultwarden
     app.kubernetes.io/part-of: vaultwarden
