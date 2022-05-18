@@ -60,8 +60,8 @@ spec:
           app.kubernetes.io/component: server
       spec:
         accessModes:
-          - "ReadWriteOnce"
+          - ReadWriteOnce
         resources:
           requests:
-            storage: "1Gi"
+            storage: 1Gi
         storageClassName: scw-bssd-retain
