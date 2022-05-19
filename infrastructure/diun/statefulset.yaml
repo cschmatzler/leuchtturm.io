@@ -22,7 +22,7 @@ spec:
         app.kubernetes.io/component: server
         app.kubernetes.io/version: 4.21.0
     spec:
-      serviceAccountName: teslamate-diun
+      serviceAccountName: diun
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
