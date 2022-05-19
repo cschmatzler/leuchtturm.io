@@ -13,7 +13,6 @@ spec:
   serviceAccount: vault
   size: 3
   image: vault:1.10.3
-  imagePullPolicy: Always
 
   serviceType: ClusterIP
   serviceRegistrationEnabled: true
@@ -73,7 +72,9 @@ spec:
               - diun
             bound_service_account_namespaces:
               - infrastructure
-            policies: matrix
+            policies:
+              - dockerio 
+              - matrix
             ttl: 1h
           - name: external-dns
             bound_service_account_names:
@@ -147,6 +148,10 @@ spec:
           }
       - name: cloudflare
         rules: path "secret/data/external/cloudflare" {
+          capabilities = ["read", "list"]
+          }
+      - name: dockerio
+        rules: path "secret/data/external/dockerio" {
           capabilities = ["read", "list"]
           }
       - name: mail
