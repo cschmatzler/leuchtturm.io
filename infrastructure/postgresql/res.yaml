@@ -1,0 +1,280 @@
+
+# Source: postgresql-ha/templates/pgpool/custom-users-secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgresql-postgresql-ha-pgpool-custom-users
+  namespace: "infrastructure"
+  labels:
+    app.kubernetes.io/name: postgresql-ha
+    helm.sh/chart: postgresql-ha-9.0.7
+    app.kubernetes.io/instance: postgresql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: pgpool
+type: Opaque
+data:
+  usernames: "JHt2YXVsdDpzZWNyZXQvZGF0YS9sZXVjaHR0dXJtLWlvL3ZhdWx0d2FyZGVuL3Bvc3RncmVzcWwjdXNlcn07JHt2YXVsdDpzZWNyZXQvZGF0YS9tZWRpdW0tcGxhY2UvbWFzdG9kb24vcG9zdGdyZXNxbCN1c2VyfTske3ZhdWx0OnNlY3JldC9kYXRhL21lZGl1bS1wbGFjZS9zeW5hcHNlL3Bvc3RncmVzcWwjdXNlcn07JHt2YXVsdDpzZWNyZXQvZGF0YS9tZWRpdW0tcGxhY2UvdGVzbGFtYXRlL3Bvc3RncmVzcWwjdXNlcn0="
+  passwords: "JHt2YXVsdDpzZWNyZXQvZGF0YS9sZXVjaHR0dXJtLWlvL3ZhdWx0d2FyZGVuL3Bvc3RncmVzcWwjcGFzc3dvcmR9OyR7dmF1bHQ6c2VjcmV0L2RhdGEvbWVkaXVtLXBsYWNlL21hc3RvZG9uL3Bvc3RncmVzcWwjcGFzc3dvcmR9OyR7dmF1bHQ6c2VjcmV0L2RhdGEvbWVkaXVtLXBsYWNlL3N5bmFwc2UvcG9zdGdyZXNxbCNwYXNzd29yZH07JHt2YXVsdDpzZWNyZXQvZGF0YS9tZWRpdW0tcGxhY2UvdGVzbGFtYXRlL3Bvc3RncmVzcWwjcGFzc3dvcmR9"
+---
+# Source: postgresql-ha/templates/pgpool/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgresql-postgresql-ha-pgpool
+  namespace: "infrastructure"
+  labels:
+    app.kubernetes.io/name: postgresql-ha
+    helm.sh/chart: postgresql-ha-9.0.7
+    app.kubernetes.io/instance: postgresql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: pgpool
+type: Opaque
+data:
+  admin-password: "dmF1bHQ6c2VjcmV0L2RhdGEvaW5mcmFzdHJ1Y3R1cmUvcG9zdGdyZXNxbC9hdXRoZW50aWNhdGlvbiNwZ3Bvb2xfcGFzc3dvcmQ="
+---
+# Source: postgresql-ha/templates/postgresql/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgresql-postgresql-ha-postgresql
+  namespace: "infrastructure"
+  labels:
+    app.kubernetes.io/name: postgresql-ha
+    helm.sh/chart: postgresql-ha-9.0.7
+    app.kubernetes.io/instance: postgresql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: postgresql
+type: Opaque
+data:
+  postgresql-password: "dmF1bHQ6c2VjcmV0L2RhdGEvaW5mcmFzdHJ1Y3R1cmUvcG9zdGdyZXNxbC9hdXRoZW50aWNhdGlvbiNwb3N0Z3Jlc19wYXNzd29yZA=="
+  repmgr-password: "dmF1bHQ6c2VjcmV0L2RhdGEvaW5mcmFzdHJ1Y3R1cmUvcG9zdGdyZXNxbC9hdXRoZW50aWNhdGlvbiNyZXBtZ3JfcGFzc3dvcmQ="
+---
+# Source: postgresql-ha/templates/postgresql/hooks-scripts-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-postgresql-ha-postgresql-hooks-scripts
+  namespace: "infrastructure"
+  labels:
+    app.kubernetes.io/name: postgresql-ha
+    helm.sh/chart: postgresql-ha-9.0.7
+    app.kubernetes.io/instance: postgresql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: postgresql
+data:
+  pre-stop.sh: |-
+    
+---
+# Source: postgresql-ha/templates/pgpool/service.yaml
+
+---
+# Source: postgresql-ha/templates/postgresql/service-headless.yaml
+
+---
+# Source: postgresql-ha/templates/postgresql/service.yaml
+
+---
+# Source: postgresql-ha/templates/pgpool/deployment.yaml
+
+---
+# Source: postgresql-ha/templates/postgresql/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgresql-postgresql-ha-postgresql
+  namespace: "infrastructure"
+  labels:
+    app.kubernetes.io/name: postgresql-ha
+    helm.sh/chart: postgresql-ha-9.0.7
+    app.kubernetes.io/instance: postgresql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: postgresql
+spec:
+  replicas: 3
+  podManagementPolicy: Parallel
+  serviceName: postgresql-postgresql-ha-postgresql-headless
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql-ha
+      app.kubernetes.io/instance: postgresql
+      app.kubernetes.io/component: postgresql
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: postgresql-ha
+        helm.sh/chart: postgresql-ha-9.0.7
+        app.kubernetes.io/instance: postgresql
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: postgresql
+      annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
+        vault.security.banzaicloud.io/vault-role: postgresql
+    spec:
+      
+      affinity:
+        podAffinity:
+          
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: postgresql-ha
+                    app.kubernetes.io/instance: postgresql
+                    app.kubernetes.io/component: postgresql
+                namespaces:
+                  - "infrastructure"
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+        nodeAffinity:
+          
+      securityContext:
+        fsGroup: 1001
+      serviceAccountName: postgresql
+      hostNetwork: false
+      hostIPC: false
+      initContainers:
+      containers:
+        - name: postgresql
+          image: docker.io/bitnami/postgresql-repmgr:14.3.0-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1001
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /pre-stop.sh
+          # Auxiliary vars to populate environment variables
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            # PostgreSQL configuration
+            - name: POSTGRESQL_VOLUME_DIR
+              value: "/bitnami/postgresql"
+            - name: PGDATA
+              value: "/bitnami/postgresql/data"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-postgresql-ha-postgresql
+                  key: postgresql-password
+            - name: POSTGRES_DB
+              value: "postgres"
+            - name: POSTGRESQL_LOG_HOSTNAME
+              value: "true"
+            - name: POSTGRESQL_LOG_CONNECTIONS
+              value: "false"
+            - name: POSTGRESQL_LOG_DISCONNECTIONS
+              value: "false"
+            - name: POSTGRESQL_PGAUDIT_LOG_CATALOG
+              value: "off"
+            - name: POSTGRESQL_CLIENT_MIN_MESSAGES
+              value: "error"
+            - name: POSTGRESQL_SHARED_PRELOAD_LIBRARIES
+              value: "pgaudit, repmgr"
+            - name: POSTGRESQL_MAX_CONNECTIONS
+              value: "250"
+            - name: POSTGRESQL_ENABLE_TLS
+              value: "no"
+            - name: POSTGRESQL_PORT_NUMBER
+              value: "5432"
+            # Repmgr configuration
+            - name: REPMGR_PORT_NUMBER
+              value: "5432"
+            - name: REPMGR_PRIMARY_PORT
+              value: "5432"
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: REPMGR_UPGRADE_EXTENSION
+              value: "no"
+            - name: REPMGR_PGHBA_TRUST_ALL
+              value: "no"
+            - name: REPMGR_MOUNTED_CONF_DIR
+              value: "/bitnami/repmgr/conf"
+            - name: REPMGR_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: REPMGR_PARTNER_NODES
+              value: postgresql-postgresql-ha-postgresql-0.postgresql-postgresql-ha-postgresql-headless.$(REPMGR_NAMESPACE).svc.cluster.local,postgresql-postgresql-ha-postgresql-1.postgresql-postgresql-ha-postgresql-headless.$(REPMGR_NAMESPACE).svc.cluster.local,postgresql-postgresql-ha-postgresql-2.postgresql-postgresql-ha-postgresql-headless.$(REPMGR_NAMESPACE).svc.cluster.local,
+            - name: REPMGR_PRIMARY_HOST
+              value: "postgresql-postgresql-ha-postgresql-0.postgresql-postgresql-ha-postgresql-headless.$(REPMGR_NAMESPACE).svc.cluster.local"
+            - name: REPMGR_NODE_NAME
+              value: "$(MY_POD_NAME)"
+            - name: REPMGR_NODE_NETWORK_NAME
+              value: "$(MY_POD_NAME).postgresql-postgresql-ha-postgresql-headless.$(REPMGR_NAMESPACE).svc.cluster.local"
+            - name: REPMGR_LOG_LEVEL
+              value: "NOTICE"
+            - name: REPMGR_CONNECT_TIMEOUT
+              value: "5"
+            - name: REPMGR_RECONNECT_ATTEMPTS
+              value: "2"
+            - name: REPMGR_RECONNECT_INTERVAL
+              value: "3"
+            - name: REPMGR_USERNAME
+              value: "repmgr"
+            - name: REPMGR_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-postgresql-ha-postgresql
+                  key: repmgr-password
+            - name: REPMGR_DATABASE
+              value: "repmgr"
+            - name: REPMGR_FENCE_OLD_PRIMARY
+              value: "no"
+            - name: REPMGR_CHILD_NODES_CHECK_INTERVAL
+              value: "5"
+            - name: REPMGR_CHILD_NODES_CONNECTED_MIN_COUNT
+              value: "1"
+            - name: REPMGR_CHILD_NODES_DISCONNECT_TIMEOUT
+              value: "30"
+          envFrom:
+          ports:
+            - name: postgresql
+              containerPort: 5432
+              protocol: TCP
+          livenessProbe:
+            exec:
+              command:
+              - bash
+              - -ec
+              - pg_isready -h localhost -U postgres
+          readinessProbe:
+            exec:
+              command:
+              - bash
+              - -ec
+              - pg_isready -h localhost -U postgres
+          resources:
+            limits: {}
+            requests: {}
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/postgresql
+            - name: hooks-scripts
+              mountPath: /pre-stop.sh
+              subPath: pre-stop.sh
+      volumes:
+        - name: hooks-scripts
+          configMap:
+            name: postgresql-postgresql-ha-postgresql-hooks-scripts
+            defaultMode: 0755
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "5Gi"
+        storageClassName: scw-bssd-retain

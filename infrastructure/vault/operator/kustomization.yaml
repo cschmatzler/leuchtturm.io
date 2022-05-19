@@ -6,6 +6,12 @@ resources:
   - clusterrolebinding.yaml
   - deployment.yaml
   - service.yaml
+generatorOptions:
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/part-of: vault
+    app.kubernetes.io/component: operator
+    app.kubernetes.io/version: 1.15.2
 configMapGenerator:
   - name: vault-operator-env
     namespace: infrastructure
