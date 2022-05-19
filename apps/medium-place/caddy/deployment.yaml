@@ -19,10 +19,10 @@ spec:
   template:
     metadata:
       annotations:
-        #diun.enable: "true"
+        diun.enable: "true"
         diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.max_tags: "5"
+        diun.include_tags: "^\\d+\\.\\d+\\.\\d+$"
       labels:
         app.kubernetes.io/name: caddy
         app.kubernetes.io/part-of: caddy

@@ -17,10 +17,10 @@ spec:
   template:
     metadata:
       annotations:
-        #diun.enable: "true"
+        diun.enable: "true"
         diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.max_tags: "5"
+        diun.include_tags: "^\\d+\\.\\d+\\.\\d+-\\w+-\\d+-r\\d+$"
       labels:
         app.kubernetes.io/name: elasticsearch
         app.kubernetes.io/part-of: mastodon
@@ -34,7 +34,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: elasticsearch
-          image: bitnami/elasticsearch:8.2.0
+          image: bitnami/elasticsearch:8.2.0-debian-10-r12
           envFrom:
             - configMapRef:
                 name: mastodon-elasticsearch-env
