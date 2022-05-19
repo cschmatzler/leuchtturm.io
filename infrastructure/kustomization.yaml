@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
   - sources
   - vault
-  #- postgresql
+  - postgresql
   - external-dns
   - cert-manager
   - nginx-ingress-controller
