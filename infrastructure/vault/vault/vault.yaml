@@ -86,6 +86,7 @@ spec:
           - name: postgresql
             bound_service_account_names:
               - postgresql
+              - posgresql-pgpool
             bound_service_account_namespaces:
               - infrastructure
             policies: postgresql
