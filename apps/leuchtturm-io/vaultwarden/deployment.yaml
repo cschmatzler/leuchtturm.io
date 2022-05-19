@@ -22,8 +22,9 @@ spec:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: vaultwarden
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.exclude_tags: latest
       labels:
         app.kubernetes.io/name: vaultwarden
         app.kubernetes.io/part-of: vaultwarden
