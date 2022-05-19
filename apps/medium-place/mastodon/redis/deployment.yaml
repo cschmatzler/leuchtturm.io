@@ -22,6 +22,8 @@ spec:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: mastodon
         diun.enable: "true"
+        diun.watch_repo: "true"
+        diun.exclude_tags: "latest"
       labels:
         app.kubernetes.io/name: redis
         app.kubernetes.io/part-of: mastodon

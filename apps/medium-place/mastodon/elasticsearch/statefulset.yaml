@@ -18,6 +18,8 @@ spec:
     metadata:
       annotations:
         diun.enable: "true"
+        diun.watch_repo: "true"
+        diun.exclude_tags: "latest"
       labels:
         app.kubernetes.io/name: elasticsearch
         app.kubernetes.io/part-of: mastodon
