@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: diun
+  namespace: infrastructure
+  labels:
+    app.kubernetes.io/name: diun
+    app.kubernetes.io/part-of: diun
+    app.kubernetes.io/component: server
+    app.kubernetes.io/version: 4.21.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: diun
+      app.kubernetes.io/part-of: diun
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: diun
+        app.kubernetes.io/part-of: diun
+        app.kubernetes.io/component: server
+        app.kubernetes.io/version: 4.21.0
+    spec:
+      serviceAccountName: teslamate-diun
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+      containers:
+        - name: diun
+          image: crazymax/diun:4.21.0
+          args:
+            - serve
+          envFrom:
+            - configMapRef:
+                name: diun-env
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          resources:
+            requests:
+              cpu: 32m
+              memory: 64Mi
+            limits:
+              cpu: 64m
+              memory: 128Mi
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        namespace: infrastructure
+        labels:
+          app.kubernetes.io/name: diun
+          app.kubernetes.io/part-of: diun
+          app.kubernetes.io/component: server
+      spec:
+        storageClassName: scw-bssd-retain
+        accessModes:
+          - ReadWriteOnce
+        volumeMode: Filesystem
+        resources:
+          requests:
+            storage: 1Gi
+        

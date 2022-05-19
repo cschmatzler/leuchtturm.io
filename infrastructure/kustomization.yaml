@@ -8,4 +8,4 @@ resources:
   - external-dns
   - cert-manager
   - nginx-ingress-controller
-  - kube-prometheus
+  - diun
