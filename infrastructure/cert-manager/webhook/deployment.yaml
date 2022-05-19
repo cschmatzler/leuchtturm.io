@@ -29,7 +29,8 @@ spec:
       serviceAccountName: cert-manager-webhook
       containers:
         - name: webhook
-          image: bitnami/cert-manager-webhook:1.8.0-debian-10-r21
+          image: bitnami/cert-manager-webhook:1.8.0
+          imagePullPolicy: Always
           args:
             - --v=2
             - --secure-port=10250

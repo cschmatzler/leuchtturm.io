@@ -31,6 +31,7 @@ spec:
       containers:
         - name: secrets-webhook
           image: ghcr.io/banzaicloud/vault-secrets-webhook:1.15.2
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: vault-secrets-webhook-env

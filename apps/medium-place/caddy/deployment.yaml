@@ -31,6 +31,7 @@ spec:
       containers:
         - name: caddy
           image: caddy:2.5.1
+          imagePullPolicy: Always
           ports:
             - name: http
               protocol: TCP

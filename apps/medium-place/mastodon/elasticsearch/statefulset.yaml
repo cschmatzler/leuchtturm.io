@@ -33,7 +33,8 @@ spec:
         fsGroup: 1001
       containers:
         - name: elasticsearch
-          image: bitnami/elasticsearch:8.2.0-debian-10-r12
+          image: bitnami/elasticsearch:8.2.0
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: mastodon-elasticsearch-env

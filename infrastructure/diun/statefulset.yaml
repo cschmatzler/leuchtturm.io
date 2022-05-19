@@ -37,6 +37,7 @@ spec:
       containers:
         - name: diun
           image: crazymax/diun:4.21.0
+          imagePullPolicy: Always
           args:
             - serve
           envFrom:

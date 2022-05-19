@@ -33,6 +33,7 @@ spec:
       containers:
         - name: operator
           image: ghcr.io/banzaicloud/vault-operator:1.15.2
+          imagePullPolicy: Always
           command:
             - vault-operator
             - -sync_period

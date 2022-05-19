@@ -33,7 +33,8 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
         - name: controller
-          image: bitnami/nginx-ingress-controller:1.2.0-debian-10-r6
+          image: bitnami/nginx-ingress-controller:1.2.0
+          imagePullPolicy: Always
           args:
             - /nginx-ingress-controller
             - --default-backend-service=infrastructure/nginx-ingress-controller-nginx

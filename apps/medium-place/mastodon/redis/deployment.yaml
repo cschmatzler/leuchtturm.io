@@ -34,6 +34,7 @@ spec:
       containers:
         - name: redis
           image: redis:7.0.0
+          imagePullPolicy: Always
           command:
             - redis-server
           #  - --requirepass $(REDIS_PASSWORD)

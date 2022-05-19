@@ -34,6 +34,7 @@ spec:
       containers:
         - name: teslamate
           image: teslamate/teslamate:1.26.1
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: teslamate-env

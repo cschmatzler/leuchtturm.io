@@ -29,12 +29,13 @@ spec:
       serviceAccountName: cert-manager-controller
       containers:
         - name: controller
-          image: bitnami/cert-manager:1.8.0-debian-10-r21
+          image: bitnami/cert-manager:1.8.0
+          imagePullPolicy: Always
           args:
             - --v=2
             - --leader-election-namespace=kube-system
             - --cluster-resource-namespace=$(POD_NAMESPACE)
-            - --acme-http01-solver-image=bitnami/acmesolver:1.8.0-debian-10-r21
+            - --acme-http01-solver-image=bitnami/acmesolver:1.8.0
           env:
             - name: POD_NAMESPACE
               valueFrom:

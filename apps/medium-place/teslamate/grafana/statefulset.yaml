@@ -36,6 +36,7 @@ spec:
       containers:
         - name: grafana
           image: teslamate/grafana:1.26.1
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: teslamate-env
