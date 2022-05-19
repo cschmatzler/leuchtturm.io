@@ -13,5 +13,5 @@ generatorOptions:
     app.kubernetes.io/version: 1.16.8
 configMapGenerator:
   - name: gitea-env
-    namespace: leuchtturm-io
+    namespace: medium-place
     env: configuration/gitea.env
