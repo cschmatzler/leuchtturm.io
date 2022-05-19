@@ -45,6 +45,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: REPMGR_NODE_NAME
+              value: $(POD_NAME)
+            - name: REPMGR_NODE_NETWORK_NAME
+              value: $(POD_NAME).postgresql-headless.infrastructure.svc.cluster.local
           envFrom:
             - configMapRef:
                 name: postgresql-env
