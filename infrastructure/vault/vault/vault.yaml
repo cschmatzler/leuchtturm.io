@@ -166,7 +166,7 @@ spec:
         rules: path "secret/data/infrastructure/postgresql/*" {
           capabilities = ["read", "list"]
           }
-          path "secret/data/+/+/database" {
+          path "secret/data/+/+/postgresql" {
           capabilities = ["read", "list"]
           }
       # leuchtturm-io
