@@ -49,7 +49,7 @@ spec:
       tcp:
         address: 0.0.0.0:8200
         tls_disable: true
-    api_addr: http://vault.infrastructure:8200
+    api_addr: http://vault.infrastructure.svc.cluster.local:8200
     cluster_addr: https://${.Env.POD_NAME}:8201
     ui: true
 

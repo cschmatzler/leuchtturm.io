@@ -15,3 +15,7 @@ configMapGenerator:
   - name: diun-env
     namespace: infrastructure
     env: configuration/diun.env
+  - name: diun-config
+    namespace: infrastructure
+    files:
+      - configuration/images.yaml

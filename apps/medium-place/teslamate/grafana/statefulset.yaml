@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: teslamate
         diun.enable: "true"
       labels:
@@ -28,9 +28,9 @@ spec:
     spec:
       serviceAccountName: teslamate-grafana
       securityContext:
-        runAsUser: 472
-        runAsGroup: 0
-        fsGroup: 0
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
         - name: grafana
           image: teslamate/grafana:1.26.1

@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: diun
         diun.enable: "true"
       labels:
@@ -43,6 +43,9 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
+            - name: config
+              mountPath: /tmp/images.yaml
+              subPath: images.yaml
           resources:
             requests:
               cpu: 32m
@@ -50,6 +53,10 @@ spec:
             limits:
               cpu: 64m
               memory: 128Mi
+      volumes:
+        - name: config
+          configMap:
+            name: diun-config
   volumeClaimTemplates:
     - metadata:
         name: data
