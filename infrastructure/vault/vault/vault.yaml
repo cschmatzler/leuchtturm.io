@@ -109,7 +109,9 @@ spec:
               - gitea
             bound_service_account_namespaces:
               - medium-place
-            policies: gitea
+            policies: 
+              - gitea
+              - mail
             ttl: 1h
           - name: mastodon
             bound_service_account_names:
