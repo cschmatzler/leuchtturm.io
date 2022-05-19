@@ -42,7 +42,7 @@ spec:
             - name: redis
               protocol: TCP
               containerPort: 6379
-        volumeMounts:
+          volumeMounts:
             - name: data
               mountPath: /bitnami/elasticsearch/data
           resources:
