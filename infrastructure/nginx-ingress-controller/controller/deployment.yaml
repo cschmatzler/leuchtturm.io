@@ -41,7 +41,7 @@ spec:
             - --publish-service=infrastructure/nginx-ingress-controller-controller
             - --election-id=ingress-controller-leader
             - --controller-class=k8s.io/ingress-nginx
-            - --tcp-services-configmap=nginx-ingress-controller-tcp-services
+            - --tcp-services-configmap=infrastructure/nginx-ingress-controller-tcp-services
           env:
             - name: POD_NAME
               valueFrom:
