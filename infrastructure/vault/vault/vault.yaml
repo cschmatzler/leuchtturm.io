@@ -67,6 +67,13 @@ spec:
             ttl: 1h
           # infrastructure
           # --------------
+          - name: diun
+            bound_service_account_names:
+              - diun
+            bound_service_account_namespaces:
+              - infrastructure
+            policies: matrix
+            ttl: 1h
           - name: external-dns
             bound_service_account_names:
               - external-dns
@@ -143,6 +150,10 @@ spec:
           }
       - name: mail
         rules: path "secret/data/external/mail" {
+          capabilities = ["read", "list"]
+          }
+      - name: matrix
+        rules: path "secret/data/external/matrix" {
           capabilities = ["read", "list"]
           }
       - name: s3

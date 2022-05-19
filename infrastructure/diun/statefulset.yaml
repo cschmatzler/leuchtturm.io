@@ -17,6 +17,8 @@ spec:
   template:
     metadata:
       annotations:
+        vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
+        vault.security.banzaicloud.io/vault-role: diun
         diun.enable: "true"
       labels:
         app.kubernetes.io/name: diun
