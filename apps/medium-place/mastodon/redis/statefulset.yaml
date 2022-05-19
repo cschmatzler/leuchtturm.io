@@ -44,7 +44,7 @@ spec:
               containerPort: 6379
           volumeMounts:
             - name: data
-              mountPath: /bitnami/elasticsearch/data
+              mountPath: /bitnami/redis/data
           resources:
             requests:
               cpu: 16m
