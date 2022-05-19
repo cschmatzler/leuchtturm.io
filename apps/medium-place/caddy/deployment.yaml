@@ -20,8 +20,9 @@ spec:
     metadata:
       annotations:
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: caddy
         app.kubernetes.io/part-of: caddy
@@ -31,7 +32,6 @@ spec:
       containers:
         - name: caddy
           image: caddy:2.5.1
-          imagePullPolicy: Always
           ports:
             - name: http
               protocol: TCP

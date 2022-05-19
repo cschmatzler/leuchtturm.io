@@ -24,7 +24,7 @@ spec:
         diun.enable: "true"
         diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: latest
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: vaultwarden
         app.kubernetes.io/part-of: vaultwarden
@@ -35,7 +35,6 @@ spec:
       containers:
         - name: vaultwarden
           image: vaultwarden/server:1.24.0
-          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: vaultwarden-env

@@ -18,8 +18,9 @@ spec:
     metadata:
       annotations:
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: vault
         app.kubernetes.io/part-of: vault
@@ -31,7 +32,6 @@ spec:
       containers:
         - name: secrets-webhook
           image: ghcr.io/banzaicloud/vault-secrets-webhook:1.15.2
-          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: vault-secrets-webhook-env

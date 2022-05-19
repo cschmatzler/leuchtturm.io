@@ -20,8 +20,9 @@ spec:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: teslamate
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: teslamate
@@ -36,7 +37,6 @@ spec:
       containers:
         - name: grafana
           image: teslamate/grafana:1.26.1
-          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: teslamate-env

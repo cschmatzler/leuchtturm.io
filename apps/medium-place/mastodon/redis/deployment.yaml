@@ -22,8 +22,9 @@ spec:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: mastodon
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: redis
         app.kubernetes.io/part-of: mastodon
@@ -34,7 +35,6 @@ spec:
       containers:
         - name: redis
           image: redis:7.0.0
-          imagePullPolicy: Always
           command:
             - redis-server
           #  - --requirepass $(REDIS_PASSWORD)

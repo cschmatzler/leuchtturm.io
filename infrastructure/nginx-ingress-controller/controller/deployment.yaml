@@ -20,8 +20,9 @@ spec:
     metadata:
       annotations:
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: nginx-ingress-controller
         app.kubernetes.io/part-of: nginx-ingress-controller
@@ -34,7 +35,6 @@ spec:
       containers:
         - name: controller
           image: bitnami/nginx-ingress-controller:1.2.0
-          imagePullPolicy: Always
           args:
             - /nginx-ingress-controller
             - --default-backend-service=infrastructure/nginx-ingress-controller-nginx

@@ -32,7 +32,6 @@ spec:
       containers:
         - name: synapse
           image: cschmatzler/synapse:v1.59.1
-          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: synapse-env

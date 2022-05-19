@@ -20,8 +20,9 @@ spec:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: external-dns
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: external-dns
         app.kubernetes.io/part-of: external-dns
@@ -32,7 +33,6 @@ spec:
       containers:
         - name: external-dns
           image: bitnami/external-dns:0.11.1
-          imagePullPolicy: Always
           args:
             - --metrics-address=:7979
             - --log-level=info

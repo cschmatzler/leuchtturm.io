@@ -20,8 +20,9 @@ spec:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: diun
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: diun
         app.kubernetes.io/part-of: diun
@@ -37,7 +38,6 @@ spec:
       containers:
         - name: diun
           image: crazymax/diun:4.21.0
-          imagePullPolicy: Always
           args:
             - serve
           envFrom:

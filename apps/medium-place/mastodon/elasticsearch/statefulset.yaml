@@ -18,8 +18,9 @@ spec:
     metadata:
       annotations:
         diun.enable: "true"
+        diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.exclude_tags: "latest"
+        diun.max_tags: 5
       labels:
         app.kubernetes.io/name: elasticsearch
         app.kubernetes.io/part-of: mastodon
@@ -34,7 +35,6 @@ spec:
       containers:
         - name: elasticsearch
           image: bitnami/elasticsearch:8.2.0
-          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: mastodon-elasticsearch-env
