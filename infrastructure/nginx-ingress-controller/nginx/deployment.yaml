@@ -16,6 +16,8 @@ spec:
   replicas: 2
   template:
     metadata:
+      annotations:
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: nginx-ingress-controller
         app.kubernetes.io/part-of: nginx-ingress-controller

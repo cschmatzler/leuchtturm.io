@@ -19,6 +19,7 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: teslamate
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: grafana
         app.kubernetes.io/part-of: teslamate

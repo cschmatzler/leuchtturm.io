@@ -16,6 +16,8 @@ spec:
       app.kubernetes.io/part-of: diun
   template:
     metadata:
+      annotations:
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: diun
         app.kubernetes.io/part-of: diun

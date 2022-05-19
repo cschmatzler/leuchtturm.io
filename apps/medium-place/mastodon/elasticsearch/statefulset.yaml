@@ -16,6 +16,8 @@ spec:
       app.kubernetes.io/part-of: mastodon
   template:
     metadata:
+      annotations:
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: elasticsearch
         app.kubernetes.io/part-of: mastodon

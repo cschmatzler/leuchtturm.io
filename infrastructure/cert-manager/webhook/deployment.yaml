@@ -16,6 +16,8 @@ spec:
   replicas: 1
   template:
     metadata:
+      annotations:
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: cert-manager
         app.kubernetes.io/part-of: cert-manager

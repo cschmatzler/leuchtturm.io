@@ -18,6 +18,8 @@ spec:
       app.kubernetes.io/part-of: caddy
   template:
     metadata:
+      annotations:
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: caddy
         app.kubernetes.io/part-of: caddy

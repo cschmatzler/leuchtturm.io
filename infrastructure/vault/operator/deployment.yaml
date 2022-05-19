@@ -18,6 +18,8 @@ spec:
       app.kubernetes.io/component: operator
   template:
     metadata:
+      annotations:
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: vault
         app.kubernetes.io/part-of: vault
