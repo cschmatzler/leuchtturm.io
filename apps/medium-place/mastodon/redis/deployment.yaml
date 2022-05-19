@@ -24,7 +24,7 @@ spec:
         diun.enable: "true"
         diun.regopt: docker.io
         diun.watch_repo: "true"
-        diun.max_tags: 5
+        diun.max_tags: "5"
       labels:
         app.kubernetes.io/name: redis
         app.kubernetes.io/part-of: mastodon
