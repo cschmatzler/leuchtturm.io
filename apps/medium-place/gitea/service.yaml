@@ -17,6 +17,23 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitea-ssh
+  namespace: medium-place
+  labels:
+    app.kubernetes.io/name: gitea
+    app.kubernetes.io/part-of: gitea
+    app.kubernetes.io/component: server
+    app.kubernetes.io/version: 1.16.8
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: gitea
+    app.kubernetes.io/part-of: gitea
+  ports:
     - name: ssh
       protocol: TCP
       port: 22
