@@ -1,5 +1,5 @@
 # Vault image used in infrastructure/vault/vault.
-- name:  vault
+- name: vault
   regopt: docker.io
   watch_repo: true
   max_tags: 5
