@@ -33,9 +33,6 @@ spec:
     spec:
       serviceAccountName: mastodon-redis
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 1001
-        runAsGroup: 1001
         fsGroup: 1001
       containers:
         - name: redis
