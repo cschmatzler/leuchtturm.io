@@ -21,7 +21,7 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
         vault.security.banzaicloud.io/vault-role: mastodon
-        diun.enable: "true"
+        #diun.enable: "true"
         diun.regopt: docker.io
         diun.watch_repo: "true"
         diun.max_tags: "5"

@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       annotations:
-        diun.enable: "true"
+        #diun.enable: "true"
         diun.regopt: docker.io
         diun.watch_repo: "true"
         diun.max_tags: "5"
