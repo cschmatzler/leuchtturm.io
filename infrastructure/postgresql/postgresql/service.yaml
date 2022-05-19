@@ -4,17 +4,16 @@ metadata:
   name: postgresql-headless
   namespace: infrastructure
   labels:
-    app.kubernetes.io/name: postgresql-ha
-    helm.sh/chart: postgresql-ha-9.0.7
-    app.kubernetes.io/instance: postgresql
-    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/part-of: postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/version: 14.3.0
 spec:
   type: ClusterIP
   clusterIP: None
   selector:
-    app.kubernetes.io/name: postgresql-ha
-    app.kubernetes.io/instance: postgresql
-    app.kubernetes.io/component: postgresql
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/part-of: postgresql
   ports:
     - name: postgresql
       protocol: TCP
@@ -27,18 +26,16 @@ metadata:
   name: postgresql
   namespace: infrastructure
   labels:
-    app.kubernetes.io/name: postgresql-ha
-    helm.sh/chart: postgresql-ha-9.0.7
-    app.kubernetes.io/instance: postgresql
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/component: postgresql
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/part-of: postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/version: 14.3.0
   annotations:
 spec:
   type: ClusterIP
   selector:
-    app.kubernetes.io/name: postgresql-ha
-    app.kubernetes.io/instance: postgresql
-    app.kubernetes.io/component: postgresql
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/part-of: postgresql
   ports:
     - name: postgresql
       protocol: TCP
