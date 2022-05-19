@@ -18,7 +18,7 @@ spec:
     metadata:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure.svc.cluster.local:8200
-        vault.security.banzaicloud.io/vault-role: postgresql-pgpool
+        vault.security.banzaicloud.io/vault-role: postgresql
       labels: 
         app.kubernetes.io/name: pgpool
         app.kubernetes.io/part-of: postgresql
