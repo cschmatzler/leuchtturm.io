@@ -37,8 +37,8 @@ pgpool:
     vault.security.banzaicloud.io/vault-role: postgresql
   adminPassword: vault:secret/data/infrastructure/postgresql/authentication#pgpool_password
   customUsers:
-    usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/database#user};${vault:secret/data/medium-place/mastodon/database#user};${vault:secret/data/medium-place/synapse/database#user};${vault:secret/data/medium-place/teslamate/database#user}
-    passwords: ${vault:secret/data/leuchtturm-io/vaultwarden/database#password};${vault:secret/data/medium-place/mastodon/database#password};${vault:secret/data/medium-place/synapse/database#password};${vault:secret/data/medium-place/teslamate/database#password}
+    usernames: ${vault:secret/data/leuchtturm-io/vaultwarden/postgresql#user};${vault:secret/data/medium-place/mastodon/postgresql#user};${vault:secret/data/medium-place/synapse/postgresql#user};${vault:secret/data/medium-place/teslamate/postgresql#user}
+    passwords: ${vault:secret/data/leuchtturm-io/vaultwarden/postgresql#password};${vault:secret/data/medium-place/mastodon/postgresql#password};${vault:secret/data/medium-place/synapse/postgresql#password};${vault:secret/data/medium-place/teslamate/postgresql#password}
   numInitChildren: 64
   maxPool: 20
   childMaxConnections: 10
