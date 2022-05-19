@@ -12,8 +12,11 @@ metadata:
 spec:
   serviceAccount: vault
   size: 3
-  image: vault:1.10.3
-  pullPolicy: Always
+  image: 
+    repository: vault
+    tag: 1.10.3
+    pullPolicy: Always
+
 
   serviceType: ClusterIP
   serviceRegistrationEnabled: true
