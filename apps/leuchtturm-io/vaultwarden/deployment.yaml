@@ -21,7 +21,7 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: http://vault.infrastructure:8200
         vault.security.banzaicloud.io/vault-role: vaultwarden
-        diun.enable: true
+        diun.enable: "true"
       labels:
         app.kubernetes.io/name: vaultwarden
         app.kubernetes.io/part-of: vaultwarden
