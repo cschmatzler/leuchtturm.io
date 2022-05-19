@@ -104,6 +104,13 @@ spec:
             ttl: 1h
           # medium-place
           # ------------
+          - name: gitea
+            bound_service_account_names:
+              - gitea
+            bound_service_account_namespaces:
+              - medium-place
+            policies: gitea
+            ttl: 1h
           - name: mastodon
             bound_service_account_names:
               - mastodon
@@ -184,6 +191,10 @@ spec:
           }
       # medium-place
       # ------------
+      - name: gitea
+        rules: path "secret/data/medium-place/gitea/*" {
+          capabilities = ["read", "list"]
+          }
       - name: mastodon
         rules: path "secret/data/medium-place/mastodon/*" {
           capabilities = ["read", "list"]

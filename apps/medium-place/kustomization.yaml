@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - caddy
+  - gitea
   - mastodon
   - synapse
   - teslamate
