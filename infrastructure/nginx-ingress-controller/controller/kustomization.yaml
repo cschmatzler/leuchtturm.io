@@ -9,3 +9,14 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingressclass.yaml
+generatorOptions:
+  labels:
+    app.kubernetes.io/name: nginx-ingress-controller
+    app.kubernetes.io/part-of: nginx-ingress-controller
+    app.kubernetes.io/component: controller
+    version: 1.2.0
+configMapGenerator:
+  - name: nginx-ingress-controller-tcp-services
+    namespace: infrastructure
+    literals:
+      - "22": "medium-place/gitea:22"
