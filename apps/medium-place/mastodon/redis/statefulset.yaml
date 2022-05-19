@@ -32,6 +32,11 @@ spec:
         app.kubernetes.io/version: 6.2.7
     spec:
       serviceAccountName: mastodon-redis
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
         - name: redis
           image: bitnami/redis:6.2.7-debian-10-r20
