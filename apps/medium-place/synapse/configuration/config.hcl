@@ -97,6 +97,8 @@ template {
     allowed_local_3pids:
       - medium: email
         pattern: '^[^@]+@medium\.place$'
+      - medium: email
+        pattern: '^[^@]+@leuchtturm\.io$'
     registration_requires_token: true
     registration_shared_secret: {{ .Data.data.registration_key }}
     macaroon_secret_key: {{ .Data.data.macaroon_key }}
